@@ -7,8 +7,8 @@ import { Provider } from "react-redux";
 import { store } from "./bll/store";
 
 // Init VK  Mini App
-bridge.send("VKWebAppInit");
 subscribeVKBridge();
+bridge.send("VKWebAppInit");
 
 ReactDOM.render(
   <Provider store={store}>

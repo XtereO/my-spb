@@ -3,7 +3,7 @@ import { mainActions } from "../bll/main";
 import { store } from "../bll/store";
 
 const dispatch = store.dispatch;
-export const subscribeVkBridge = async () => {
+export const subscribeVKBridge = async () => {
   bridge.subscribe(({ detail }) => {
     const { type, data } = detail;
     if (type === "VKWebAppUpdateConfig") {
@@ -11,8 +11,9 @@ export const subscribeVkBridge = async () => {
       //@ts-ignore
       schemeAttribute.value = data.scheme ? data.scheme : "client_light";
       const title = new RegExp("light");
+
       //@ts-ignore
-      if (data.scheme.match(title) || data.scheme.match(new RegExp("vkcom"))) {
+      if (data.scheme.match(title)) {
         dispatch(mainActions.setTheme("light"));
         //@ts-ignore
         bridge.send("VKWebAppSetViewSettings", {
