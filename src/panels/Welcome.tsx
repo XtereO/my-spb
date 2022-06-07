@@ -3,11 +3,12 @@ import { useContext } from "react";
 import { memo } from "react";
 import { PANEL_ROUTES, STORAGE_KEYS } from "../consts";
 import { setValueByKeyVKBridge, ThemeContext } from "../utils";
-import AppIcon from "../assets/AppIcon.svg";
 import { Fragment } from "react";
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { mainActions } from "../bll/main";
+import { AppIcon } from "../icons";
+import "./Welcome.css";
 
 export const Welcome = memo(() => {
   const theme = useContext(ThemeContext);
@@ -25,16 +26,16 @@ export const Welcome = memo(() => {
     <Panel id={PANEL_ROUTES.WELCOME}>
       <Fragment>
         <Group>
-          <Div className="center-x">
-            <img
-              src={AppIcon}
-              id={`${PANEL_ROUTES.WELCOME}-AppIcon`}
-              style={{ marginTop: 86, width: 196, height: 196 }}
-            />
+          <Div
+            className="center-x"
+            id={`${PANEL_ROUTES.WELCOME}-AppIcon`}
+            style={{ marginTop: 86 }}
+          >
+            <AppIcon />
           </Div>
           <Header
             id={`${PANEL_ROUTES.WELCOME}-heading`}
-            className="center-x"
+            className="heading center-x"
             style={{ color: theme.heading }}
           >
             Мой Петербург
@@ -52,7 +53,7 @@ export const Welcome = memo(() => {
             <Button
               id={`${PANEL_ROUTES.WELCOME}-btn`}
               onClick={handleClick}
-              size="m"
+              size="l"
               style={{
                 background: theme.btnBgWelcome,
                 color: theme.btnTextWelcome,

@@ -1,5 +1,5 @@
 import { shallow } from "enzyme";
-import { PANEL_ROUTES } from "../consts";
+import { PANEL_ROUTES } from "../../consts";
 import { Home } from "./Home";
 
 describe("Test Home component", () => {
@@ -25,8 +25,5 @@ describe("Test Home component", () => {
     expect(
       wrapper.find(`${PANEL_ROUTES.HOME}-panel-header`).props()
     ).toHaveProperty("separator", false);
-  });
-  test("should render fact", () => {
-    expect(!!wrapper.find(`${PANEL_ROUTES.HOME}-fact`)).toBe(true);
   });
 });

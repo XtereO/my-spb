@@ -1,13 +1,3 @@
-.heading {
-  font-weight: 600;
-  font-size: 24;
-}
-
-.text {
-  font-weight: 300;
-  font-size: 15;
-}
-
 .center-x {
   display: flex;
   flex-direction: row;

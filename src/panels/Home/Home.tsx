@@ -1,9 +1,16 @@
-import { Card, Div, Group, Panel, PanelHeader } from "@vkontakte/vkui";
+import {
+  Div,
+  Group,
+  Panel,
+  PanelHeader,
+} from "@vkontakte/vkui";
 import { useContext } from "react";
 import { Fragment } from "react";
 import { memo } from "react";
-import { PANEL_ROUTES } from "../consts";
-import { ThemeContext } from "../utils";
+import { PANEL_ROUTES } from "../../consts";
+import { ThemeContext } from "../../utils";
+import { Fact } from "./Banners";
+import "./Home.css";
 
 export const Home = memo(() => {
   const theme = useContext(ThemeContext);
@@ -19,9 +26,7 @@ export const Home = memo(() => {
         </PanelHeader>
         <Group>
           <Div>
-            <Card id={`${PANEL_ROUTES.HOME}-fact`}>
-                
-            </Card>
+            <Fact />
           </Div>
         </Group>
       </Fragment>
