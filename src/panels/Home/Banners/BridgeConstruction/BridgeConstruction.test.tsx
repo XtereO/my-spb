@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 import { BridgeConstruction } from "./BridgeConstruction";
 
-describe("Test BridgeConstruction component", () => {
+describe("Test BridgeConstructionBanner component", () => {
   let wrapper = shallow(<BridgeConstruction />);
   beforeEach(() => {
     wrapper = shallow(<BridgeConstruction />);
@@ -31,7 +31,35 @@ describe("Test BridgeConstruction component", () => {
       wrapper.find("#bridge-construction-title").props().style
     ).toHaveProperty("color", "#000");
   });
-  test("should render bridge-construction-name",()=>{
-      expect(!!wrapper.find("#bridge-construction-name")).toBe(true)
-  })
+  test("should render bridge-construction-name", () => {
+    expect(!!wrapper.find("#bridge-construction-name")).toBe(true);
+  });
+  test("should bridge-construction-name's className equal to text", () => {
+    expect(wrapper.find("#bridge-construction-name").props()).toHaveProperty(
+      "className",
+      "text"
+    );
+  });
+  test("should bridge-construction-name's color equal to #A4A6AA", () => {
+    expect(
+      wrapper.find("#bridge-construction-name").props().style
+    ).toHaveProperty("color", "#A4A6AA");
+  });
+  test("should render bridge-construction-time", () => {
+    expect(!!wrapper.find("#bridge-construction-time")).toBe(true);
+  });
+  test("should bridge-construction-time's className equal to text", () => {
+    expect(wrapper.find("#bridge-construction-time").props()).toHaveProperty(
+      "className",
+      "text"
+    );
+  });
+  test("should bridge-construction-time's color equal to #A4A6AA", () => {
+    expect(
+      wrapper.find("#bridge-construction-time").props().style
+    ).toHaveProperty("color", "#A4A6AA");
+  });
+  test("should render bridge-construction-btn", () => {
+    expect(!!wrapper.find("#bridge-construction-btn")).toBe(true);
+  });
 });

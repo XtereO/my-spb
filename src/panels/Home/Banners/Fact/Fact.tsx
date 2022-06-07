@@ -2,12 +2,11 @@ import { Cell, Div, Group } from "@vkontakte/vkui";
 import { useContext } from "react";
 import { memo } from "react";
 import parse from "html-react-parser";
-import { RoundedCard, ThemedButton } from "../../../../bricks";
+import { CardHeader, RoundedCard, ThemedButton } from "../../../../bricks";
 import { PANEL_ROUTES } from "../../../../consts";
 import { LightbalbStarOutlineIcon } from "../../../../icons";
 import { ThemeContext } from "../../../../utils";
 import "./Fact.css";
-import { Fragment } from "react";
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { mainActions } from "../../../../bll/main";
@@ -20,15 +19,9 @@ export const Fact = memo(() => {
   }, []);
   return (
     <RoundedCard id="fact">
-      <Cell disabled before={<LightbalbStarOutlineIcon />} id="fact-header">
-        <Div
-          id="fact-header-title"
-          className="heading-large"
-          style={{ color: theme.heading }}
-        >
-          Факт
-        </Div>
-      </Cell>
+      <CardHeader id="fact-header" before={<LightbalbStarOutlineIcon />}>
+        Факт
+      </CardHeader>
       <Group style={{ paddingRight: 16, paddingLeft: 16, paddingBottom: 12 }}>
         <div
           id="fact-title"

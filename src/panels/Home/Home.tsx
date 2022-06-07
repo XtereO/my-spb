@@ -1,15 +1,12 @@
-import {
-  Div,
-  Group,
-  Panel,
-  PanelHeader,
-} from "@vkontakte/vkui";
+import { Div, Group, Panel, PanelHeader } from "@vkontakte/vkui";
 import { useContext } from "react";
 import { Fragment } from "react";
 import { memo } from "react";
 import { PANEL_ROUTES } from "../../consts";
 import { ThemeContext } from "../../utils";
-import { Fact } from "./Banners";
+import { BridgeConstruction, Fact } from "./Banners";
+import { BeautifulPlace } from "./Banners/BeautifulPlace";
+import { TurnOffWater } from "./Banners/TurnOffWater";
 import "./Home.css";
 
 export const Home = memo(() => {
@@ -27,6 +24,13 @@ export const Home = memo(() => {
         <Group>
           <Div>
             <Fact />
+          </Div>
+          <Div className="divided-block">
+            <BridgeConstruction />
+            <TurnOffWater />
+          </Div>
+          <Div>
+            <BeautifulPlace />
           </Div>
         </Group>
       </Fragment>
