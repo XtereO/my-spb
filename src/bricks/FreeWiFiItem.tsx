@@ -20,7 +20,6 @@ export const FreeWiFiItem = memo<Props>(({ id, title, isTurnedOn }) => {
         <div
           className="center-x"
           style={{
-            paddingRight:1,
             height: 14,
             width: 14,
             fontSize: 10,
@@ -30,7 +29,7 @@ export const FreeWiFiItem = memo<Props>(({ id, title, isTurnedOn }) => {
           }}
           id={`free-wifi-item${id}-indicator`}
         >
-          {id}
+          <div>{id}</div>
         </div>
       </div>
       <div

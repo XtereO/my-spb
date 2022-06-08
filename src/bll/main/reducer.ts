@@ -5,12 +5,12 @@ import { Platform, Theme } from "../../types";
 type InitialState = {
   theme: Theme;
   platform: Platform;
-  activePanel: PANEL_ROUTES
+  activePanel: PANEL_ROUTES;
 };
 export const initialState: InitialState = {
   theme: "light",
   platform: "mobile",
-  activePanel: PANEL_ROUTES.HOME
+  activePanel: PANEL_ROUTES.HOME,
 };
 
 const mainSlice = createSlice({
@@ -24,8 +24,8 @@ const mainSlice = createSlice({
       state.platform = action.payload;
     },
     setActivePanel: (state, action: PayloadAction<PANEL_ROUTES>) => {
-      state.activePanel = action.payload
-    }
+      state.activePanel = action.payload;
+    },
   },
 });
 

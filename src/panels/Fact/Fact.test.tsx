@@ -10,17 +10,29 @@ describe("Test Fact component", () => {
   test("should render Fact", () => {
     expect(!!wrapper.find(`#${PANEL_ROUTES.FACT}`)).toBe(true);
   });
-  test("should render panel-header", () => {
-    expect(!!wrapper.find(`#${PANEL_ROUTES.FACT}-panel-header`)).toBe(true);
+  test("should render back", () => {
+    expect(!!wrapper.find(`#${PANEL_ROUTES.FACT}-back`)).toBe(true);
   });
-  test("should render panel-header's text", () => {
-    expect(wrapper.find(`#${PANEL_ROUTES.FACT}-panel-header`).text()).toBe(
-      "Главная"
-    );
+  test("should render header", () => {
+    expect(!!wrapper.find(`#${PANEL_ROUTES.FACT}-header`)).toBe(true);
   });
-  test("should panel-header's color equal to #000", () => {
+  test("should render article-title", () => {
+    expect(!!wrapper.find(`#${PANEL_ROUTES.FACT}-article-title`)).toBe(true);
+  });
+  test("should article-title's className equal to article-title", () => {
     expect(
-      wrapper.find(`#${PANEL_ROUTES.FACT}-panel-header`).props().style
-    ).toHaveProperty("color", "#000");
+      wrapper.find(`#${PANEL_ROUTES.FACT}-article-title`).props()
+    ).toHaveProperty("className", "article-title");
   });
+  test("should render date", () => {
+    expect(!!wrapper.find(`#${PANEL_ROUTES.FACT}-date`)).toBe(true);
+  });
+  test("should article-date's className equal to date", () => {
+    expect(
+      wrapper.find(`#${PANEL_ROUTES.FACT}-article-date`).props()
+    ).toHaveProperty("className", "date");
+  });
+  test("should render article",()=>{
+    expect(!!wrapper.find(`#${PANEL_ROUTES.FACT}-article`)).toBe(true)
+  })
 });
