@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getActivePanel, getTheme, mainActions } from "./bll/main";
 import { ThemeContext, themes } from "./utils";
 import { PANEL_ROUTES, STORAGE_KEYS } from "./consts";
-import { Welcome, Home } from "./panels";
+import { Welcome, Fact, Home } from "./panels";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -43,6 +43,7 @@ const App = () => {
           <View activePanel={activePanel}>
             <Welcome id={PANEL_ROUTES.WELCOME} />
             <Home id={PANEL_ROUTES.HOME} />
+            <Fact id={PANEL_ROUTES.FACT} />
           </View>
         </AppRoot>
       </AdaptivityProvider>

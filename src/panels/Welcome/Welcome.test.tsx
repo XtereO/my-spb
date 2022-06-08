@@ -1,5 +1,5 @@
 import { shallow } from "enzyme";
-import { PANEL_ROUTES } from "../consts";
+import { PANEL_ROUTES } from "../../consts";
 import { Welcome } from "./Welcome";
 
 describe("Test Welcome Component", () => {

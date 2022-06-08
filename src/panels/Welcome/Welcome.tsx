@@ -1,13 +1,13 @@
 import { Button, Div, Group, Header, Panel, Spacing } from "@vkontakte/vkui";
 import { useContext } from "react";
 import { memo } from "react";
-import { PANEL_ROUTES, STORAGE_KEYS } from "../consts";
-import { setValueByKeyVKBridge, ThemeContext } from "../utils";
+import { PANEL_ROUTES, STORAGE_KEYS } from "../../consts";
+import { setValueByKeyVKBridge, ThemeContext } from "../../utils";
 import { Fragment } from "react";
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { mainActions } from "../bll/main";
-import { AppIcon } from "../icons";
+import { mainActions } from "../../bll/main";
+import { AppIcon } from "../../icons";
 import "./Welcome.css";
 
 export const Welcome = memo(() => {

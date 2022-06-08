@@ -9,5 +9,13 @@ describe("Test BeautifulPlaceBanner component", () => {
   test("should render beautiful-place", () => {
     expect(!!wrapper.find("#beautiful-place")).toBe(true);
   });
-  
+  test("should render beautiful-place-header", () => {
+    expect(!!wrapper.find("#beautiful-place-header")).toBe(true);
+  });
+  test("should render hoizontal-scroll", () => {
+    expect(!!wrapper.find("#horizontal-scroll")).toBe(true);
+  });
+  test("should render beautiful-place-btn", () => {
+    expect(!!wrapper.find("#beautiful-place-btn")).toBe(true);
+  });
 });

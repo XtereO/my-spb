@@ -6,6 +6,7 @@ import { PANEL_ROUTES } from "../../consts";
 import { ThemeContext } from "../../utils";
 import { BridgeConstruction, Fact } from "./Banners";
 import { BeautifulPlace } from "./Banners/BeautifulPlace";
+import { FreeWiFi } from "./Banners/FreeWiFi";
 import { TurnOffWater } from "./Banners/TurnOffWater";
 import "./Home.css";
 
@@ -31,6 +32,9 @@ export const Home = memo(() => {
           </Div>
           <Div>
             <BeautifulPlace />
+          </Div>
+          <Div>
+            <FreeWiFi />
           </Div>
         </Group>
       </Fragment>

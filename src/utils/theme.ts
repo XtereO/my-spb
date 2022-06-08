@@ -10,7 +10,10 @@ export const themes = {
     icon: "#3F8AE0",
     btnBg: "#A4A6AA",
     btnText: "#fff",
-    horizontalPlaceBg: "#454545",
+    horizontalPlaceBg: "#fff",
+    wifiIndicatorText: "#A4A6AA",
+    wifiTurnedOnBg: "#C4F0C2",
+    wifiTurnedOffBg: "#FFA7A5",
   },
   dark: {
     heading: "#fff",
@@ -21,7 +24,10 @@ export const themes = {
     icon: "#3F8AE0",
     btnBg: "#2C2C2C",
     btnText: "#fff",
-    horizontalPlaceBg: "#fff",
+    horizontalPlaceBg: "#454545",
+    wifiIndicatorText: "#000",
+    wifiTurnedOnBg: "#C4F0C2",
+    wifiTurnedOffBg: "#FFA7A5",
   },
 };
 
