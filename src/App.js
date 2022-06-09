@@ -7,7 +7,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { getActivePanel, getTheme, mainActions } from "./bll/main";
 import { ThemeContext, themes } from "./utils";
 import { PANEL_ROUTES, STORAGE_KEYS } from "./consts";
-import { Welcome, Fact, Home, BridgeConstruction } from "./panels";
+import {
+  Welcome,
+  Fact,
+  Home,
+  BridgeConstruction,
+  TurnOffWater,
+} from "./panels";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -45,7 +51,7 @@ const App = () => {
   }, []);
   useEffect(() => {
     window.location.assign(
-      "#" + (activePanel===PANEL_ROUTES.HOME ? "" : activePanel)
+      "#" + (activePanel === PANEL_ROUTES.HOME ? "" : activePanel)
     );
   }, [activePanel]);
 
@@ -58,6 +64,7 @@ const App = () => {
             <Home id={PANEL_ROUTES.HOME} />
             <Fact id={PANEL_ROUTES.FACT} />
             <BridgeConstruction id={PANEL_ROUTES.BRIDGE_CONSTRUCTION} />
+            <TurnOffWater id={PANEL_ROUTES.TURN_OFF_WATER} />
           </View>
         </AppRoot>
       </AdaptivityProvider>

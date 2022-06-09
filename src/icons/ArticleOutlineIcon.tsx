@@ -2,7 +2,7 @@ import { memo } from "react";
 import { useContext } from "react";
 import { ThemeContext } from "../utils";
 
-export const ArticleOutline = memo(() => {
+export const ArticleOutlineIcon = memo(() => {
   const theme = useContext(ThemeContext);
   return (
     <svg

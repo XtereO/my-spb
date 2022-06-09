@@ -3,7 +3,7 @@ import { memo } from "react";
 import parse from "html-react-parser";
 import { MainHeader, PanelHeaderBack } from "../../bricks";
 import { PANEL_ROUTES } from "../../consts";
-import { ArticleOutline, CalendarOutline } from "../../icons";
+import { ArticleOutlineIcon, CalendarOutlineIcon } from "../../icons";
 import "./Fact.css";
 
 export const Fact = memo(() => {
@@ -12,7 +12,7 @@ export const Fact = memo(() => {
       <PanelHeaderBack id={`${PANEL_ROUTES.FACT}-back`} />
       <MainHeader id={`${PANEL_ROUTES.FACT}-header`}>Факт</MainHeader>
       <Group>
-        <Cell disabled before={<ArticleOutline />}>
+        <Cell disabled before={<ArticleOutlineIcon />}>
           <div
             style={{ marginLeft: 9 }}
             id={`${PANEL_ROUTES.FACT}-article-title`}
@@ -21,7 +21,7 @@ export const Fact = memo(() => {
             Super puper fact!
           </div>
         </Cell>
-        <Cell style={{ marginTop: -10 }} disabled before={<CalendarOutline />}>
+        <Cell style={{ marginTop: -10 }} disabled before={<CalendarOutlineIcon />}>
           <div
             style={{ marginLeft: 9 }}
             id={`${PANEL_ROUTES.FACT}-date`}

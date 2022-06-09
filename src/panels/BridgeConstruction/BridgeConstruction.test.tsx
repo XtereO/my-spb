@@ -20,4 +20,14 @@ describe("Test BridgeConstruction component", () => {
       true
     );
   });
+  test("should render filter", () => {
+    expect(!!wrapper.find(`#${PANEL_ROUTES.BRIDGE_CONSTRUCTION}-filter`)).toBe(
+      true
+    );
+  });
+  test("should render list", () => {
+    expect(!!wrapper.find(`#${PANEL_ROUTES.BRIDGE_CONSTRUCTION}-list`)).toBe(
+      true
+    );
+  })
 });

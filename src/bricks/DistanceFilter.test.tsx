@@ -2,9 +2,9 @@ import { shallow } from "enzyme";
 import { DistanceFilter } from "./DistanceFilter";
 
 describe("Test DistanceFilter", () => {
-  let wrapper = shallow(<DistanceFilter value={"distance"} />);
+  let wrapper = shallow(<DistanceFilter id="distance-filter" value={"distance"} />);
   beforeEach(() => {
-    wrapper = shallow(<DistanceFilter value={"distance"} />);
+    wrapper = shallow(<DistanceFilter id="distance-filter" value={"distance"} />);
   });
   test("should render DistanceFilter", () => {
     expect(!!wrapper.find("#distance-filter")).toBe(true);
