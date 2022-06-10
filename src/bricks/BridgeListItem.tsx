@@ -4,9 +4,9 @@ import { memo } from "react";
 import {
   LockOpenOutlineIcon,
   LockOutlineIcon,
-  PlaceOutlineIcon,
 } from "../icons";
-import { getEndingNumber, ThemeContext } from "../utils";
+import { ThemeContext } from "../utils";
+import { DistanceCell } from "./DistanceCell";
 import { RoundedCard } from "./RoundedCard";
 
 type Props = {
@@ -58,16 +58,7 @@ export const BridgeListItem = memo<Props>(
             {timeIntervalElements}
             {distance && (
               <div style={{ marginTop: -20 }}>
-                <Cell
-                  id={`${id}-distance`}
-                  disabled
-                  before={<PlaceOutlineIcon />}
-                  style={{ fontWeight: 500, fontSize: 14, color: theme.text }}
-                >
-                  <span style={{ marginLeft: 6 }}>
-                    {distance} метр{getEndingNumber(distance)}
-                  </span>
-                </Cell>
+                <DistanceCell id={`${id}-distance`} distance={distance} />
               </div>
             )}
           </Group>

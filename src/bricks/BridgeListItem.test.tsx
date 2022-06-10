@@ -79,22 +79,4 @@ describe("Test BridgeListItem component", () => {
   test("should render distance", () => {
     expect(!!wrapper.find("#bl-distance")).toBe(true);
   });
-  test("should disatnce's fontSize equal to 14", () => {
-    expect(wrapper.find("#bl-distance").props().style).toHaveProperty(
-      "fontSize",
-      14
-    );
-  });
-  test("should distance's fontWeight equal to 500", () => {
-    expect(wrapper.find("#bl-distance").props().style).toHaveProperty(
-      "fontWeight",
-      500
-    );
-  });
-  test("should distance's color equal to #A4A6AA", () => {
-    expect(wrapper.find("#bl-distance").props().style).toHaveProperty(
-      "color",
-      "#A4A6AA"
-    );
-  });
 });

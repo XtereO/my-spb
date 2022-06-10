@@ -1,3 +1,66 @@
+@font-face {
+  font-family: "Inter-Medium";
+  src: url(./fonts/Inter-Medium.ttf);
+}
+@font-face {
+  font-family: "Inter-Bold";
+  src: url(./fonts/Inter-Bold.ttf);
+}
+@font-face {
+  font-family: "Inter-Regular";
+  src: url(./fonts/Inter-Regular.ttf);
+}
+@font-face {
+  font-family: "Inter-SemiBold";
+  src: url(./fonts/Inter-SemiBold.ttf);
+}
+@font-face {
+  font-family: "SF-Pro-Rounded-Bold";
+  src: url(./fonts/SF-Pro-Rounded-Bold.ttf);
+}
+@font-face {
+  font-family: "SF-Pro-Rounded-Semibold";
+  src: url(./fonts/SF-Pro-Rounded-Semibold.ttf);
+}
+@font-face {
+  font-family: "SF-Pro-Rounded-Heavy";
+  src: url(./fonts/SF-Pro-Rounded-Heavy.ttf);
+}
+@font-face {
+  font-family: "SF-Pro-Rounded-Regular";
+  src: url(./fonts/SF-Pro-Rounded-Regular.ttf);
+}
+.text__Inter-Bold {
+  font-family: "Inter-Bold";
+}
+.text__Inter-Medium {
+  font-family: "Inter-Medium";
+}
+.text__SF-Pro-Rounded-Regular {
+  font-family: "SF-Pro-Rounded-Regular";
+}
+.text__Inter-Regular {
+  font-family: "Inter-Regular";
+}
+.text__Inter-SemiBold {
+  font-family: "Inter-SemiBold";
+}
+.text__SF-Pro-Rounded-Bold {
+  font-family: "SF-Pro-Rounded-Bold";
+}
+.text__SF-Pro-Rounded-Semibold {
+  font-family: "SF-Pro-Rounded-Semibold";
+}
+.text__SF-Pro-Rounded-Heavy {
+  font-family: "SF-Pro-Rounded-Heavy";
+}
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: SF-Pro-Rounded-Regular;
+  overflow-x: hidden;
+}
 .center-x {
   display: flex;
   flex-direction: row;

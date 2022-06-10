@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import bridge from "@vkontakte/vk-bridge";
-import { View, AdaptivityProvider, AppRoot } from "@vkontakte/vkui";
+import {
+  View,
+  AdaptivityProvider,
+  AppRoot,
+  ConfigProvider,
+} from "@vkontakte/vkui";
 import "@vkontakte/vkui/dist/vkui.css";
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getActivePanel, getTheme, mainActions } from "./bll/main";
+import { getActivePanel, getScheme, getTheme, mainActions } from "./bll/main";
 import { ThemeContext, themes } from "./utils";
 import { PANEL_ROUTES, STORAGE_KEYS } from "./consts";
 import {
@@ -13,13 +18,15 @@ import {
   Home,
   BridgeConstruction,
   TurnOffWater,
+  BeautifulPlace,
+  FreeWiFi,
+  Offline,
 } from "./panels";
 
 const App = () => {
   const dispatch = useDispatch();
   const theme = useSelector(getTheme);
   const activePanel = useSelector(getActivePanel);
-  //@ts-ignore
   useEffect(async () => {
     async function fetchData() {
       const res = await bridge.send("VKWebAppStorageGet", {
@@ -57,17 +64,22 @@ const App = () => {
 
   return (
     <ThemeContext.Provider value={themes[theme]}>
-      <AdaptivityProvider>
-        <AppRoot>
-          <View activePanel={activePanel}>
-            <Welcome id={PANEL_ROUTES.WELCOME} />
-            <Home id={PANEL_ROUTES.HOME} />
-            <Fact id={PANEL_ROUTES.FACT} />
-            <BridgeConstruction id={PANEL_ROUTES.BRIDGE_CONSTRUCTION} />
-            <TurnOffWater id={PANEL_ROUTES.TURN_OFF_WATER} />
-          </View>
-        </AppRoot>
-      </AdaptivityProvider>
+      <ConfigProvider appearance={theme}>
+        <AdaptivityProvider>
+          <AppRoot>
+            <View activePanel={activePanel}>
+              <Welcome id={PANEL_ROUTES.WELCOME} />
+              <Home id={PANEL_ROUTES.HOME} />
+              <Fact id={PANEL_ROUTES.FACT} />
+              <BridgeConstruction id={PANEL_ROUTES.BRIDGE_CONSTRUCTION} />
+              <TurnOffWater id={PANEL_ROUTES.TURN_OFF_WATER} />
+              <BeautifulPlace id={PANEL_ROUTES.BEAUTIFUL_PLACE} />
+              <FreeWiFi id={PANEL_ROUTES.FREE_WIFI} />
+              <Offline id={PANEL_ROUTES.OFFLINE} />
+            </View>
+          </AppRoot>
+        </AdaptivityProvider>
+      </ConfigProvider>
     </ThemeContext.Provider>
   );
 };

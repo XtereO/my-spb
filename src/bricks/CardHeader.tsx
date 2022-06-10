@@ -4,7 +4,7 @@ import { ThemeContext } from "../utils";
 
 type Props = {
   id: string;
-  before: React.ReactNode;
+  before?: React.ReactNode;
   children: React.ReactNode;
 };
 

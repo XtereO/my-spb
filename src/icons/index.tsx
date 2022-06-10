@@ -1,6 +1,9 @@
 export * from "./AppIcon";
 export * from "./WiFiIcon";
+export * from "./FailedIcon";
+export * from "./SuccessIcon";
 export * from "./CarOutlineIcon";
+export * from "./WiFiOutlineIcon";
 export * from "./ChevronLeftIcon";
 export * from "./LockOutlineIcon";
 export * from "./PlaceOutlineIcon";
@@ -10,5 +13,7 @@ export * from "./ArticleOutlineIcon";
 export * from "./NotificationOutline";
 export * from "./LockOpenOutlineIcon";
 export * from "./CalendarOutlineIcon";
+export * from "./WarningTriangleOutline";
 export * from "./LocationMapOutlineIcon";
 export * from "./LightbulbStarOutlineIcon";
+export * from "./RadiowawesAroundOutlineIcon";
