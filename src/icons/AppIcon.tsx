@@ -20,9 +20,9 @@ export const AppIcon = memo(() => {
         <path
           d="M98.5 10.5327V35.8723M95.7523 32.6667L101.553 25.6449M95.7523 21.0654L101.553 14.0436"
           stroke="url(#paint1_linear_3_5455)"
-          stroke-width="2.44237"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2.44237"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M145.21 101.511H140.936L133.914 96.9315L126.282 99.9844L116.207 93.2679L106.132 96.9315L96.6682 92.6573L86.5935 97.8473L76.824 95.0997L67.3598 101.511L61.2539 98.4579L56.0639 101.511H51.7897L48.1262 108.533V115.249L50.5685 116.165V121.66L46.2944 127.156V137.231L48.1262 138.757V172.645C48.1262 179.727 53.867 185.467 60.9486 185.467H136.051C143.133 185.467 148.874 179.727 148.874 172.645V138.757L150.706 137.231V127.156L146.431 121.66V116.165L148.874 115.249V108.533L145.21 101.511Z"
@@ -62,7 +62,7 @@ export const AppIcon = memo(() => {
           width="196"
           height="196"
           fill="url(#pattern0)"
-          fill-opacity="0.04"
+          fillOpacity="0.04"
         />
         <defs>
           <pattern
@@ -84,8 +84,8 @@ export const AppIcon = memo(() => {
             y2="196"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#C2CBDA" />
-            <stop offset="1" stop-color="#D5D5D7" />
+            <stop stopColor="#C2CBDA" />
+            <stop offset="1" stopColor="#D5D5D7" />
           </linearGradient>
           <linearGradient
             id="paint1_linear_3_5455"
@@ -95,8 +95,8 @@ export const AppIcon = memo(() => {
             y2="35.8723"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F3E6CD" />
-            <stop offset="1" stop-color="#F6DDB0" />
+            <stop stopColor="#F3E6CD" />
+            <stop offset="1" stopColor="#F6DDB0" />
           </linearGradient>
           <linearGradient
             id="paint2_linear_3_5455"
@@ -106,9 +106,9 @@ export const AppIcon = memo(() => {
             y2="185.467"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F7E2CC" />
-            <stop offset="0.755208" stop-color="#F3CA97" />
-            <stop offset="1" stop-color="#D3D4D8" stop-opacity="0" />
+            <stop stopColor="#F7E2CC" />
+            <stop offset="0.755208" stopColor="#F3CA97" />
+            <stop offset="1" stopColor="#D3D4D8" stopOpacity="0" />
           </linearGradient>
           <linearGradient
             id="paint3_linear_3_5455"
@@ -118,8 +118,8 @@ export const AppIcon = memo(() => {
             y2="157.38"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#8B979F" />
-            <stop offset="1" stop-color="#5D6E76" stop-opacity="0.5" />
+            <stop stopColor="#8B979F" />
+            <stop offset="1" stopColor="#5D6E76" stopOpacity="0.5" />
           </linearGradient>
           <linearGradient
             id="paint4_linear_3_5455"
@@ -129,8 +129,8 @@ export const AppIcon = memo(() => {
             y2="157.38"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#8B979F" />
-            <stop offset="1" stop-color="#5D6E76" stop-opacity="0.5" />
+            <stop stopColor="#8B979F" />
+            <stop offset="1" stopColor="#5D6E76" stopOpacity="0.5" />
           </linearGradient>
           <linearGradient
             id="paint5_linear_3_5455"
@@ -140,8 +140,8 @@ export const AppIcon = memo(() => {
             y2="157.38"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#8B979F" />
-            <stop offset="1" stop-color="#5D6E76" stop-opacity="0.5" />
+            <stop stopColor="#8B979F" />
+            <stop offset="1" stopColor="#5D6E76" stopOpacity="0.5" />
           </linearGradient>
           <linearGradient
             id="paint6_linear_3_5455"
@@ -151,8 +151,8 @@ export const AppIcon = memo(() => {
             y2="157.38"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#8B979F" />
-            <stop offset="1" stop-color="#5D6E76" stop-opacity="0.5" />
+            <stop stopColor="#8B979F" />
+            <stop offset="1" stopColor="#5D6E76" stopOpacity="0.5" />
           </linearGradient>
           <linearGradient
             id="paint7_linear_3_5455"
@@ -162,8 +162,8 @@ export const AppIcon = memo(() => {
             y2="157.38"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#8B979F" />
-            <stop offset="1" stop-color="#5D6E76" stop-opacity="0.5" />
+            <stop stopColor="#8B979F" />
+            <stop offset="1" stopColor="#5D6E76" stopOpacity="0.5" />
           </linearGradient>
           <linearGradient
             id="paint8_linear_3_5455"
@@ -173,8 +173,8 @@ export const AppIcon = memo(() => {
             y2="45.6417"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#759294" />
-            <stop offset="1" stop-color="#9BB5B0" />
+            <stop stopColor="#759294" />
+            <stop offset="1" stopColor="#9BB5B0" />
           </linearGradient>
           <linearGradient
             id="paint9_linear_3_5455"
@@ -184,8 +184,8 @@ export const AppIcon = memo(() => {
             y2="45.7732"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F6DEB2" />
-            <stop offset="1" stop-color="#E6B24D" />
+            <stop stopColor="#F6DEB2" />
+            <stop offset="1" stopColor="#E6B24D" />
           </linearGradient>
         </defs>
       </svg>
@@ -206,9 +206,9 @@ export const AppIcon = memo(() => {
         <path
           d="M98.5001 10.5327V35.8723M95.7524 32.6667L101.553 25.6449M95.7524 21.0654L101.553 14.0436"
           stroke="url(#paint1_linear_82_421)"
-          stroke-width="2.44237"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2.44237"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M145.21 101.511H140.936L133.914 96.9315L126.282 99.9844L116.207 93.2679L106.132 96.9315L96.6683 92.6573L86.5935 97.8473L76.824 95.0997L67.3599 101.511L61.2539 98.4579L56.0639 101.511H51.7898L48.1262 108.533V115.249L50.5686 116.165V121.66L46.2944 127.156V137.231L48.1262 138.757V172.645C48.1262 179.727 53.867 185.467 60.9486 185.467H136.051C143.133 185.467 148.874 179.727 148.874 172.645V138.757L150.706 137.231V127.156L146.432 121.66V116.165L148.874 115.249V108.533L145.21 101.511Z"
@@ -248,7 +248,7 @@ export const AppIcon = memo(() => {
           width="196"
           height="196"
           fill="url(#pattern0)"
-          fill-opacity="0.04"
+          fillOpacity="0.04"
         />
         <defs>
           <pattern
@@ -270,8 +270,8 @@ export const AppIcon = memo(() => {
             y2="196"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#C2CBDA" />
-            <stop offset="1" stop-color="#D5D5D7" />
+            <stop stopColor="#C2CBDA" />
+            <stop offset="1" stopColor="#D5D5D7" />
           </linearGradient>
           <linearGradient
             id="paint1_linear_82_421"
@@ -281,8 +281,8 @@ export const AppIcon = memo(() => {
             y2="35.8723"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F3E6CD" />
-            <stop offset="1" stop-color="#F6DDB0" />
+            <stop stopColor="#F3E6CD" />
+            <stop offset="1" stopColor="#F6DDB0" />
           </linearGradient>
           <linearGradient
             id="paint2_linear_82_421"
@@ -292,9 +292,9 @@ export const AppIcon = memo(() => {
             y2="185.467"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F7E2CC" />
-            <stop offset="0.755208" stop-color="#F3CA97" />
-            <stop offset="1" stop-color="#D3D4D8" stop-opacity="0" />
+            <stop stopColor="#F7E2CC" />
+            <stop offset="0.755208" stopColor="#F3CA97" />
+            <stop offset="1" stopColor="#D3D4D8" stopOpacity="0" />
           </linearGradient>
           <linearGradient
             id="paint3_linear_82_421"
@@ -304,8 +304,8 @@ export const AppIcon = memo(() => {
             y2="157.38"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#8B979F" />
-            <stop offset="1" stop-color="#5D6E76" stop-opacity="0.5" />
+            <stop stopColor="#8B979F" />
+            <stop offset="1" stopColor="#5D6E76" stopOpacity="0.5" />
           </linearGradient>
           <linearGradient
             id="paint4_linear_82_421"
@@ -315,8 +315,8 @@ export const AppIcon = memo(() => {
             y2="157.38"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#8B979F" />
-            <stop offset="1" stop-color="#5D6E76" stop-opacity="0.5" />
+            <stop stopColor="#8B979F" />
+            <stop offset="1" stopColor="#5D6E76" stopOpacity="0.5" />
           </linearGradient>
           <linearGradient
             id="paint5_linear_82_421"
@@ -326,8 +326,8 @@ export const AppIcon = memo(() => {
             y2="157.38"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#8B979F" />
-            <stop offset="1" stop-color="#5D6E76" stop-opacity="0.5" />
+            <stop stopColor="#8B979F" />
+            <stop offset="1" stopColor="#5D6E76" stopOpacity="0.5" />
           </linearGradient>
           <linearGradient
             id="paint6_linear_82_421"
@@ -337,8 +337,8 @@ export const AppIcon = memo(() => {
             y2="157.38"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#8B979F" />
-            <stop offset="1" stop-color="#5D6E76" stop-opacity="0.5" />
+            <stop stopColor="#8B979F" />
+            <stop offset="1" stopColor="#5D6E76" stopOpacity="0.5" />
           </linearGradient>
           <linearGradient
             id="paint7_linear_82_421"
@@ -348,8 +348,8 @@ export const AppIcon = memo(() => {
             y2="157.38"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#8B979F" />
-            <stop offset="1" stop-color="#5D6E76" stop-opacity="0.5" />
+            <stop stopColor="#8B979F" />
+            <stop offset="1" stopColor="#5D6E76" stopOpacity="0.5" />
           </linearGradient>
           <linearGradient
             id="paint8_linear_82_421"
@@ -359,8 +359,8 @@ export const AppIcon = memo(() => {
             y2="45.6417"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#759294" />
-            <stop offset="1" stop-color="#9BB5B0" />
+            <stop stopColor="#759294" />
+            <stop offset="1" stopColor="#9BB5B0" />
           </linearGradient>
           <linearGradient
             id="paint9_linear_82_421"
@@ -370,8 +370,8 @@ export const AppIcon = memo(() => {
             y2="45.7732"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F6DEB2" />
-            <stop offset="1" stop-color="#E6B24D" />
+            <stop stopColor="#F6DEB2" />
+            <stop offset="1" stopColor="#E6B24D" />
           </linearGradient>
         </defs>
       </svg>

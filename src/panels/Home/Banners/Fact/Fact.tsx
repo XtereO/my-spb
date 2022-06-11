@@ -10,6 +10,7 @@ import "./Fact.css";
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { mainActions } from "../../../../bll/main";
+import { useGetFactQuery } from "../../../../bll/fact";
 
 export const Fact = memo(() => {
   const theme = useContext(ThemeContext);
@@ -17,6 +18,13 @@ export const Fact = memo(() => {
   const handleClick = useCallback(() => {
     dispatch(mainActions.setActivePanel(PANEL_ROUTES.FACT));
   }, []);
+  const date = new Date();
+  const { data, error } = useGetFactQuery({
+    day: date.getDate(),
+    month: date.getMonth() + 1,
+  });
+  console.log(data);
+
   return (
     <RoundedCard id="fact">
       <CardHeader id="fact-header" before={<LightbalbStarOutlineIcon />}>
@@ -28,21 +36,21 @@ export const Fact = memo(() => {
           className="heading-small"
           style={{ color: theme.heading, marginTop: -10 }}
         >
-          Museum
+          {data?.title}
         </div>
         <div
           id="fact-date"
           className="heading-small"
           style={{ color: theme.heading, marginTop: 4 }}
         >
-          03 today
+          {data?.date_txt}
         </div>
         <div
           id="fact-description"
           className="text"
           style={{ color: theme.text, marginTop: 4 }}
         >
-          {parse("<a>Blue text</a> other text")}
+          {parse(data?.text ?? "")}
         </div>
         <div style={{ marginTop: 10 }}>
           <ThemedButton onClick={handleClick} id="fact-btn">
