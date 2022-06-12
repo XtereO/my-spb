@@ -21,6 +21,7 @@ import {
   BeautifulPlace,
   FreeWiFi,
   Offline,
+  Map,
 } from "./panels";
 
 const App = () => {
@@ -76,6 +77,7 @@ const App = () => {
               <BeautifulPlace id={PANEL_ROUTES.BEAUTIFUL_PLACE} />
               <FreeWiFi id={PANEL_ROUTES.FREE_WIFI} />
               <Offline id={PANEL_ROUTES.OFFLINE} />
+              <Map id={PANEL_ROUTES.MAP} />
             </View>
           </AppRoot>
         </AdaptivityProvider>

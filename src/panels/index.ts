@@ -6,3 +6,4 @@ export * from "./TurnOffWater";
 export * from "./BeautifulPlace";
 export * from "./FreeWiFi";
 export * from "./Offline";
+export * from "./Map";
