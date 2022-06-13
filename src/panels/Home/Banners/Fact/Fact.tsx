@@ -23,7 +23,6 @@ export const Fact = memo(() => {
     day: date.getDate(),
     month: date.getMonth() + 1,
   });
-  console.log(data);
 
   return (
     <RoundedCard id="fact">

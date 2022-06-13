@@ -15,6 +15,7 @@ export const factApi = createApi({
         )}`,
         method: "get",
       }),
+      transformResponse: (data: { response: Fact }, meta, arg) => data.response,
     }),
   }),
 });

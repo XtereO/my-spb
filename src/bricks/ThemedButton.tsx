@@ -19,7 +19,7 @@ export const ThemedButton = memo<Props>(
       <Button
         type={type}
         id={id}
-        size={size ?? "m"}
+        size={size ?? "l"}
         onClick={onClick}
         style={{ background: theme.btnBg, color: theme.btnText }}
       >

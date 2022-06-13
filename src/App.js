@@ -23,6 +23,7 @@ import {
   Offline,
   Map,
 } from "./panels";
+import { getCenter } from "./bll/map";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -62,6 +63,13 @@ const App = () => {
       "#" + (activePanel === PANEL_ROUTES.HOME ? "" : activePanel)
     );
   }, [activePanel]);
+
+  const centerMap = useSelector(getCenter);
+  useEffect(() => {
+    if (centerMap) {
+      dispatch(mainActions.setActivePanel(PANEL_ROUTES.MAP));
+    }
+  }, [centerMap]);
 
   return (
     <ThemeContext.Provider value={themes[theme]}>

@@ -1,13 +1,12 @@
-import { Cell, Group, Header } from "@vkontakte/vkui";
-import { useContext } from "react";
+import { Cell, Div, Group, Header } from "@vkontakte/vkui";
+import { useCallback, useContext } from "react";
 import { memo } from "react";
-import {
-  LockOpenOutlineIcon,
-  LockOutlineIcon,
-} from "../icons";
+import { useDispatch } from "react-redux";
+import { LockOpenOutlineIcon, LockOutlineIcon } from "../icons";
 import { ThemeContext } from "../utils";
 import { DistanceCell } from "./DistanceCell";
 import { RoundedCard } from "./RoundedCard";
+import { ThemedButton } from "./ThemedButton";
 
 type Props = {
   id: string;
@@ -61,6 +60,11 @@ export const BridgeListItem = memo<Props>(
                 <DistanceCell id={`${id}-distance`} distance={distance} />
               </div>
             )}
+            <Div>
+              <ThemedButton size="l" id={`bridge-list-item-${id}-btn`}>
+                Показать на карте
+              </ThemedButton>
+            </Div>
           </Group>
         </RoundedCard>
       </div>

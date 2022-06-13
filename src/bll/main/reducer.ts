@@ -29,5 +29,5 @@ const mainSlice = createSlice({
   },
 });
 
-export const mainState = mainSlice.reducer;
+export const mainReducer = mainSlice.reducer;
 export const mainActions = mainSlice.actions;

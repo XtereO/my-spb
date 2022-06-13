@@ -1,25 +1,41 @@
 import { Div, Panel } from "@vkontakte/vkui";
-import { LegacyRef, memo, useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState, forwardRef } from "react";
 import "@tomtom-international/web-sdk-maps/dist/maps.css";
 import tt from "@tomtom-international/web-sdk-maps";
 import { MainHeader, PanelHeaderBack } from "../../bricks";
 import { PANEL_ROUTES } from "../../consts";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getCenter,
+  getKey,
+  getLanguage,
+  getMapZoom,
+  mapActions,
+} from "../../bll/map";
 
 export const Map = memo(() => {
-  const mapElement = useRef();
-  const [mapZoom, setMapZoom] = useState(20);
+  const mapElement = forwardRef();
+  const dispatch = useDispatch();
   const [map, setMap] = useState({});
+  const key = useSelector(getKey);
+  const center = useSelector(getCenter);
+  const mapZoom = useSelector(getMapZoom);
+  const language = useSelector(getLanguage);
 
   useEffect(() => {
     let map = tt.map({
-      key: "8h504Wc4AXL6OPndqhrtKf70AovVBL3V",
+      key,
+      center: center ?? [30.3350986, 59.9342802],
+      mapZoom,
+      language,
+      //@ts-ignore
       container: mapElement.current,
-      center: [12.3, 32.992578],
-      language: "ru-RU",
-      zoom: mapZoom,
     });
     setMap(map);
-    return () => map.remove();
+    return () => {
+      map.remove();
+      dispatch(mapActions.setCenter([0, 0]));
+    };
   }, []);
   return (
     <Panel id={PANEL_ROUTES.MAP}>

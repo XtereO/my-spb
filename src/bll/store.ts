@@ -2,13 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { factApi } from "./fact";
-import { mainState } from "./main";
+import { mainReducer } from "./main";
+import { mapReducer } from "./map";
 
 const rootReducer = combineReducers({
-  main: mainState,
+  main: mainReducer,
+  map: mapReducer,
   [factApi.reducerPath]: factApi.reducer,
 });
-console.log(factApi);
 
 type RootReducer = typeof rootReducer;
 export type AppState = ReturnType<RootReducer>;
