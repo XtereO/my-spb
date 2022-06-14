@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import bridge from "@vkontakte/vk-bridge";
 import {
   View,
@@ -51,23 +51,31 @@ const App = () => {
     fetchData();
   }, []);
 
+  const handleHashChange = useCallback(() => {
+    if (!window.location.hash.slice(1) && activePanel !== PANEL_ROUTES.MAP) {
+      dispatch(mainActions.setActivePanel(PANEL_ROUTES.HOME));
+    }
+  }, [activePanel]);
   useEffect(() => {
-    window.addEventListener("hashchange", (e) => {
-      if (!window.location.hash.slice(1)) {
-        dispatch(mainActions.setActivePanel(PANEL_ROUTES.HOME));
-      }
-    });
+    window.addEventListener("hashchange", handleHashChange);
   }, []);
+
+  const [panelBeforeMap, setPanelBeforeMap] = useState(activePanel);
   useEffect(() => {
     window.location.assign(
       "#" + (activePanel === PANEL_ROUTES.HOME ? "" : activePanel)
     );
+    if (activePanel !== PANEL_ROUTES.MAP) {
+      setPanelBeforeMap(activePanel);
+    }
   }, [activePanel]);
 
   const centerMap = useSelector(getCenter);
   useEffect(() => {
     if (centerMap) {
       dispatch(mainActions.setActivePanel(PANEL_ROUTES.MAP));
+    } else {
+      dispatch(mainActions.setActivePanel(panelBeforeMap ?? PANEL_ROUTES.HOME));
     }
   }, [centerMap]);
 

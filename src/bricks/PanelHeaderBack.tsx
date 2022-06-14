@@ -7,16 +7,17 @@ import { ChevronLeftIcon } from "../icons";
 
 type Props = {
   id: string;
+  onClick?: () => void;
 };
 
-export const PanelHeaderBack = memo<Props>(({ id }) => {
+export const PanelHeaderBack = memo<Props>(({ id, onClick }) => {
   const dispatch = useDispatch();
   const handleClick = () => {
     dispatch(mainActions.setActivePanel(PANEL_ROUTES.HOME));
   };
   return (
     <PanelHeader separator={false} id={id}>
-      <div onClick={handleClick}>
+      <div onClick={onClick ?? handleClick}>
         <ChevronLeftIcon />
       </div>
     </PanelHeader>
