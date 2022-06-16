@@ -5,7 +5,7 @@ import { Date, Fact } from "../../types";
 export const factApi = createApi({
   reducerPath: "factApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: baseUrl,
+    baseUrl
   }),
   endpoints: (build) => ({
     getFact: build.query<Fact, Date>({

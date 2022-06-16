@@ -1,13 +1,14 @@
 import { Cell, Group } from "@vkontakte/vkui";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { useContext } from "react";
 import { memo } from "react";
 import { useDispatch } from "react-redux";
+import { useGetBridgeConstructionsQuery } from "../../../../bll/bridge-construction";
 import { mainActions } from "../../../../bll/main";
 import { RoundedCard, ThemedButton } from "../../../../bricks";
 import { PANEL_ROUTES } from "../../../../consts";
 import { CarOutlineIcon, ClockOutlineIcon } from "../../../../icons";
-import { ThemeContext } from "../../../../utils";
+import { getEarlistBridge, ThemeContext } from "../../../../utils";
 import "./BridgeConstruction.css";
 
 export const BridgeConstruction = memo(() => {
@@ -16,6 +17,15 @@ export const BridgeConstruction = memo(() => {
   const handleClick = useCallback(() => {
     dispatch(mainActions.setActivePanel(PANEL_ROUTES.BRIDGE_CONSTRUCTION));
   }, []);
+  const { data } = useGetBridgeConstructionsQuery("lol");
+  console.log(data);
+
+  const { bridge, time } = useMemo(() => {
+    if (data) {
+      return getEarlistBridge(data);
+    }
+    return { bridge: null, time: "" };
+  }, [data]);
   return (
     <RoundedCard id="bridge-construction">
       <Group
@@ -41,7 +51,7 @@ export const BridgeConstruction = memo(() => {
           className="text"
           style={{ color: theme.text, marginTop: 4 }}
         >
-          Best 2
+          {bridge ? bridge.name : ""}
         </div>
         <Cell
           style={{
@@ -58,10 +68,10 @@ export const BridgeConstruction = memo(() => {
             style={{ color: theme.text }}
             className="text"
           >
-            23:00-01:00
+            {time}
           </div>
         </Cell>
-        <div style={{marginTop:6}}>
+        <div style={{ marginTop: 6 }}>
           <ThemedButton onClick={handleClick} id="bridge-construction-btn">
             Полный список
           </ThemedButton>

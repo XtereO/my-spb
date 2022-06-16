@@ -6,11 +6,13 @@ type InitialState = {
   theme: Theme;
   platform: Platform;
   activePanel: PANEL_ROUTES;
+  userCoordinates: [number, number] | null;
 };
 export const initialState: InitialState = {
   theme: "light",
   platform: "mobile",
   activePanel: PANEL_ROUTES.HOME,
+  userCoordinates: null,
 };
 
 const mainSlice = createSlice({
@@ -25,6 +27,9 @@ const mainSlice = createSlice({
     },
     setActivePanel: (state, action: PayloadAction<PANEL_ROUTES>) => {
       state.activePanel = action.payload;
+    },
+    setUserCoordinates: (state, action: PayloadAction<[number, number]>) => {
+      state.userCoordinates = action.payload;
     },
   },
 });

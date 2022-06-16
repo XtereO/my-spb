@@ -5,3 +5,5 @@ export * from "./articleReducer";
 export * from "./getEndingNumber";
 export * from "./internetConnection";
 export * from "./getDistanceByCoordinates";
+export * from "./getEarliestBridge";
+export * from "./toFullTime";

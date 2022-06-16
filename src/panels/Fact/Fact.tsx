@@ -5,8 +5,11 @@ import { MainHeader, PanelHeaderBack } from "../../bricks";
 import { PANEL_ROUTES } from "../../consts";
 import { ArticleOutlineIcon, CalendarOutlineIcon } from "../../icons";
 import "./Fact.css";
+import { useSelector } from "react-redux";
+import { getFact } from "../../bll/fact";
 
 export const Fact = memo(() => {
+  const { title, date_txt, text } = useSelector(getFact);
   return (
     <Panel id={PANEL_ROUTES.FACT}>
       <PanelHeaderBack id={`${PANEL_ROUTES.FACT}-back`} />
@@ -18,20 +21,24 @@ export const Fact = memo(() => {
             id={`${PANEL_ROUTES.FACT}-article-title`}
             className="article-title"
           >
-            Super puper fact!
+            {title}
           </div>
         </Cell>
-        <Cell style={{ marginTop: -10 }} disabled before={<CalendarOutlineIcon />}>
+        <Cell
+          style={{ marginTop: -10 }}
+          disabled
+          before={<CalendarOutlineIcon />}
+        >
           <div
             style={{ marginLeft: 9 }}
             id={`${PANEL_ROUTES.FACT}-date`}
             className="date"
           >
-            03.02
+            {date_txt}
           </div>
         </Cell>
         <Div style={{ marginTop: -10 }} id={`${PANEL_ROUTES.FACT}-article`}>
-          {parse("<a>Blue text</a> other text")}
+          {parse(text)}
         </Div>
       </Group>
     </Panel>

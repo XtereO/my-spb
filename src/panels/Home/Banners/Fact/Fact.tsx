@@ -1,28 +1,34 @@
 import { Cell, Div, Group } from "@vkontakte/vkui";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { memo } from "react";
 import parse from "html-react-parser";
 import { CardHeader, RoundedCard, ThemedButton } from "../../../../bricks";
 import { PANEL_ROUTES } from "../../../../consts";
 import { LightbalbStarOutlineIcon } from "../../../../icons";
-import { ThemeContext } from "../../../../utils";
+import { articleReduce, ThemeContext } from "../../../../utils";
 import "./Fact.css";
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { mainActions } from "../../../../bll/main";
-import { useGetFactQuery } from "../../../../bll/fact";
+import { factActions, useGetFactQuery } from "../../../../bll/fact";
 
 export const Fact = memo(() => {
+  const limitedSymbolText = 163;
   const theme = useContext(ThemeContext);
   const dispatch = useDispatch();
   const handleClick = useCallback(() => {
     dispatch(mainActions.setActivePanel(PANEL_ROUTES.FACT));
   }, []);
   const date = new Date();
-  const { data, error } = useGetFactQuery({
+  const { data } = useGetFactQuery({
     day: date.getDate(),
     month: date.getMonth() + 1,
   });
+  useEffect(() => {
+    if (data) {
+      dispatch(factActions.setFact(data));
+    }
+  }, [data]);
 
   return (
     <RoundedCard id="fact">
@@ -49,7 +55,10 @@ export const Fact = memo(() => {
           className="text"
           style={{ color: theme.text, marginTop: 4 }}
         >
-          {parse(data?.text ?? "")}
+          {data?.text &&
+            parse(
+              articleReduce(data?.text).slice(0, limitedSymbolText) + "..."
+            )}
         </div>
         <div style={{ marginTop: 10 }}>
           <ThemedButton onClick={handleClick} id="fact-btn">

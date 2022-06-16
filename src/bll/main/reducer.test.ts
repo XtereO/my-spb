@@ -21,4 +21,9 @@ describe("Test mainReducer", () => {
       mainReducer(undefined, mainActions.setActivePanel(PANEL_ROUTES.FREE_WIFI))
     ).toHaveProperty("activePanel", PANEL_ROUTES.FREE_WIFI);
   });
+  test("should handle a userCoordinates and set [60, 30]", () => {
+    expect(
+      mainReducer(undefined, mainActions.setUserCoordinates([60, 30]))
+    ).toHaveProperty("userCoordinates", [60, 30]);
+  });
 });

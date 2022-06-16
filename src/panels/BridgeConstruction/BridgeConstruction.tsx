@@ -1,10 +1,12 @@
 import { Group, Panel } from "@vkontakte/vkui";
-import { memo } from "react";
+import { memo, useState } from "react";
 import { DistanceFilter, MainHeader, PanelHeaderBack } from "../../bricks";
 import { BridgeListItem } from "../../bricks";
 import { PANEL_ROUTES } from "../../consts";
+import { Filter } from "../../types";
 
 export const BridgeConstruction = memo(() => {
+  const [filter, setFilter] = useState<Filter>("default")
   return (
     <Panel id={PANEL_ROUTES.BRIDGE_CONSTRUCTION}>
       <PanelHeaderBack id={`${PANEL_ROUTES.BRIDGE_CONSTRUCTION}-back`} />
@@ -13,7 +15,8 @@ export const BridgeConstruction = memo(() => {
       </MainHeader>
       <DistanceFilter
         id={`${PANEL_ROUTES.BRIDGE_CONSTRUCTION}-filter`}
-        value={"default"}
+        value={filter}
+        onChange={setFilter}
         defaultLabel={"По времени"}
       />
       <Group id={`${PANEL_ROUTES.BRIDGE_CONSTRUCTION}-list`} style={{marginTop:-12,paddingBottom:12,paddingRight:16,paddingLeft:16}}>
