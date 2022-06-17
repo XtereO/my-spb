@@ -7,6 +7,7 @@ import { ArticleOutlineIcon, CalendarOutlineIcon } from "../../icons";
 import "./Fact.css";
 import { useSelector } from "react-redux";
 import { getFact } from "../../bll/fact";
+import { removeHrefs } from "../../utils";
 
 export const Fact = memo(() => {
   const { title, date_txt, text } = useSelector(getFact);
@@ -38,7 +39,7 @@ export const Fact = memo(() => {
           </div>
         </Cell>
         <Div style={{ marginTop: -10 }} id={`${PANEL_ROUTES.FACT}-article`}>
-          {parse(text)}
+          {parse(removeHrefs(text))}
         </Div>
       </Group>
     </Panel>

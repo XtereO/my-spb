@@ -5,5 +5,5 @@ export type BridgeConstruction = {
   the_first_arch: string;
   the_second_wiring: string;
   the_second_arch: string;
-  coordinates: string;
+  coordinates: [number, number];
 };

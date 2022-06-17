@@ -1,11 +1,10 @@
 import { Div, Panel } from "@vkontakte/vkui";
 import { memo, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { YMaps, Map as YMap, Placemark } from "react-yandex-maps";
+import { YMaps, Map as YMap } from "react-yandex-maps";
 import { getCenter, getZoom, mapActions } from "../../bll/map";
 import { MainHeader, PanelHeaderBack } from "../../bricks";
 import { PANEL_ROUTES } from "../../consts";
-import { PlaceOutlineIcon } from "../../icons";
 
 export const Map = memo(() => {
   const center = useSelector(getCenter);
@@ -22,7 +21,7 @@ export const Map = memo(() => {
         <YMaps>
           <YMap
             width={"100%"}
-            height={450}
+            height={350}
             state={{ center: center ?? [59.939095, 30.315868], zoom }}
           >
           </YMap>

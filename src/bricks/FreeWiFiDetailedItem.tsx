@@ -56,11 +56,11 @@ export const FreeWiFiDetailedItem = memo<Props>(
               id={`${id}-area-fill`}
               before={<RadioWawesAroundOutlineIcon />}
             >
-              Зона покрытия: {areaFill} метр{getEndingNumber(areaFill)}
+              Зона покрытия: {areaFill} метров
             </GrayCell>
             {distance && (
               <GrayCell id={`${id}-distance`} before={<PlaceOutlineIcon />}>
-                Расстояние до Вас: {distance} метр{getEndingNumber(distance)}
+                Расстояние до Вас: {distance} метров
               </GrayCell>
             )}
           </Group>

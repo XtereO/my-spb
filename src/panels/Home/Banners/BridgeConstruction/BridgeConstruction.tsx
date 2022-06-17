@@ -1,14 +1,17 @@
 import { Cell, Group } from "@vkontakte/vkui";
-import { useCallback, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { useContext } from "react";
 import { memo } from "react";
 import { useDispatch } from "react-redux";
-import { useGetBridgeConstructionsQuery } from "../../../../bll/bridge-construction";
+import {
+  bridgeConstructionActions,
+  useGetBridgeConstructionsQuery,
+} from "../../../../bll/bridge-construction";
 import { mainActions } from "../../../../bll/main";
 import { RoundedCard, ThemedButton } from "../../../../bricks";
 import { PANEL_ROUTES } from "../../../../consts";
 import { CarOutlineIcon, ClockOutlineIcon } from "../../../../icons";
-import { getEarlistBridge, ThemeContext } from "../../../../utils";
+import { sortBridgeByTime, ThemeContext } from "../../../../utils";
 import "./BridgeConstruction.css";
 
 export const BridgeConstruction = memo(() => {
@@ -17,15 +20,18 @@ export const BridgeConstruction = memo(() => {
   const handleClick = useCallback(() => {
     dispatch(mainActions.setActivePanel(PANEL_ROUTES.BRIDGE_CONSTRUCTION));
   }, []);
-  const { data } = useGetBridgeConstructionsQuery("lol");
-  console.log(data);
-
-  const { bridge, time } = useMemo(() => {
+  const { data } = useGetBridgeConstructionsQuery("");
+  const { bridges, time } = useMemo(() => {
     if (data) {
-      return getEarlistBridge(data);
+      return sortBridgeByTime(data);
     }
-    return { bridge: null, time: "" };
+    return { bridges: [], time: "" };
   }, [data]);
+  useEffect(() => {
+    if (bridges) {
+      dispatch(bridgeConstructionActions.setBridges(bridges));
+    }
+  }, [bridges]);
   return (
     <RoundedCard id="bridge-construction">
       <Group
@@ -51,7 +57,7 @@ export const BridgeConstruction = memo(() => {
           className="text"
           style={{ color: theme.text, marginTop: 4 }}
         >
-          {bridge ? bridge.name : ""}
+          {bridges[0] ? bridges[0].name : ""}
         </div>
         <Cell
           style={{

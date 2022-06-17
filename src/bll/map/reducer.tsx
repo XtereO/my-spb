@@ -6,7 +6,7 @@ type InitialType = {
 };
 export const initialState: InitialType = {
   zoom: 15,
-  center: [59.939095, 30.315868],
+  center: null,
 };
 
 const mapSlice = createSlice({

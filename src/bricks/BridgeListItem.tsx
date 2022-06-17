@@ -2,51 +2,78 @@ import { Cell, Div, Group, Header } from "@vkontakte/vkui";
 import { useCallback, useContext } from "react";
 import { memo } from "react";
 import { useDispatch } from "react-redux";
+import { mainActions } from "../bll/main";
+import { mapActions } from "../bll/map";
 import { LockOpenOutlineIcon, LockOutlineIcon } from "../icons";
-import { ThemeContext } from "../utils";
+import { ThemeContext, toFullTime } from "../utils";
 import { DistanceCell } from "./DistanceCell";
 import { RoundedCard } from "./RoundedCard";
 import { ThemedButton } from "./ThemedButton";
 
 type Props = {
   id: string;
-  timeIntervals: { timeOpen: string; timeClose: string }[];
+  time_first_wiring: string;
+  the_first_arch: string;
+  the_second_wiring: string;
+  the_second_arch: string;
+  coordinates: [number, number];
   children: React.ReactNode;
   distance?: number;
 };
 
 export const BridgeListItem = memo<Props>(
-  ({ id, timeIntervals, distance, children }) => {
+  ({
+    id,
+    time_first_wiring,
+    the_first_arch,
+    the_second_wiring,
+    the_second_arch,
+    coordinates,
+    distance,
+    children,
+  }) => {
+    const dispatch = useDispatch();
+    const handleClick = useCallback(() => {
+      dispatch(mapActions.setCenter(coordinates));
+    }, []);
     const theme = useContext(ThemeContext);
-    const timeIntervalElements = timeIntervals.map((t, index) => (
-      <div
-        style={{ marginTop: -20 }}
-        key={`${id}-item-${index}`}
-        className="d-flex"
-      >
-        <Cell
-          disabled
-          id={`${id}-item-${index}-close`}
-          before={<LockOutlineIcon />}
-          style={{
-            width: "50%",
-            fontWeight: 500,
-            fontSize: 14,
-            color: theme.text,
-          }}
-        >
-          <span style={{ marginLeft: 6 }}>{t.timeClose}</span>
-        </Cell>
-        <Cell
-          disabled
-          id={`${id}-item-${index}-open`}
-          before={<LockOpenOutlineIcon />}
-          style={{ fontWeight: 500, fontSize: 14, color: theme.text }}
-        >
-          <span style={{ marginLeft: 6 }}>{t.timeOpen}</span>
-        </Cell>
-      </div>
-    ));
+    const timeIntervals = [
+      [time_first_wiring, the_first_arch],
+      [the_second_wiring, the_second_arch],
+    ];
+    const timeIntervalElements = timeIntervals.map((t, index) => {
+      if (t[0] && t[1] && t[0] !== "-" && t[1] !== "-") {
+        return (
+          <div
+            style={{ marginTop: -20 }}
+            key={`${id}-item-${index}`}
+            className="d-flex"
+          >
+            <Cell
+              disabled
+              id={`${id}-item-${index}-close`}
+              before={<LockOutlineIcon />}
+              style={{
+                width: "50%",
+                fontWeight: 500,
+                fontSize: 14,
+                color: theme.text,
+              }}
+            >
+              <span style={{ marginLeft: 6 }}>{toFullTime(t[0])}</span>
+            </Cell>
+            <Cell
+              disabled
+              id={`${id}-item-${index}-open`}
+              before={<LockOpenOutlineIcon />}
+              style={{ fontWeight: 500, fontSize: 14, color: theme.text }}
+            >
+              <span style={{ marginLeft: 6 }}>{toFullTime(t[1])}</span>
+            </Cell>
+          </div>
+        );
+      }
+    });
     return (
       <div style={{ marginTop: 12 }}>
         <RoundedCard id={`bridge-list-item-${id}`}>
@@ -61,7 +88,11 @@ export const BridgeListItem = memo<Props>(
               </div>
             )}
             <Div>
-              <ThemedButton size="l" id={`bridge-list-item-${id}-btn`}>
+              <ThemedButton
+                onClick={handleClick}
+                size="l"
+                id={`bridge-list-item-${id}-btn`}
+              >
                 Показать на карте
               </ThemedButton>
             </Div>

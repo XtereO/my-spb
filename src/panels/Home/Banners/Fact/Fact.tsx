@@ -5,7 +5,7 @@ import parse from "html-react-parser";
 import { CardHeader, RoundedCard, ThemedButton } from "../../../../bricks";
 import { PANEL_ROUTES } from "../../../../consts";
 import { LightbalbStarOutlineIcon } from "../../../../icons";
-import { articleReduce, ThemeContext } from "../../../../utils";
+import { removeHrefs, ThemeContext } from "../../../../utils";
 import "./Fact.css";
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
@@ -57,7 +57,7 @@ export const Fact = memo(() => {
         >
           {data?.text &&
             parse(
-              articleReduce(data?.text).slice(0, limitedSymbolText) + "..."
+              removeHrefs(data?.text).slice(0, limitedSymbolText) + "..."
             )}
         </div>
         <div style={{ marginTop: 10 }}>
