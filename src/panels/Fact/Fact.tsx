@@ -18,7 +18,7 @@ export const Fact = memo(() => {
       <Group>
         <Cell disabled before={<ArticleOutlineIcon />}>
           <div
-            style={{ marginLeft: 9 }}
+            style={{ marginLeft: 9, whiteSpace: "normal" }}
             id={`${PANEL_ROUTES.FACT}-article-title`}
             className="article-title"
           >

@@ -15,7 +15,7 @@ export const bridgeConstructionApi = createApi({
       }),
       transformResponse: (
         data: { response: { results: BridgeConstruction[] } },
-        mata,
+        meta,
         arg
       ) => data.response.results,
     }),

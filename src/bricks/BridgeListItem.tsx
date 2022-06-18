@@ -90,7 +90,6 @@ export const BridgeListItem = memo<Props>(
             <Div>
               <ThemedButton
                 onClick={handleClick}
-                size="l"
                 id={`bridge-list-item-${id}-btn`}
               >
                 Показать на карте

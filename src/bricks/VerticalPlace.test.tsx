@@ -53,4 +53,7 @@ describe("Test VerticalPlace component", () => {
       "https://www.journeygazer.com/wp-content/uploads/2019/03/torres-del-paine-Glaciers5.jpg"
     );
   });
+  test("should render btn", () => {
+    expect(!!wrapper.find("#vertical-place-btn")).toBe(true);
+  });
 });

@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
+import { beautifulPlaceApi, beautifulPlaceReducer } from "./beautiful-place";
 import {
   bridgeConstructionApi,
   bridgeConstructionReducer,
@@ -9,14 +10,18 @@ import { factApi, factReducer } from "./fact";
 import { mainReducer } from "./main";
 import { mapReducer } from "./map";
 import { turnOffWaterApi } from "./turn-off-water";
+import { turnOffWaterReducer } from "./turn-off-water";
 
 const rootReducer = combineReducers({
   main: mainReducer,
   map: mapReducer,
   fact: factReducer,
+  turnOffWater: turnOffWaterReducer,
+  beautifulPlace: beautifulPlaceReducer,
   bridgeConstruction: bridgeConstructionReducer,
   [factApi.reducerPath]: factApi.reducer,
   [turnOffWaterApi.reducerPath]: turnOffWaterApi.reducer,
+  [beautifulPlaceApi.reducerPath]: beautifulPlaceApi.reducer,
   [bridgeConstructionApi.reducerPath]: bridgeConstructionApi.reducer,
 });
 
@@ -28,8 +33,9 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
       factApi.middleware,
-      bridgeConstructionApi.middleware,
-      turnOffWaterApi.middleware
+      turnOffWaterApi.middleware,
+      beautifulPlaceApi.middleware,
+      bridgeConstructionApi.middleware
     ),
 });
 

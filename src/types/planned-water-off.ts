@@ -1,11 +1,10 @@
 export type PlannedWaterOff = {
   address: string;
-  begin: string;
-  begin_time: string;
+  dates: [Date, Date];
   city: string;
-  end: string;
-  end_time: string;
   house: string;
   korp: string;
   street: string;
 };
+
+type Date = { date_on: string; date_off: string };

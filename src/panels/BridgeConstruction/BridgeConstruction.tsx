@@ -1,6 +1,6 @@
 import { Group, Panel } from "@vkontakte/vkui";
 import { time } from "console";
-import { memo, useEffect, useState } from "react";
+import { memo, useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { getBridges } from "../../bll/bridge-construction";
 import { getUserCoordinates } from "../../bll/main";
@@ -16,24 +16,19 @@ import { getDistance, sortByKey } from "../../utils";
 export const BridgeConstruction = memo(() => {
   const [filter, setFilter] = useState<Filter>("default");
   const bridges = useSelector(getBridges);
-  const [sortedBridges, setSortedBridges] = useState<
-    (BridgeConstructionType & { distance: number })[]
-  >([]);
   const userCoordinates = useSelector(getUserCoordinates);
-  useEffect(() => {
-    if (
-      filter === "distance" &&
-      userCoordinates &&
-      sortedBridges.length === 0
-    ) {
-      const bridgesWithDistance = bridges
+  const sortedBridges = useMemo(() => {
+    if (filter === "distance" && userCoordinates) {
+      return bridges
         .map((s) => ({
           ...s,
-          distance: Math.ceil(getDistance(userCoordinates, s.coordinates)*1000),
+          distance: Math.ceil(
+            getDistance(userCoordinates, s.coordinates) * 1000
+          ),
         }))
         .sort(sortByKey("distance"));
-      setSortedBridges(bridgesWithDistance);
     }
+    return [];
   }, [userCoordinates, filter]);
   return (
     <Panel id={PANEL_ROUTES.BRIDGE_CONSTRUCTION}>

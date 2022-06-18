@@ -15,7 +15,7 @@ export const CardHeader = memo<Props>(({ id, before, children }) => {
       <Div
         id={id.replace("header", "title")}
         className="heading-large"
-        style={{ color: theme.heading }}
+        style={{ color: theme.heading, whiteSpace: "normal" }}
       >
         {children}
       </Div>

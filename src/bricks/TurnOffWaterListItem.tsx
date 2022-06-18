@@ -6,32 +6,40 @@ import { RoundedCard } from "./RoundedCard";
 
 type Props = {
   id: string;
-  timeIntervals: { from: string; to: string }[];
+  timeIntervals: { date_off: string; date_on: string }[];
   children: React.ReactNode;
 };
 
 export const TurnOffWaterListItem = memo<Props>(
   ({ id, timeIntervals, children }) => {
     const theme = useContext(ThemeContext);
-    const timeIntervalElements = timeIntervals.map((t, index) => (
-      <div
-        style={{
-          marginTop: 4,
-          color: theme.text,
-          fontWeight: 500,
-          fontSize: 18,
-        }}
-        key={`${id}-item-${index}`}
-        className="d-flex"
-      >
-        {t.from} - {t.to}
-      </div>
-    ));
+    const timeIntervalElements = timeIntervals.map((t, index) => {
+      const monthOff = t.date_off.slice(5, 7);
+      const dayOff = t.date_off.slice(8, 10);
+      const timeOff = t.date_off.slice(11, 16);
+      const monthOn = t.date_on.slice(5, 7);
+      const dayOn = t.date_on.slice(8, 10);
+      const timeOn = t.date_on.slice(11, 16);
+      return (
+        <div
+          style={{
+            marginTop: 4,
+            color: theme.text,
+            fontWeight: 500,
+            fontSize: 18,
+          }}
+          key={`${id}-item-${index}`}
+          className="d-flex"
+        >
+          {dayOff}.{monthOff}, {timeOff} - {dayOn}.{monthOn}, {timeOn}
+        </div>
+      );
+    });
     return (
       <div style={{ marginTop: 12 }}>
         <RoundedCard id={`turn-off-water-list-item-${id}`}>
           <Header style={{ color: theme.heading }} id={`${id}-header`}>
-            <span style={{ fontSize: 18, fontWeight:500 }}>{children}</span>
+            <span style={{ fontSize: 18, fontWeight: 500 }}>{children}</span>
           </Header>
           <Group
             id={`${id}-time-intervals`}
