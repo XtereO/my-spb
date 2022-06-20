@@ -58,4 +58,7 @@ describe("Test FreeWiFiDetailedItem component", () => {
       "Расстояние от Вас: 1231 метр"
     );
   });
+  test("should render btn", () => {
+    expect(!!wrapper.find("#wf-btn")).toBe(true);
+  });
 });

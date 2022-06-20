@@ -31,7 +31,7 @@ export const TurnOffWater = memo(() => {
       if (plannedWaterOffs[i].address.match(new RegExp(text))) {
         newPlannedWaterOffs.push(plannedWaterOffs[i]);
       }
-      i++
+      i++;
     }
     setSearchPlannedWaterOffs(newPlannedWaterOffs);
   };
@@ -68,7 +68,11 @@ export const TurnOffWater = memo(() => {
         id={`${PANEL_ROUTES.TURN_OFF_WATER}-list`}
       >
         {searchPlannedWaterOffs.map((p: PlannedWaterOff) => (
-          <TurnOffWaterListItem id={p.address} timeIntervals={p.dates}>
+          <TurnOffWaterListItem
+            key={p.address}
+            id={p.address}
+            timeIntervals={p.dates}
+          >
             {p.address}
           </TurnOffWaterListItem>
         ))}

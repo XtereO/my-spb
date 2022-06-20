@@ -1,4 +1,4 @@
-import { Div } from "@vkontakte/vkui";
+import { Div, ScreenSpinner, Spinner } from "@vkontakte/vkui";
 import { useCallback, useEffect, useState } from "react";
 import { memo } from "react";
 import { useDispatch } from "react-redux";
@@ -20,8 +20,7 @@ type Props = {
 
 export const VerticalPlace = memo<Props>(
   ({ id, title, pathToPhoto, distance, coordinates }) => {
-    //@ts-ignore
-    const { isView, ref } = useInView();
+    const { inView, ref } = useInView();
     const dispatch = useDispatch();
     const handleClick = useCallback(() => {
       if (coordinates) {
@@ -30,16 +29,14 @@ export const VerticalPlace = memo<Props>(
     }, [coordinates]);
     const [photoSrc, setPhotoSrc] = useState("");
     useEffect(() => {
-      let timerId = setTimeout(() => {
-        if (isView && !photoSrc) {
-          getPhotoUrl(pathToPhoto).then(res => setPhotoSrc(res.preview ?? "error"));
-        }else{
-          clearTimeout(timerId)
-        }
-      }, 1000);
-    }, [isView,ref]);
-    console.log(photoSrc);
-    
+      setPhotoSrc("");
+    }, [pathToPhoto]);
+    useEffect(() => {
+      if (inView && !photoSrc) {
+        getPhotoUrl(pathToPhoto).then((res) => setPhotoSrc(res.preview ?? ""));
+      }
+    }, [inView, ref]);
+
     return (
       <div ref={ref} style={{ marginTop: 12 }}>
         <RoundedCard id={String(id)}>
@@ -54,12 +51,14 @@ export const VerticalPlace = memo<Props>(
             </div>
           )}
           <Div style={{ marginTop: -12 }} className="center-x">
-            <img
-              alt={"Loading..."}
-              id={`${id}-img`}
-              style={{ borderRadius: 21, width: "100%", height: 186 }}
-              src={photoSrc}
-            />
+            {photoSrc ? (
+              <img
+                alt={"Loading..."}
+                id={`${id}-img`}
+                style={{ borderRadius: 21, width: "100%", height: 186 }}
+                src={photoSrc}
+              />
+            ) : <div style={{height: 186}}><Spinner size="large" /></div>}
           </Div>
           {coordinates && (
             <Div>

@@ -5,14 +5,12 @@ import { Date, Fact } from "../../types";
 export const factApi = createApi({
   reducerPath: "factApi",
   baseQuery: fetchBaseQuery({
-    baseUrl
+    baseUrl,
   }),
   endpoints: (build) => ({
     getFact: build.query<Fact, Date>({
       query: ({ day, month }) => ({
-        url: `facts.get?day=${day}&month=${month}&${window.location.search.slice(
-          1
-        )}`,
+        url: `facts.get${window.location.search}&day=${day}&month=${month}`,
         method: "get",
       }),
       transformResponse: (data: { response: Fact }, meta, arg) => data.response,

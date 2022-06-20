@@ -1,6 +1,8 @@
-import { Cell, Group, Header } from "@vkontakte/vkui";
-import { useContext } from "react";
+import { Cell, Div, Group, Header } from "@vkontakte/vkui";
+import { useCallback, useContext } from "react";
 import { memo } from "react";
+import { useDispatch } from "react-redux";
+import { mapActions } from "../bll/map";
 import {
   ArticleOutlineIcon,
   LockOpenOutlineIcon,
@@ -9,25 +11,31 @@ import {
   WarningTriangleOutlineIcon,
 } from "../icons";
 import { getEndingNumber, ThemeContext } from "../utils";
-import { CardHeader } from "./CardHeader";
-import { DistanceCell } from "./DistanceCell";
 import { RoundedCard } from "./RoundedCard";
+import { ThemedButton } from "./ThemedButton";
 
 type Props = {
-  id: string;
+  id: number;
   address: string;
-  isTurnedOn: boolean;
-  title: string;
-  areaFill: number;
-  distance: number;
+  status: "Работает" | "Не работает";
+  name_wifi: string;
+  coverage: number;
+  coordinates?: [number, number];
+  distance?: number;
 };
 
 export const FreeWiFiDetailedItem = memo<Props>(
-  ({ id, address, isTurnedOn, title, areaFill, distance }) => {
+  ({ id, address, status, name_wifi, coverage, distance, coordinates }) => {
+    const dispatch = useDispatch();
+    const handleClick = useCallback(() => {
+      if (coordinates) {
+        dispatch(mapActions.setCenter(coordinates));
+      }
+    }, [coordinates]);
     const theme = useContext(ThemeContext);
     return (
       <div style={{ marginTop: 12 }}>
-        <RoundedCard id={id}>
+        <RoundedCard id={String(id)}>
           <Header style={{ color: theme.heading }} id={`${id}-address`}>
             <span style={{ fontSize: 18, fontWeight: 500 }}>{address}</span>
           </Header>
@@ -35,14 +43,14 @@ export const FreeWiFiDetailedItem = memo<Props>(
             <GrayCell
               id={`${id}-status`}
               before={
-                isTurnedOn ? (
+                status === "Работает" ? (
                   <LockOpenOutlineIcon />
                 ) : (
                   <WarningTriangleOutlineIcon />
                 )
               }
             >
-              Статус: {!isTurnedOn && "не"} работает
+              Статус: {status.toLocaleLowerCase()}
             </GrayCell>
             <GrayCell
               id={`${id}-title`}
@@ -50,19 +58,24 @@ export const FreeWiFiDetailedItem = memo<Props>(
                 <ArticleOutlineIcon width={24} height={24} color={theme.text} />
               }
             >
-              Название: {title}
+              Название: {name_wifi}
             </GrayCell>
             <GrayCell
               id={`${id}-area-fill`}
               before={<RadioWawesAroundOutlineIcon />}
             >
-              Зона покрытия: {areaFill} метров
+              Зона покрытия: {coverage} метр{getEndingNumber(coverage)}
             </GrayCell>
             {distance && (
               <GrayCell id={`${id}-distance`} before={<PlaceOutlineIcon />}>
-                Расстояние до Вас: {distance} метров
+                Расстояние до Вас: {distance} метр{getEndingNumber(distance)}
               </GrayCell>
             )}
+            <Div style={{ marginTop: -6 }}>
+              <ThemedButton onClick={handleClick} id={`${id}-btn`}>
+                Показать на карте
+              </ThemedButton>
+            </Div>
           </Group>
         </RoundedCard>
       </div>

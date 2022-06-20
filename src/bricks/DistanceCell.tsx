@@ -20,7 +20,7 @@ export const DistanceCell = memo<Props>(({ distance, id, children }) => {
       style={{ fontWeight: 500, fontSize: 14, color: theme.text }}
     >
       <span style={{ marginLeft: 6 }}>
-        {children} {distance} метров
+        {children} {distance} метр{getEndingNumber(distance)}
       </span>
     </Cell>
   );

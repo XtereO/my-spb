@@ -1,5 +1,14 @@
 import { Group, Panel } from "@vkontakte/vkui";
-import { memo } from "react";
+import { memo, useEffect, useMemo, useState } from "react";
+import { useInView } from "react-intersection-observer";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  freeWifiActions,
+  getPage,
+  getWifiSpots,
+  useGetFreeWifiQuery,
+} from "../../bll/free-wifi";
+import { getUserCoordinates } from "../../bll/main";
 import {
   DistanceFilter,
   FreeWiFiDetailedItem,
@@ -7,15 +16,54 @@ import {
   PanelHeaderBack,
 } from "../../bricks";
 import { PANEL_ROUTES } from "../../consts";
+import { Filter, FreeWifi } from "../../types";
+import { getDistance, sortByKey } from "../../utils";
 
 export const FreeWiFi = memo(() => {
+  const [filter, setFilter] = useState<Filter>("default");
+  const dispatch = useDispatch();
+  const wifiSpots = useSelector(getWifiSpots);
+  const userCoordinates = useSelector(getUserCoordinates);
+  const sortedWifiSpots = useMemo(() => {
+    if (filter === "distance" && userCoordinates) {
+      return wifiSpots
+        .map((w: FreeWifi) => ({
+          ...w,
+          distance: Math.ceil(
+            getDistance(userCoordinates, w.coordinates) * 1000
+          ),
+        }))
+        .sort(sortByKey("distance"));
+    }
+    return [];
+  }, [userCoordinates, filter, wifiSpots]);
+  const { inView, ref } = useInView();
+  const page = useSelector(getPage);
+  const { data, refetch } = useGetFreeWifiQuery({ page });
+  useEffect(() => {
+    if (inView) {
+      dispatch(freeWifiActions.setPage(page + 1));
+    }
+  }, [inView]);
+  useEffect(() => {
+    refetch();
+  }, [page]);
+  useEffect(() => {
+    if (page !== 1 && data) {
+      dispatch(freeWifiActions.setWifiSpots([...wifiSpots, ...data]));
+    }
+  }, [data]);
   return (
     <Panel id={PANEL_ROUTES.FREE_WIFI}>
       <PanelHeaderBack id={`${PANEL_ROUTES.FREE_WIFI}-back`} />
       <MainHeader id={`${PANEL_ROUTES.FREE_WIFI}-header`}>
         Бесплатный WI-FI
       </MainHeader>
-      <DistanceFilter id={`${PANEL_ROUTES.FREE_WIFI}`} value={"default"} />
+      <DistanceFilter
+        onChange={setFilter}
+        id={`${PANEL_ROUTES.FREE_WIFI}`}
+        value={filter}
+      />
       <Group
         style={{
           marginTop: -12,
@@ -24,30 +72,14 @@ export const FreeWiFi = memo(() => {
           paddingLeft: 16,
         }}
       >
-        <FreeWiFiDetailedItem
-          id={"1"}
-          address={"Kamysh"}
-          isTurnedOn={false}
-          title={"SPb-free"}
-          areaFill={150}
-          distance={1231}
-        />
-        <FreeWiFiDetailedItem
-          id={"2"}
-          address={"Kamysh"}
-          isTurnedOn={true}
-          title={"SPb-free"}
-          areaFill={172}
-          distance={1237}
-        />
-        <FreeWiFiDetailedItem
-          id={"3"}
-          address={"Kamysh"}
-          isTurnedOn={true}
-          title={"SPb-free"}
-          areaFill={114}
-          distance={1231}
-        />
+        {filter === "distance"
+          ? sortedWifiSpots.map((s) => (
+              <FreeWiFiDetailedItem key={s.number} {...s} id={s.number} />
+            ))
+          : wifiSpots.map((w) => (
+              <FreeWiFiDetailedItem key={w.number} {...w} id={w.number} />
+            ))}
+        <div ref={ref} />
       </Group>
     </Panel>
   );

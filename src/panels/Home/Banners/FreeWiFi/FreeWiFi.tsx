@@ -1,7 +1,11 @@
 import { Group } from "@vkontakte/vkui";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { memo } from "react";
 import { useDispatch } from "react-redux";
+import {
+  freeWifiActions,
+  useGetFreeWifiQuery,
+} from "../../../../bll/free-wifi";
 import { mainActions } from "../../../../bll/main";
 import {
   CardHeader,
@@ -17,6 +21,13 @@ export const FreeWiFi = memo(() => {
   const handleClick = useCallback(() => {
     dispatch(mainActions.setActivePanel(PANEL_ROUTES.FREE_WIFI));
   }, []);
+  const { data } = useGetFreeWifiQuery({ page: 1 });
+  useEffect(() => {
+    if (data) {
+      dispatch(freeWifiActions.setWifiSpots(data));
+      dispatch(freeWifiActions.setPage(1));
+    }
+  }, [data]);
   return (
     <RoundedCard id="free-wifi">
       <CardHeader before={<WiFiIcon />} id="free-wifi-header">
@@ -24,8 +35,9 @@ export const FreeWiFi = memo(() => {
       </CardHeader>
       <Group style={{ paddingLeft: 16, paddingRight: 16, paddingBottom: 12 }}>
         <div id="free-wifi-items">
-          <FreeWiFiItem id={1} isTurnedOn={false} title={"New spot 1"} />
-          <FreeWiFiItem id={2} isTurnedOn={true} title={"New spot 2"} />
+          {data?.slice(0, 3).map((d) => (
+            <FreeWiFiItem key={d.number} {...d} id={d.number} />
+          ))}
         </div>
         <div style={{ marginTop: 10 }}>
           <ThemedButton onClick={handleClick} id="free-wifi-btn">

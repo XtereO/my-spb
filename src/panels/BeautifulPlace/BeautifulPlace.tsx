@@ -1,5 +1,6 @@
 import { Group, Panel } from "@vkontakte/vkui";
-import { memo, useMemo, useState } from "react";
+import { memo, useEffect, useMemo, useState } from "react";
+import { useInView } from "react-intersection-observer";
 import { useSelector } from "react-redux";
 import { getBeautifulPlaces } from "../../bll/beautiful-place";
 import { getUserCoordinates } from "../../bll/main";
@@ -34,6 +35,17 @@ export const BeautifulPlace = memo(() => {
     }
     return [];
   }, [userCoordinates, filter]);
+  const [page, setPage] = useState(1);
+  useEffect(() => {
+    setPage(1);
+  }, [filter]);
+  const { inView, ref } = useInView();
+  useEffect(() => {
+    if (inView) {
+      setPage((prev) => prev + 1);
+    }
+  }, [inView]);
+
   return (
     <Panel id={PANEL_ROUTES.BEAUTIFUL_PLACE}>
       <PanelHeaderBack id={`${PANEL_ROUTES.BEAUTIFUL_PLACE}-back`} />
@@ -55,25 +67,36 @@ export const BeautifulPlace = memo(() => {
         }}
       >
         {filter === "distance"
-          ? sortedPlaces.map((s) => (
-              <VerticalPlace
-                title={s.name ?? s.description}
-                id={(s.id)}
-                pathToPhoto={s.path_to_photo}
-                distance={s.distance}
-                coordinates={[
-                  Number(s.coordinates.split(", ")[0]),
-                  Number(s.coordinates.split(", ")[1]),
-                ]}
-              />
-            ))
-          : places.map((p) => (
-              <VerticalPlace
-                title={p.name ?? p.description}
-                id={(p.id)}
-                pathToPhoto={p.path_to_photo}
-              />
-            ))}
+          ? sortedPlaces
+              .slice(0, page * 5)
+              .map((s) => (
+                <VerticalPlace
+                  key={s.id}
+                  title={s.name ?? s.description}
+                  id={s.id}
+                  pathToPhoto={s.path_to_photo}
+                  distance={s.distance}
+                  coordinates={[
+                    Number(s.coordinates.split(", ")[0]),
+                    Number(s.coordinates.split(", ")[1]),
+                  ]}
+                />
+              ))
+          : places
+              .slice(0, page * 5)
+              .map((p) => (
+                <VerticalPlace
+                  coordinates={[
+                    Number(p.coordinates.split(", ")[0]),
+                    Number(p.coordinates.split(", ")[1]),
+                  ]}
+                  key={p.id}
+                  title={p.name ?? p.description}
+                  id={p.id}
+                  pathToPhoto={p.path_to_photo}
+                />
+              ))}
+        <div ref={ref} />
       </Group>
     </Panel>
   );

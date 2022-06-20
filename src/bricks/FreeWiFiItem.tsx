@@ -4,13 +4,14 @@ import { ThemeContext } from "../utils";
 
 type Props = {
   id?: number;
-  title: string;
-  isTurnedOn: boolean;
+  address: string;
+  status: "Работает" | "Не работает";
 };
 
-export const FreeWiFiItem = memo<Props>(({ id, title, isTurnedOn }) => {
+export const FreeWiFiItem = memo<Props>(({ id, address, status }) => {
   const theme = useContext(ThemeContext);
-  const background = isTurnedOn ? theme.wifiTurnedOnBg : theme.wifiTurnedOffBg;
+  const background =
+    status === "Работает" ? theme.wifiTurnedOnBg : theme.wifiTurnedOffBg;
   return (
     <div
       id={`free-wifi-item${id}`}
@@ -41,7 +42,7 @@ export const FreeWiFiItem = memo<Props>(({ id, title, isTurnedOn }) => {
         }}
         id={`free-wifi-item${id}-title`}
       >
-        {title}
+        {address}
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import {
   bridgeConstructionReducer,
 } from "./bridge-construction";
 import { factApi, factReducer } from "./fact";
+import { freeWifiApi, freeWifiReducer } from "./free-wifi";
 import { mainReducer } from "./main";
 import { mapReducer } from "./map";
 import { turnOffWaterApi } from "./turn-off-water";
@@ -16,10 +17,12 @@ const rootReducer = combineReducers({
   main: mainReducer,
   map: mapReducer,
   fact: factReducer,
+  freeWifi: freeWifiReducer,
   turnOffWater: turnOffWaterReducer,
   beautifulPlace: beautifulPlaceReducer,
   bridgeConstruction: bridgeConstructionReducer,
   [factApi.reducerPath]: factApi.reducer,
+  [freeWifiApi.reducerPath]: freeWifiApi.reducer,
   [turnOffWaterApi.reducerPath]: turnOffWaterApi.reducer,
   [beautifulPlaceApi.reducerPath]: beautifulPlaceApi.reducer,
   [bridgeConstructionApi.reducerPath]: bridgeConstructionApi.reducer,
@@ -33,6 +36,7 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
       factApi.middleware,
+      freeWifiApi.middleware,
       turnOffWaterApi.middleware,
       beautifulPlaceApi.middleware,
       bridgeConstructionApi.middleware
