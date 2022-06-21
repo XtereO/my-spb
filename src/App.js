@@ -59,7 +59,6 @@ const App = () => {
   useEffect(() => {
     window.addEventListener("hashchange", handleHashChange);
   }, []);
-
   const [panelBeforeMap, setPanelBeforeMap] = useState(activePanel);
   useEffect(() => {
     window.location.assign(
@@ -69,7 +68,6 @@ const App = () => {
       setPanelBeforeMap(activePanel);
     }
   }, [activePanel]);
-
   const centerMap = useSelector(getCenter);
   useEffect(() => {
     if (centerMap) {
@@ -79,6 +77,8 @@ const App = () => {
     }
   }, [centerMap]);
 
+
+
   return (
     <ThemeContext.Provider value={themes[theme]}>
       <ConfigProvider appearance={theme}>
@@ -86,7 +86,7 @@ const App = () => {
           <AppRoot>
             <View activePanel={activePanel}>
               <Welcome id={PANEL_ROUTES.WELCOME} />
-              <Home id={PANEL_ROUTES.HOME} />
+              <Home id={PANEL_ROUTES.HOME}  />
               <Fact id={PANEL_ROUTES.FACT} />
               <BridgeConstruction id={PANEL_ROUTES.BRIDGE_CONSTRUCTION} />
               <TurnOffWater id={PANEL_ROUTES.TURN_OFF_WATER} />

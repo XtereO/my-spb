@@ -1,29 +1,24 @@
-import { Cell, Div, Group } from "@vkontakte/vkui";
+import { Group } from "@vkontakte/vkui";
 import { useContext, useEffect } from "react";
 import { memo } from "react";
 import parse from "html-react-parser";
 import { CardHeader, RoundedCard, ThemedButton } from "../../../../bricks";
-import { PANEL_ROUTES } from "../../../../consts";
 import { LightbalbStarOutlineIcon } from "../../../../icons";
 import { removeHrefs, ThemeContext } from "../../../../utils";
 import "./Fact.css";
-import { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { mainActions } from "../../../../bll/main";
 import { factActions, useGetFactQuery } from "../../../../bll/fact";
+import { Fact as FactType } from "../../../../types";
 
-export const Fact = memo(() => {
+type Props = {
+  data?: FactType;
+  onClick: () => void;
+};
+
+export const Fact = memo<Props>(({ onClick, data }) => {
   const limitedSymbolText = 163;
   const theme = useContext(ThemeContext);
   const dispatch = useDispatch();
-  const handleClick = useCallback(() => {
-    dispatch(mainActions.setActivePanel(PANEL_ROUTES.FACT));
-  }, []);
-  const date = new Date();
-  const { data } = useGetFactQuery({
-    day: date.getDate(),
-    month: date.getMonth() + 1,
-  });
   useEffect(() => {
     if (data) {
       dispatch(factActions.setFact(data));
@@ -56,12 +51,10 @@ export const Fact = memo(() => {
           style={{ color: theme.text, marginTop: 4 }}
         >
           {data?.text &&
-            parse(
-              removeHrefs(data?.text).slice(0, limitedSymbolText) + "..."
-            )}
+            parse(removeHrefs(data?.text).slice(0, limitedSymbolText) + "...")}
         </div>
         <div style={{ marginTop: 10 }}>
-          <ThemedButton onClick={handleClick} id="fact-btn">
+          <ThemedButton onClick={onClick} id="fact-btn">
             Читать полностью
           </ThemedButton>
         </div>

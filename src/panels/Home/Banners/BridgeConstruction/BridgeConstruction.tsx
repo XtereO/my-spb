@@ -1,26 +1,23 @@
 import { Cell, Group } from "@vkontakte/vkui";
-import { useCallback, useEffect, useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { useContext } from "react";
 import { memo } from "react";
 import { useDispatch } from "react-redux";
-import {
-  bridgeConstructionActions,
-  useGetBridgeConstructionsQuery,
-} from "../../../../bll/bridge-construction";
-import { mainActions } from "../../../../bll/main";
+import { bridgeConstructionActions } from "../../../../bll/bridge-construction";
 import { RoundedCard, ThemedButton } from "../../../../bricks";
-import { PANEL_ROUTES } from "../../../../consts";
 import { CarOutlineIcon, ClockOutlineIcon } from "../../../../icons";
+import { BridgeConstruction as BridgeConstructionType } from "../../../../types";
 import { sortBridgeByTime, ThemeContext } from "../../../../utils";
 import "./BridgeConstruction.css";
 
-export const BridgeConstruction = memo(() => {
+type Props = {
+  data?: BridgeConstructionType[];
+  onClick: () => void;
+};
+
+export const BridgeConstruction = memo<Props>(({ data, onClick }) => {
   const theme = useContext(ThemeContext);
   const dispatch = useDispatch();
-  const handleClick = useCallback(() => {
-    dispatch(mainActions.setActivePanel(PANEL_ROUTES.BRIDGE_CONSTRUCTION));
-  }, []);
-  const { data } = useGetBridgeConstructionsQuery("");
   const { bridges, time } = useMemo(() => {
     if (data) {
       return sortBridgeByTime(data);
@@ -78,7 +75,7 @@ export const BridgeConstruction = memo(() => {
           </div>
         </Cell>
         <div style={{ marginTop: 6 }}>
-          <ThemedButton onClick={handleClick} id="bridge-construction-btn">
+          <ThemedButton onClick={onClick} id="bridge-construction-btn">
             Полный список
           </ThemedButton>
         </div>

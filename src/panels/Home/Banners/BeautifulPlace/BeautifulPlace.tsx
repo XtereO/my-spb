@@ -15,19 +15,20 @@ import {
 } from "../../../../bricks";
 import { PANEL_ROUTES } from "../../../../consts";
 import { LocationMapOutlineIcon } from "../../../../icons";
+import { BeautifulPlace as BeautifulPlaceType } from "../../../../types";
 
-export const BeautifulPlace = memo(() => {
+type Props = {
+  data?: BeautifulPlaceType[];
+  onClick: () => void;
+};
+
+export const BeautifulPlace = memo<Props>(({ data, onClick }) => {
   const dispatch = useDispatch();
-  const handleClick = useCallback(() => {
-    dispatch(mainActions.setActivePanel(PANEL_ROUTES.BEAUTIFUL_PLACE));
-  }, []);
-  const { data } = useGetBeautifulPlacesQuery({});
   useEffect(() => {
     if (data) {
       dispatch(beautifulPlaceActions.setBeautifulPlaces(data));
     }
   }, [data]);
-
   return (
     <RoundedCard id="beautiful-place">
       <CardHeader
@@ -54,7 +55,7 @@ export const BeautifulPlace = memo(() => {
           ))}
         </div>
         <div style={{ marginTop: 14 }}>
-          <ThemedButton onClick={handleClick} id="beautiful-place-btn">
+          <ThemedButton onClick={onClick} id="beautiful-place-btn">
             Посмотреть все места
           </ThemedButton>
         </div>

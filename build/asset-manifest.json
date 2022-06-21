@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "./static/css/main.ff2e4071.chunk.css",
+    "main.js": "./static/js/main.63097c1a.chunk.js",
+    "runtime-main.js": "./static/js/runtime-main.756e66f1.js",
+    "static/css/2.1f545151.chunk.css": "./static/css/2.1f545151.chunk.css",
+    "static/js/2.1832deff.chunk.js": "./static/js/2.1832deff.chunk.js",
+    "index.html": "./index.html",
+    "static/js/2.1832deff.chunk.js.LICENSE.txt": "./static/js/2.1832deff.chunk.js.LICENSE.txt",
+    "static/media/App.css": "./static/media/SF-Pro-Rounded-Semibold.af98bf89.ttf",
+    "static/media/placemark.188cd6a0.png": "./static/media/placemark.188cd6a0.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.756e66f1.js",
+    "static/css/2.1f545151.chunk.css",
+    "static/js/2.1832deff.chunk.js",
+    "static/css/main.ff2e4071.chunk.css",
+    "static/js/main.63097c1a.chunk.js"
+  ]
+}
