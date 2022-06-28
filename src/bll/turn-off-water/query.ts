@@ -8,13 +8,19 @@ export const turnOffWaterApi = createApi({
     baseUrl,
   }),
   endpoints: (build) => ({
-    getPlannedWaterOff: build.query<PlannedWaterOff[], any>({
-      query: () => ({
-        url: `water.get${window.location.search}`,
+    getPlannedWaterOff: build.query<
+      { items: PlannedWaterOff[]; today_off: number },
+      { page: number }
+    >({
+      query: ({ page }) => ({
+        url: `water.get${window.location.search}&page=${page}`,
         method: "get",
       }),
-      transformResponse: (data: { response: PlannedWaterOff[] }, meta, arg) =>
-        data.response,
+      transformResponse: (
+        data: { response: { items: PlannedWaterOff[]; today_off: number } },
+        meta,
+        arg
+      ) => data.response,
     }),
   }),
 });

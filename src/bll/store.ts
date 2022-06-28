@@ -10,6 +10,8 @@ import { factApi, factReducer } from "./fact";
 import { freeWifiApi, freeWifiReducer } from "./free-wifi";
 import { mainReducer } from "./main";
 import { mapReducer } from "./map";
+import { notificationsApi } from "./notifications";
+import { notificationsReducer } from "./notifications";
 import { turnOffWaterApi } from "./turn-off-water";
 import { turnOffWaterReducer } from "./turn-off-water";
 
@@ -19,11 +21,13 @@ const rootReducer = combineReducers({
   fact: factReducer,
   freeWifi: freeWifiReducer,
   turnOffWater: turnOffWaterReducer,
+  notifications: notificationsReducer,
   beautifulPlace: beautifulPlaceReducer,
   bridgeConstruction: bridgeConstructionReducer,
   [factApi.reducerPath]: factApi.reducer,
   [freeWifiApi.reducerPath]: freeWifiApi.reducer,
   [turnOffWaterApi.reducerPath]: turnOffWaterApi.reducer,
+  [notificationsApi.reducerPath]: notificationsApi.reducer,
   [beautifulPlaceApi.reducerPath]: beautifulPlaceApi.reducer,
   [bridgeConstructionApi.reducerPath]: bridgeConstructionApi.reducer,
 });
@@ -38,6 +42,7 @@ export const store = configureStore({
       factApi.middleware,
       freeWifiApi.middleware,
       turnOffWaterApi.middleware,
+      notificationsApi.middleware,
       beautifulPlaceApi.middleware,
       bridgeConstructionApi.middleware
     ),

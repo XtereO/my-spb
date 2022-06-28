@@ -6,10 +6,10 @@ describe("Test turnOffWater reducer", () => {
     const plannedWaterOffs: PlannedWaterOff[] = [
       {
         address: "Kamysh21",
-        begin: "2022-06-06",
-        begin_time: "18:00",
-        end: "2022-06-07",
-        end_time: "19:00",
+        dates: [
+          { date_on: "12.12.12", date_off: "12.12.12" },
+          { date_on: "13.12.10", date_off: "14.12.10" },
+        ],
         city: "SPb",
         house: "23",
         korp: "2",
@@ -22,5 +22,10 @@ describe("Test turnOffWater reducer", () => {
         turnOffWaterActions.setPlannedWaterOffs(plannedWaterOffs)
       )
     ).toHaveProperty("plannedWaterOffs", plannedWaterOffs);
+  });
+  test("should handle a page and equal to 2", () => {
+    expect(
+      turnOffWaterReducer(undefined, turnOffWaterActions.setPage(2))
+    ).toHaveProperty("page", 2);
   });
 });

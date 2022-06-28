@@ -9,7 +9,7 @@ import {
 import "@vkontakte/vkui/dist/vkui.css";
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getActivePanel, getScheme, getTheme, mainActions } from "./bll/main";
+import { getActivePanel, getTheme, mainActions } from "./bll/main";
 import { ThemeContext, themes } from "./utils";
 import { PANEL_ROUTES, STORAGE_KEYS } from "./consts";
 import {
@@ -24,6 +24,7 @@ import {
   Map,
 } from "./panels";
 import { getCenter } from "./bll/map";
+import { notificationsActions } from "./bll/notifications";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -76,8 +77,6 @@ const App = () => {
       dispatch(mainActions.setActivePanel(panelBeforeMap ?? PANEL_ROUTES.HOME));
     }
   }, [centerMap]);
-
-
 
   return (
     <ThemeContext.Provider value={themes[theme]}>

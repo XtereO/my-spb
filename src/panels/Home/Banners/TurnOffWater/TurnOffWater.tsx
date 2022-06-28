@@ -5,24 +5,20 @@ import { turnOffWaterActions } from "../../../../bll/turn-off-water";
 import { RoundedCard, ThemedButton } from "../../../../bricks";
 import { WasherOutlineIcon } from "../../../../icons";
 import { PlannedWaterOff } from "../../../../types";
-import { getCountDays, getEndingNumber, ThemeContext } from "../../../../utils";
+import { getEndingNumber, ThemeContext } from "../../../../utils";
 import "./TurnOffWater.css";
 
 type Props = {
-  data?: PlannedWaterOff[];
+  data?: { items: PlannedWaterOff[]; today_off: number };
   onClick: () => void;
 };
 
 export const TurnOffWater = memo<Props>(({ data, onClick }) => {
   const theme = useContext(ThemeContext);
   const dispatch = useDispatch();
-  const countPlannedWaterOff = useMemo(
-    () => (data ? getCountDays(data) : 0),
-    [data]
-  );
   useEffect(() => {
     if (data) {
-      dispatch(turnOffWaterActions.setPlannedWaterOffs(data));
+      dispatch(turnOffWaterActions.setPlannedWaterOffs(data.items));
     }
   }, [data]);
   return (
@@ -51,9 +47,9 @@ export const TurnOffWater = memo<Props>(({ data, onClick }) => {
           className="text"
           style={{ color: theme.text, marginTop: 4 }}
         >
-          {countPlannedWaterOff > 0
-            ? `Сегодня без воды ${countPlannedWaterOff} адрес${getEndingNumber(
-                countPlannedWaterOff
+          {data?.today_off && data.today_off > 0
+            ? `Сегодня без воды ${data?.today_off} адрес${getEndingNumber(
+                data.today_off
               )}`
             : "Сегодня воду отключать не будут"}
         </div>

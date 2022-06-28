@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer";
 import { useDispatch, useSelector } from "react-redux";
 import {
   freeWifiActions,
-  getPage,
+  getWifiPage,
   getWifiSpots,
   useGetFreeWifiQuery,
 } from "../../bll/free-wifi";
@@ -38,7 +38,7 @@ export const FreeWiFi = memo(() => {
     return [];
   }, [userCoordinates, filter, wifiSpots]);
   const { inView, ref } = useInView();
-  const page = useSelector(getPage);
+  const page = useSelector(getWifiPage);
   const { data, refetch } = useGetFreeWifiQuery({ page });
   useEffect(() => {
     if (inView) {

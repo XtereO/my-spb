@@ -26,7 +26,7 @@ export const Home = memo(() => {
     []
   );
   const date = new Date();
-  const plannedWaterOff = useGetPlannedWaterOffQuery({});
+  const plannedWaterOff = useGetPlannedWaterOffQuery({ page: 1 });
   const freeWifi = useGetFreeWifiQuery({ page: 1 });
   const fact = useGetFactQuery({
     day: date.getDate(),
