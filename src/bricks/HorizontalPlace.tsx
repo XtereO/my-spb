@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { memo } from "react";
 import { getPhotoUrl } from "../dal/api";
 import { ThemeContext } from "../utils";
+import { ImageFallback } from "./ImageFallback";
 
 type Props = {
   title: string;

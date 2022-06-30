@@ -9,6 +9,7 @@ import { RoundedCard } from "./RoundedCard";
 import { ThemedButton } from "./ThemedButton";
 import { useInView } from "react-intersection-observer";
 import { getPhotoUrl } from "../dal/api";
+import { ImageFallback } from "./ImageFallback";
 
 type Props = {
   id: number;
@@ -53,12 +54,15 @@ export const VerticalPlace = memo<Props>(
           <Div style={{ marginTop: -12 }} className="center-x">
             {photoSrc ? (
               <img
-                alt={"Loading..."}
                 id={`${id}-img`}
                 style={{ borderRadius: 21, width: "100%", height: 186 }}
                 src={photoSrc}
               />
-            ) : <div style={{height: 186}}><Spinner size="large" /></div>}
+            ) : (
+              <div style={{ height: 186 }}>
+                <Spinner size="large" />
+              </div>
+            )}
           </Div>
           {coordinates && (
             <Div>

@@ -5,7 +5,7 @@ type InitialState = Notifications;
 const initialState: InitialState = {
   id: "",
   address: {
-    city: "",
+    city: "Санкт-Петербург",
     district: "",
     street: "",
     house: "",

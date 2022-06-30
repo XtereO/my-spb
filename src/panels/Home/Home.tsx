@@ -34,7 +34,7 @@ export const Home = memo(() => {
   });
   const bridges = useGetBridgeConstructionsQuery({});
   const places = useGetBeautifulPlacesQuery({});
-
+  
   const isPanelLoading =
     plannedWaterOff.isLoading ||
     freeWifi.isLoading ||
@@ -53,15 +53,17 @@ export const Home = memo(() => {
             <Div>
               <Fact data={fact.data} onClick={handleClick(PANEL_ROUTES.FACT)} />
             </Div>
-            <Div className="divided-block">
+            <Div className="divided-block" style={{ overflowX: "scroll" }}>
               <BridgeConstruction
                 data={bridges.data}
                 onClick={handleClick(PANEL_ROUTES.BRIDGE_CONSTRUCTION)}
               />
+              <div style={{marginLeft: 21}}>
               <TurnOffWater
                 data={plannedWaterOff.data}
                 onClick={handleClick(PANEL_ROUTES.TURN_OFF_WATER)}
               />
+              </div>
             </Div>
             <Div>
               <BeautifulPlace
