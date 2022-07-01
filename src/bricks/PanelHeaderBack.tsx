@@ -1,4 +1,4 @@
-import { PanelHeader } from "@vkontakte/vkui";
+import { Div, PanelHeader } from "@vkontakte/vkui";
 import { memo } from "react";
 import { useDispatch } from "react-redux";
 import { mainActions } from "../bll/main";
@@ -16,10 +16,14 @@ export const PanelHeaderBack = memo<Props>(({ id, onClick }) => {
     dispatch(mainActions.setActivePanel(PANEL_ROUTES.HOME));
   };
   return (
-    <PanelHeader separator={false} id={id}>
-      <div onClick={onClick ?? handleClick}>
-        <ChevronLeftIcon />
-      </div>
-    </PanelHeader>
+    <PanelHeader
+      left={
+        <Div onClick={onClick ?? handleClick}>
+          <ChevronLeftIcon />
+        </Div>
+      }
+      separator={false}
+      id={id}
+    />
   );
 });

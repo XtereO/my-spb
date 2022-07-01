@@ -80,7 +80,14 @@ export const BridgeListItem = memo<Props>(
           <Header style={{ color: theme.heading }} id={`${id}-header`}>
             <span style={{ fontSize: 18, fontWeight: 500 }}>{children}</span>
           </Header>
-          <Group id={`${id}-time-intervals`} style={{ paddingTop: 10 }}>
+          <Group
+            id={`${id}-time-intervals`}
+            style={
+              !!timeIntervalElements[0] 
+                ? { paddingTop: 10 }
+                : { paddingTop: -10 }
+            }
+          >
             {timeIntervalElements}
             {distance && (
               <div style={{ marginTop: -20 }}>

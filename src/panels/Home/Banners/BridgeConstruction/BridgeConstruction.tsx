@@ -75,7 +75,7 @@ export const BridgeConstruction = memo<Props>(({ data, onClick }) => {
           </div>
         </Cell>
         <div style={{ marginTop: 6 }}>
-          <ThemedButton onClick={onClick} id="bridge-construction-btn">
+          <ThemedButton size="m" onClick={onClick} id="bridge-construction-btn">
             Полный список
           </ThemedButton>
         </div>

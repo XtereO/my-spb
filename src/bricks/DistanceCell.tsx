@@ -19,9 +19,15 @@ export const DistanceCell = memo<Props>(({ distance, id, children }) => {
       before={<PlaceOutlineIcon />}
       style={{ fontWeight: 500, fontSize: 14, color: theme.text }}
     >
-      <span style={{ marginLeft: 6 }}>
-        {children} {distance} метр{getEndingNumber(distance)}
-      </span>
+      {distance > 10000 ? (
+        <span style={{ marginLeft: 6 }}>
+          {children} {(distance/1000).toFixed(1)} километр{getEndingNumber(distance)}
+        </span>
+      ) : (
+        <span style={{ marginLeft: 6 }}>
+          {children} {distance} метр{getEndingNumber(distance)}
+        </span>
+      )}
     </Cell>
   );
 });

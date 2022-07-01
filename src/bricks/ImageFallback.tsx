@@ -7,6 +7,7 @@ import defaultImage from "../icons/default-image.jpg";
 
 type Props = {
   id: string;
+  onClick?: () => void;
   spinnerSize?: "large";
   style?: object;
   imageUrl: string;
@@ -14,7 +15,7 @@ type Props = {
 };
 
 export const ImageFallback = memo<Props>(
-  ({ id, style, imageUrl, spinnerSize, className }) => {
+  ({ id, onClick, style, imageUrl, spinnerSize, className }) => {
     const { inView, ref } = useInView();
     const [photoSrc, setPhotoSrc] = useState("");
     useEffect(() => {
@@ -36,6 +37,7 @@ export const ImageFallback = memo<Props>(
     }
     return (
       <img
+        onClick={onClick}
         referrerPolicy="no-referrer"
         onError={() => setPhotoSrc(defaultImage)}
         id={id}

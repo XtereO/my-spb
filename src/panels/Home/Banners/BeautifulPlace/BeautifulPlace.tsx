@@ -48,6 +48,10 @@ export const BeautifulPlace = memo<Props>(({ data, onClick }) => {
         >
           {data?.slice(0, 5).map((d) => (
             <HorizontalPlace
+              coordinates={[
+                Number(d.coordinates.split(", ")[0]),
+                Number(d.coordinates.split(", ")[1]),
+              ]}
               key={d.description}
               title={d.name ?? d.description}
               pathToPhoto={d.path_to_photo}

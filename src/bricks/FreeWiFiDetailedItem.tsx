@@ -66,11 +66,13 @@ export const FreeWiFiDetailedItem = memo<Props>(
             >
               Зона покрытия: {coverage} метр{getEndingNumber(coverage)}
             </GrayCell>
-            {distance && (
+            {(distance) && (distance>10000 ? (
               <GrayCell id={`${id}-distance`} before={<PlaceOutlineIcon />}>
-                Расстояние до Вас: {distance} метр{getEndingNumber(distance)}
+                Расстояние до Вас: {(distance/1000).toFixed(1)} километр{getEndingNumber(distance)}
               </GrayCell>
-            )}
+            ) : <GrayCell id={`${id}-distance`} before={<PlaceOutlineIcon />}>
+            Расстояние до Вас: {distance} метр{getEndingNumber(distance)}
+          </GrayCell>)}
             <Div style={{ marginTop: -6 }}>
               <ThemedButton onClick={handleClick} id={`${id}-btn`}>
                 Показать на карте

@@ -49,7 +49,7 @@ export const VerticalPlace = memo<Props>(
             />
           </Div>
           {coordinates && (
-            <Div>
+            <Div className="center-x">
               <ThemedButton onClick={handleClick} id={`${id}-btn`}>
                 Показать на карте
               </ThemedButton>

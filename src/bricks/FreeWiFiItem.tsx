@@ -17,7 +17,7 @@ export const FreeWiFiItem = memo<Props>(({ id, address, status }) => {
       id={`free-wifi-item${id}`}
       style={{ display: "flex", flexDirection: "row" }}
     >
-      <div>
+      <div className="center-y">
         <div
           className="center-x"
           style={{

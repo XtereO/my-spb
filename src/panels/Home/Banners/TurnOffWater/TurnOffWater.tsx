@@ -54,7 +54,7 @@ export const TurnOffWater = memo<Props>(({ data, onClick }) => {
             : "Сегодня воду отключать не будут"}
         </div>
         <div style={{ marginTop: 6, bottom: 0 }}>
-          <ThemedButton onClick={onClick} id="turn-off-water-btn">
+          <ThemedButton size="m" onClick={onClick} id="turn-off-water-btn">
             Полный список
           </ThemedButton>
         </div>

@@ -23,7 +23,7 @@ export const Map = memo(() => {
       <PanelHeaderBack onClick={handleClick} id={`${PANEL_ROUTES.MAP}-back`} />
       <MainHeader id={`${PANEL_ROUTES.MAP}-header`}>Карта</MainHeader>
       <Div>
-        <YMaps>
+        <YMaps preload={true}>
           <YMap
             width={"100%"}
             height={350}
