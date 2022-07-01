@@ -14,7 +14,7 @@ import {
 } from "../../../bll/notifications";
 import { CardHeader, RoundedCard, ThemedButton } from "../../../bricks";
 import { NotificationOutlineIcon } from "../../../icons";
-import { Address, Notifications } from "../../../types";
+import { Address } from "../../../types";
 import { ThemeContext } from "../../../utils";
 import "./NotificationBanner.css";
 
@@ -29,19 +29,16 @@ export const NotificationBanner = memo(() => {
     }
   }, [data]);
   const notification = useSelector(getNotifications);
-  const address: null | string[] = useMemo(() => {
+  const address: null | string = useMemo(() => {
     if (notification && notification.address.street) {
       return [
         notification.address.city,
-        ...Object.keys(notification.address).map((key) => {
-          //@ts-ignore
-          const title: string = notification.address[key];
-          if (key !== "city" && title) {
-            return ", " + title;
-          }
-          return "";
-        }),
-      ];
+        notification.address.district,
+        notification.address.street,
+        notification.address.house,
+        notification.address.korpus,
+        notification.address.liter
+      ].filter(n=>!!n).join(", ");
     }
     return null;
   }, [notification.address]);

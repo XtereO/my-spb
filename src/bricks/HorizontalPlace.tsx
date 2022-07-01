@@ -11,44 +11,37 @@ type Props = {
 };
 
 export const HorizontalPlace = memo<Props>(({ title, pathToPhoto }) => {
-  const [photoSrc, setPhotoSrc] = useState("");
-  useEffect(() => {
-    getPhotoUrl(pathToPhoto).then((res) => setPhotoSrc(res.preview ?? ""));
-  }, [photoSrc]);
   const theme = useContext(ThemeContext);
-  if (photoSrc) {
-    return (
+  return (
+    <div
+      style={{
+        background: theme.horizontalPlaceBg,
+        borderRadius: 21,
+        marginRight: 5,
+        marginLeft: 5,
+      }}
+      id="horizontal-place"
+    >
+      <Div className="center-x">
+        <ImageFallback
+          id="horizontal-place-img"
+          style={{ borderRadius: 21, width: 107.77, height: 81 }}
+          imageUrl={pathToPhoto}
+        />
+      </Div>
       <div
+        id="horizontal-place-title"
         style={{
-          background: theme.horizontalPlaceBg,
-          borderRadius: 21,
-          marginRight: 5,
-          marginLeft: 5,
+          fontSize: 12,
+          marginTop: -10,
+          fontWeight: 600,
+          color: theme.heading,
+          textAlign: "center",
         }}
-        id="horizontal-place"
+        className="center-x"
       >
-        <Div className="center-x">
-          <img
-            id="horizontal-place-img"
-            style={{ borderRadius: 21, width: 107.77, height: 81 }}
-            src={photoSrc}
-          />
-        </Div>
-        <div
-          id="horizontal-place-title"
-          style={{
-            fontSize: 12,
-            marginTop: -10,
-            fontWeight: 600,
-            color: theme.heading,
-            textAlign: "center",
-          }}
-          className="center-x"
-        >
-          {title}
-        </div>
+        {title}
       </div>
-    );
-  }
-  return <></>;
+    </div>
+  );
 });

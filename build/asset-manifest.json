@@ -1,20 +1,21 @@
 {
   "files": {
     "main.css": "./static/css/main.41ef07c7.chunk.css",
-    "main.js": "./static/js/main.c22897be.chunk.js",
+    "main.js": "./static/js/main.f986756d.chunk.js",
     "runtime-main.js": "./static/js/runtime-main.756e66f1.js",
     "static/css/2.1f545151.chunk.css": "./static/css/2.1f545151.chunk.css",
-    "static/js/2.ab0ec426.chunk.js": "./static/js/2.ab0ec426.chunk.js",
+    "static/js/2.5673d9af.chunk.js": "./static/js/2.5673d9af.chunk.js",
     "index.html": "./index.html",
-    "static/js/2.ab0ec426.chunk.js.LICENSE.txt": "./static/js/2.ab0ec426.chunk.js.LICENSE.txt",
+    "static/js/2.5673d9af.chunk.js.LICENSE.txt": "./static/js/2.5673d9af.chunk.js.LICENSE.txt",
     "static/media/App.css": "./static/media/SF-Pro-Rounded-Semibold.af98bf89.ttf",
+    "static/media/default-image.589a2a59.jpg": "./static/media/default-image.589a2a59.jpg",
     "static/media/placemark.188cd6a0.png": "./static/media/placemark.188cd6a0.png"
   },
   "entrypoints": [
     "static/js/runtime-main.756e66f1.js",
     "static/css/2.1f545151.chunk.css",
-    "static/js/2.ab0ec426.chunk.js",
+    "static/js/2.5673d9af.chunk.js",
     "static/css/main.41ef07c7.chunk.css",
-    "static/js/main.c22897be.chunk.js"
+    "static/js/main.f986756d.chunk.js"
   ]
 }

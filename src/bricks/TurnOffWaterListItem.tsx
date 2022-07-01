@@ -38,8 +38,10 @@ export const TurnOffWaterListItem = memo<Props>(
     return (
       <div style={{ marginTop: 12 }}>
         <RoundedCard id={`turn-off-water-list-item-${id}`}>
-          <Header style={{ color: theme.heading }} id={`${id}-header`}>
-            <span style={{ fontSize: 18, fontWeight: 500 }}>{children}</span>
+          <Header
+            id={`${id}-header`}
+          >
+            <span style={{ fontSize: 18, fontWeight: 500, color: theme.heading, whiteSpace: "normal" }}>{children}</span>
           </Header>
           <Group
             id={`${id}-time-intervals`}

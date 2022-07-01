@@ -1,5 +1,5 @@
 import { Div, Panel } from "@vkontakte/vkui";
-import { memo, useCallback } from "react";
+import { memo, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { YMaps, Map as YMap, Placemark } from "react-yandex-maps";
 import { getCenter, getZoom, mapActions } from "../../bll/map";
@@ -15,6 +15,9 @@ export const Map = memo(() => {
     dispatch(mapActions.setCenter(null));
   }, []);
   const defaultCenter = [59.939095, 30.315868];
+  useEffect(() => {
+    return handleClick;
+  }, []);
   return (
     <Panel id={PANEL_ROUTES.MAP}>
       <PanelHeaderBack onClick={handleClick} id={`${PANEL_ROUTES.MAP}-back`} />

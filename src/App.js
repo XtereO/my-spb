@@ -24,7 +24,6 @@ import {
   Map,
 } from "./panels";
 import { getCenter } from "./bll/map";
-import { notificationsActions } from "./bll/notifications";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -52,23 +51,36 @@ const App = () => {
     fetchData();
   }, []);
 
-  const handleHashChange = useCallback(() => {
-    if (!window.location.hash.slice(1) && activePanel !== PANEL_ROUTES.MAP) {
-      dispatch(mainActions.setActivePanel(PANEL_ROUTES.HOME));
-    }
-  }, [activePanel]);
-  useEffect(() => {
-    window.addEventListener("hashchange", handleHashChange);
-  }, []);
   const [panelBeforeMap, setPanelBeforeMap] = useState(activePanel);
   useEffect(() => {
+    const hash = [...new Set(window.location.hash.slice(1).split("/"))]
+      .filter((h) => h !== PANEL_ROUTES.WELCOME)
+      .join("/");
     window.location.assign(
-      "#" + (activePanel === PANEL_ROUTES.HOME ? "" : activePanel)
+      hash && !hash.includes(activePanel)
+        ? `#${hash}/${activePanel}`
+        : hash
+        ? `#${hash}`
+        : `#${activePanel}`
     );
     if (activePanel !== PANEL_ROUTES.MAP) {
       setPanelBeforeMap(activePanel);
     }
   }, [activePanel]);
+  const handleHashChange = useCallback(() => {
+    const hash = window.location.hash.slice(1);
+    if (!hash) {
+      dispatch(mainActions.setActivePanel(PANEL_ROUTES.HOME));
+    } else {
+      dispatch(
+        mainActions.setActivePanel(hash.split("/")[hash.split("/").length - 1])
+      );
+    }
+  }, []);
+  useEffect(() => {
+    window.addEventListener("hashchange", handleHashChange);
+  }, []);
+
   const centerMap = useSelector(getCenter);
   useEffect(() => {
     if (centerMap) {
@@ -85,7 +97,7 @@ const App = () => {
           <AppRoot>
             <View activePanel={activePanel}>
               <Welcome id={PANEL_ROUTES.WELCOME} />
-              <Home id={PANEL_ROUTES.HOME}  />
+              <Home id={PANEL_ROUTES.HOME} />
               <Fact id={PANEL_ROUTES.FACT} />
               <BridgeConstruction id={PANEL_ROUTES.BRIDGE_CONSTRUCTION} />
               <TurnOffWater id={PANEL_ROUTES.TURN_OFF_WATER} />

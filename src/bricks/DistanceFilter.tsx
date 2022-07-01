@@ -15,16 +15,15 @@ type Props = {
 export const DistanceFilter = memo<Props>(
   ({ defaultLabel, value, onChange, id }) => {
     const dispatch = useDispatch();
-    //@ts-ignore
-    useEffect(async () => {
+    useEffect(() => {
       if (value === "distance") {
-        const data = await bridge.send("VKWebAppGetGeodata");
-        console.log(data);
-        if (data.available === 1 && data.lat && data.long) {
-          dispatch(mainActions.setUserCoordinates([data.lat, data.long]));
-        } else if (onChange) {
-          onChange("default");
-        }
+        bridge.send("VKWebAppGetGeodata").then((data) => {
+          if (!!data.available && data.lat && data.long) {
+            dispatch(mainActions.setUserCoordinates([data.lat, data.long]));
+          } else if (onChange) {
+            onChange("default");
+          }
+        });
       }
     }, [value]);
     return (

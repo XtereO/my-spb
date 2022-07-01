@@ -21,25 +21,15 @@ type Props = {
 
 export const VerticalPlace = memo<Props>(
   ({ id, title, pathToPhoto, distance, coordinates }) => {
-    const { inView, ref } = useInView();
     const dispatch = useDispatch();
     const handleClick = useCallback(() => {
       if (coordinates) {
         dispatch(mapActions.setCenter(coordinates));
       }
     }, [coordinates]);
-    const [photoSrc, setPhotoSrc] = useState("");
-    useEffect(() => {
-      setPhotoSrc("");
-    }, [pathToPhoto]);
-    useEffect(() => {
-      if (inView && !photoSrc) {
-        getPhotoUrl(pathToPhoto).then((res) => setPhotoSrc(res.preview ?? ""));
-      }
-    }, [inView, ref]);
 
     return (
-      <div ref={ref} style={{ marginTop: 12 }}>
+      <div style={{ marginTop: 12 }}>
         <RoundedCard id={String(id)}>
           <div className="center-x" style={{ textAlign: "center" }}>
             <CardHeader id={`${id}-header`} before={<></>}>
@@ -52,17 +42,11 @@ export const VerticalPlace = memo<Props>(
             </div>
           )}
           <Div style={{ marginTop: -12 }} className="center-x">
-            {photoSrc ? (
-              <img
-                id={`${id}-img`}
-                style={{ borderRadius: 21, width: "100%", height: 186 }}
-                src={photoSrc}
-              />
-            ) : (
-              <div style={{ height: 186 }}>
-                <Spinner size="large" />
-              </div>
-            )}
+            <ImageFallback
+              id={`${id}-img`}
+              imageUrl={pathToPhoto}
+              style={{ borderRadius: 21, width: "100%", height: 186 }}
+            />
           </Div>
           {coordinates && (
             <Div>
