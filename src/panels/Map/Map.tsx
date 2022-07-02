@@ -21,30 +21,27 @@ export const Map = memo(() => {
   return (
     <Panel id={PANEL_ROUTES.MAP}>
       <PanelHeaderBack onClick={handleClick} id={`${PANEL_ROUTES.MAP}-back`} />
-      <MainHeader id={`${PANEL_ROUTES.MAP}-header`}>Карта</MainHeader>
-      <Div>
-        <YMaps preload={true}>
-          <YMap
-            width={"100%"}
-            height={350}
-            state={{ center: center ?? defaultCenter, zoom }}
-          >
-            <Placemark
-              geometry={center ?? defaultCenter}
-              properties={{
-                hintContent: "То самое место",
-                balloonContent: "Это красивая метка",
-              }}
-              options={{
-                iconLayout: "default#image",
-                iconImageHref: placemark,
-                iconImageSize: [30, 30],
-                iconImageOffset: [-3, -20],
-              }}
-            />
-          </YMap>
-        </YMaps>
-      </Div>
+      <YMaps preload={true}>
+        <YMap
+          width={"100%"}
+          height={window.innerHeight - 50}
+          state={{ center: center ?? defaultCenter, zoom }}
+        >
+          <Placemark
+            geometry={center ?? defaultCenter}
+            properties={{
+              hintContent: "То самое место",
+              balloonContent: "Это красивая метка",
+            }}
+            options={{
+              iconLayout: "default#image",
+              iconImageHref: placemark,
+              iconImageSize: [30, 30],
+              iconImageOffset: [-3, -20],
+            }}
+          />
+        </YMap>
+      </YMaps>
     </Panel>
   );
 });

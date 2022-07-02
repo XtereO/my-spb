@@ -9,3 +9,4 @@ export * from "./sortBridgeByTIme";
 export * from "./toFullTime";
 export * from "./sortByKey";
 export * from "./getCountDays";
+export * from "./roundMetr";

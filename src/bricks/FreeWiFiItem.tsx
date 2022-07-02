@@ -38,7 +38,6 @@ export const FreeWiFiItem = memo<Props>(({ id, address, status }) => {
           color: theme.text,
           fontSize: 14,
           marginLeft: 4,
-          fontWeight: 500,
         }}
         id={`free-wifi-item${id}-title`}
       >

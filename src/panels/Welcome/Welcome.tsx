@@ -9,6 +9,11 @@ import { useDispatch } from "react-redux";
 import { mainActions } from "../../bll/main";
 import { AppIcon } from "../../icons";
 import "./Welcome.css";
+import {
+  TextInterSemibold,
+  TextSFProRoundedLight,
+  TextSFProRoundedSemibold,
+} from "../../bricks";
 
 export const Welcome = memo(() => {
   const theme = useContext(ThemeContext);
@@ -38,16 +43,18 @@ export const Welcome = memo(() => {
             className="heading center-x"
             style={{ color: theme.heading }}
           >
-            Мой Петербург
+            <TextSFProRoundedSemibold>Мой Петербург</TextSFProRoundedSemibold>
           </Header>
           <Div
             id={`${PANEL_ROUTES.WELCOME}-description`}
             className="text center-x"
-            style={{ color: theme.text, textAlign: "center" }}
+            style={{ color: theme.text, textAlign: "center", letterSpacing: -0.24 }}
           >
-            Расскажем где бесплатный Wi-Fi, куда можно сходить прогуляться.
-            Подскажем когда выключат воду в твоём доме. И немного фактов и
-            памятных дат в твоём любимом Санкт-Петербурге
+            <TextSFProRoundedLight>
+              Расскажем где бесплатный Wi-Fi, куда можно сходить прогуляться.
+              Подскажем когда выключат воду в твоём доме. И немного фактов и
+              памятных дат в твоём любимом Санкт-Петербурге
+            </TextSFProRoundedLight>
           </Div>
           <Div className="center-x">
             <Button
@@ -58,9 +65,10 @@ export const Welcome = memo(() => {
                 background: theme.btnBgWelcome,
                 color: theme.btnTextWelcome,
                 width: 175,
+                letterSpacing: -0.41,
               }}
             >
-              Вперёд!
+              <TextInterSemibold>Вперёд!</TextInterSemibold>
             </Button>
           </Div>
         </Group>

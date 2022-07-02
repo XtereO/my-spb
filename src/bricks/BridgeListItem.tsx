@@ -55,7 +55,6 @@ export const BridgeListItem = memo<Props>(
               before={<LockOutlineIcon />}
               style={{
                 width: "50%",
-                fontWeight: 500,
                 fontSize: 14,
                 color: theme.text,
               }}
@@ -66,7 +65,7 @@ export const BridgeListItem = memo<Props>(
               disabled
               id={`${id}-item-${index}-open`}
               before={<LockOpenOutlineIcon />}
-              style={{ fontWeight: 500, fontSize: 14, color: theme.text }}
+              style={{ fontSize: 14, color: theme.text }}
             >
               <span style={{ marginLeft: 6 }}>{toFullTime(t[1])}</span>
             </Cell>
@@ -78,7 +77,7 @@ export const BridgeListItem = memo<Props>(
       <div style={{ marginTop: 12 }}>
         <RoundedCard id={`bridge-list-item-${id}`}>
           <Header style={{ color: theme.heading }} id={`${id}-header`}>
-            <span style={{ fontSize: 18, fontWeight: 500 }}>{children}</span>
+            <span style={{ fontSize: 18 }}>{children}</span>
           </Header>
           <Group
             id={`${id}-time-intervals`}

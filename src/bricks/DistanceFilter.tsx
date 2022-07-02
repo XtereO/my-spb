@@ -4,6 +4,7 @@ import bridge from "@vkontakte/vk-bridge";
 import { useDispatch } from "react-redux";
 import { mainActions } from "../bll/main";
 import { Filter } from "../types";
+import { TextSFProRoundedBold, TextSFProTextMedium } from "./Fonts";
 
 type Props = {
   id: string;
@@ -27,7 +28,10 @@ export const DistanceFilter = memo<Props>(
       }
     }, [value]);
     return (
-      <FormItem id={id} top="Сортировка">
+      <FormItem
+        id={id}
+        top={<TextSFProRoundedBold>Сортировка</TextSFProRoundedBold>}
+      >
         <SegmentedControl
           id="distance-filter-control"
           size="l"
@@ -36,11 +40,15 @@ export const DistanceFilter = memo<Props>(
           onChange={onChange}
           options={[
             {
-              label: defaultLabel ?? "По умолчанию",
+              label: (
+                <TextSFProTextMedium>
+                  {defaultLabel ?? "По умолчанию"}
+                </TextSFProTextMedium>
+              ),
               value: "default",
             },
             {
-              label: "По расстоянию",
+              label: <TextSFProTextMedium>По расстоянию</TextSFProTextMedium>,
               value: "distance",
             },
           ]}

@@ -2,7 +2,11 @@ import { Group } from "@vkontakte/vkui";
 import { memo, useContext, useEffect, useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { turnOffWaterActions } from "../../../../bll/turn-off-water";
-import { RoundedCard, ThemedButton } from "../../../../bricks";
+import {
+  RoundedCard,
+  TextSFProRoundedRegular,
+  ThemedButton,
+} from "../../../../bricks";
 import { WasherOutlineIcon } from "../../../../icons";
 import { PlannedWaterOff } from "../../../../types";
 import { getEndingNumber, ThemeContext } from "../../../../utils";
@@ -47,14 +51,21 @@ export const TurnOffWater = memo<Props>(({ data, onClick }) => {
           className="text"
           style={{ color: theme.text, marginTop: 4 }}
         >
-          {data?.today_off && data.today_off > 0
-            ? `Сегодня без воды ${data?.today_off} адрес${getEndingNumber(
-                data.today_off
-              )}`
-            : "Сегодня воду отключать не будут"}
+          <TextSFProRoundedRegular>
+            {data?.today_off && data.today_off > 0
+              ? `Сегодня без воды ${data?.today_off} адрес${getEndingNumber(
+                  data.today_off
+                )}`
+              : "Сегодня воду отключать не будут"}
+          </TextSFProRoundedRegular>
         </div>
         <div style={{ marginTop: 6, bottom: 0 }}>
-          <ThemedButton size="m" onClick={onClick} id="turn-off-water-btn">
+          <ThemedButton
+            fontSize={12}
+            size="m"
+            onClick={onClick}
+            id="turn-off-water-btn"
+          >
             Полный список
           </ThemedButton>
         </div>

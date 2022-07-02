@@ -30,36 +30,72 @@
   font-family: "SF-Pro-Rounded-Regular";
   src: url(./fonts/SF-Pro-Rounded-Regular.ttf);
 }
+@font-face {
+  font-family: "SF-Pro-Rounded-Medium";
+  src: url(./fonts/SF-Pro-Rounded-Medium.ttf);
+}
+@font-face {
+  font-family: "SF-Pro-Rounded-Light";
+  src: url(./fonts/SF-Pro-Rounded-Light.ttf);
+}
+@font-face {
+  font-family: "SF-Pro-Text-Regular";
+  src: url(./fonts/SF-Pro-Text-Regular.ttf);
+}
+@font-face {
+  font-family: "SF-Pro-Text-Semibold";
+  src: url(./fonts/SF-Pro-Text-Semibold.ttf);
+}
+@font-face {
+  font-family: "SF-Pro-Text-Medium";
+  src: url(./fonts/SF-Pro-Text-Medium.ttf);
+}
+.text__SF-Pro-Text-Regular {
+  font-family: SF-Pro-Text-Regular;
+}
+.text__SF-Pro-Text-Semibold {
+  font-family: SF-Pro-Text-Semibold;
+}
 .text__Inter-Bold {
-  font-family: "Inter-Bold";
+  font-family: Inter-Bold;
 }
 .text__Inter-Medium {
-  font-family: "Inter-Medium";
+  font-family: Inter-Medium;
+}
+.text__SF-Pro-Rounded-Medium {
+  font-family: SF-Pro-Rounded-Medium;
+}
+.text__SF-Pro-Rounded-Light {
+  font-family: SF-Pro-Rounded-Light;
 }
 .text__SF-Pro-Rounded-Regular {
-  font-family: "SF-Pro-Rounded-Regular";
+  font-family: SF-Pro-Rounded-Regular;
 }
 .text__Inter-Regular {
-  font-family: "Inter-Regular";
+  font-family: Inter-Regular;
 }
 .text__Inter-SemiBold {
-  font-family: "Inter-SemiBold";
+  font-family: Inter-SemiBold;
 }
 .text__SF-Pro-Rounded-Bold {
-  font-family: "SF-Pro-Rounded-Bold";
+  font-family: SF-Pro-Rounded-Bold;
 }
 .text__SF-Pro-Rounded-Semibold {
-  font-family: "SF-Pro-Rounded-Semibold";
+  font-family: SF-Pro-Rounded-Semibold;
 }
 .text__SF-Pro-Rounded-Heavy {
-  font-family: "SF-Pro-Rounded-Heavy";
+  font-family: SF-Pro-Rounded-Heavy;
+}
+.text__SF-Pro-Text-Medium {
+  font-family: SF-Pro-Text-Medium;
 }
 body {
   width: 100%;
   margin: 0;
   padding: 0;
-  font-family: SF-Pro-Rounded-Regular;
+  font-family: SF-Pro-Rounded-Medium;
   overflow-x: hidden;
+  letter-spacing: 0.25px;
 }
 body {
   -webkit-touch-callout: none;

@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { memo } from "react";
 import { useDispatch } from "react-redux";
 import { bridgeConstructionActions } from "../../../../bll/bridge-construction";
-import { RoundedCard, ThemedButton } from "../../../../bricks";
+import { RoundedCard, TextSFProRoundedRegular, TextSFProTextRegular, ThemedButton } from "../../../../bricks";
 import { CarOutlineIcon, ClockOutlineIcon } from "../../../../icons";
 import { BridgeConstruction as BridgeConstructionType } from "../../../../types";
 import { sortBridgeByTime, ThemeContext } from "../../../../utils";
@@ -54,7 +54,7 @@ export const BridgeConstruction = memo<Props>(({ data, onClick }) => {
           className="text"
           style={{ color: theme.text, marginTop: 4 }}
         >
-          {bridges[0] ? bridges[0].name : ""}
+          <TextSFProTextRegular>{bridges[0] ? bridges[0].name : ""}</TextSFProTextRegular>
         </div>
         <Cell
           style={{
@@ -68,14 +68,14 @@ export const BridgeConstruction = memo<Props>(({ data, onClick }) => {
         >
           <div
             id="bridge-construction-item"
-            style={{ color: theme.text }}
+            style={{ color: theme.text, marginLeft:8 }}
             className="text"
           >
-            {time}
+            <TextSFProRoundedRegular>{time}</TextSFProRoundedRegular>
           </div>
         </Cell>
         <div style={{ marginTop: 6 }}>
-          <ThemedButton size="m" onClick={onClick} id="bridge-construction-btn">
+          <ThemedButton fontSize={12} size="m" onClick={onClick} id="bridge-construction-btn">
             Полный список
           </ThemedButton>
         </div>

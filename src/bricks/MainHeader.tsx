@@ -2,7 +2,7 @@ import { Div, Header } from "@vkontakte/vkui";
 import { useContext } from "react";
 import { memo } from "react";
 import { ThemeContext } from "../utils";
-import { TextInterSemibold } from "./Fonts";
+import { TextInterBold } from "./Fonts";
 
 type Props = {
   id: string;
@@ -14,9 +14,9 @@ export const MainHeader = memo<Props>(({ id, children }) => {
   return (
     <Div
       id={id}
-      style={{ color: theme.heading, fontWeight: 700, fontSize: 22 }}
+      style={{ color: theme.heading, fontSize: 22 }}
     >
-      <TextInterSemibold>{children}</TextInterSemibold>
+      <TextInterBold>{children}</TextInterBold>
     </Div>
   );
 });

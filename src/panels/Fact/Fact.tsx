@@ -1,7 +1,12 @@
 import { Cell, Div, Group, Panel, PanelHeader } from "@vkontakte/vkui";
 import { memo } from "react";
 import parse from "html-react-parser";
-import { MainHeader, PanelHeaderBack } from "../../bricks";
+import {
+  MainHeader,
+  PanelHeaderBack,
+  TextSFProRoundedRegular,
+  TextSFProRoundedSemibold,
+} from "../../bricks";
 import { PANEL_ROUTES } from "../../consts";
 import { ArticleOutlineIcon, CalendarOutlineIcon } from "../../icons";
 import "./Fact.css";
@@ -22,7 +27,7 @@ export const Fact = memo(() => {
             id={`${PANEL_ROUTES.FACT}-article-title`}
             className="article-title"
           >
-            {title}
+            <TextSFProRoundedSemibold>{title}</TextSFProRoundedSemibold>
           </div>
         </Cell>
         <Cell
@@ -39,7 +44,9 @@ export const Fact = memo(() => {
           </div>
         </Cell>
         <Div style={{ marginTop: -10 }} id={`${PANEL_ROUTES.FACT}-article`}>
-          {parse(removeHrefs(text))}
+          <TextSFProRoundedRegular>
+            {parse(removeHrefs(text))}
+          </TextSFProRoundedRegular>
         </Div>
       </Group>
     </Panel>

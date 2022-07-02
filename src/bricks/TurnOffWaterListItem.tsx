@@ -41,7 +41,7 @@ export const TurnOffWaterListItem = memo<Props>(
           <Header
             id={`${id}-header`}
           >
-            <span style={{ fontSize: 18, fontWeight: 500, color: theme.heading, whiteSpace: "normal" }}>{children}</span>
+            <span style={{ fontSize: 18, color: theme.heading, whiteSpace: "normal" }}>{children}</span>
           </Header>
           <Group
             id={`${id}-time-intervals`}

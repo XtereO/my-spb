@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { mapActions } from "../bll/map";
 import { getPhotoUrl } from "../dal/api";
 import { ThemeContext } from "../utils";
+import { TextSFProRoundedSemibold } from "./Fonts";
 import { ImageFallback } from "./ImageFallback";
 
 type Props = {
@@ -43,13 +44,12 @@ export const HorizontalPlace = memo<Props>(
           style={{
             fontSize: 12,
             marginTop: -10,
-            fontWeight: 600,
             color: theme.heading,
             textAlign: "center",
           }}
           className="center-x"
         >
-          {title}
+          <TextSFProRoundedSemibold>{title}</TextSFProRoundedSemibold>
         </div>
       </div>
     );

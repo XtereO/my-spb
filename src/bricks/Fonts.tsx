@@ -24,5 +24,23 @@ export const TextInterRegular = ComponentWithFontByFontTitleCreator(
 export const TextSFProRoundedRegular = ComponentWithFontByFontTitleCreator(
   "text__SF-Pro-Rounded-Regular"
 );
+export const TextSFProRoundedMedium = ComponentWithFontByFontTitleCreator(
+  "text__SF-Pro-Rounded-Medium"
+);
+export const TextSFProRoundedLight = ComponentWithFontByFontTitleCreator(
+  "text__SF-Pro-Rounded-Light"
+);
+export const TextSFProRoundedBold = ComponentWithFontByFontTitleCreator(
+  "text__SF-Pro-Rounded-Bold"
+);
 export const TextInterBold =
   ComponentWithFontByFontTitleCreator("text__Inter-Bold");
+export const TextSFProTextRegular = ComponentWithFontByFontTitleCreator(
+  "text__SF-Pro-Text-Regular"
+);
+export const TextSFProTextSemibold = ComponentWithFontByFontTitleCreator(
+  "text__SF-Pro-Text-Semibold"
+);
+export const TextSFProTextMedium = ComponentWithFontByFontTitleCreator(
+  "text__SF-Pro-Text-Medium"
+);

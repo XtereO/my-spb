@@ -12,7 +12,12 @@ import {
   useGetNotificationsQuery,
   useSetAddressMutation,
 } from "../../../bll/notifications";
-import { CardHeader, RoundedCard, ThemedButton } from "../../../bricks";
+import {
+  CardHeader,
+  RoundedCard,
+  TextSFProTextRegular,
+  ThemedButton,
+} from "../../../bricks";
 import { NotificationOutlineIcon } from "../../../icons";
 import { Address } from "../../../types";
 import { ThemeContext } from "../../../utils";
@@ -37,8 +42,10 @@ export const NotificationBanner = memo(() => {
         notification.address.street,
         notification.address.house,
         notification.address.korpus,
-        notification.address.liter
-      ].filter(n=>!!n).join(", ");
+        notification.address.liter,
+      ]
+        .filter((n) => !!n)
+        .join(", ");
     }
     return null;
   }, [notification.address]);
@@ -150,70 +157,72 @@ export const AddressForm = memo<Props>(({ address, closeEditMode }) => {
       {({ values, handleChange, handleSubmit, isSubmitting }) => {
         return (
           <form onSubmit={handleSubmit}>
-            <FormItem top="Город">
-              <Input
-                disabled={isSubmitting}
-                required
-                placeholder="Санкт-Петербург"
-                name="city"
-                type="text"
-                value={values.city}
-                onChange={handleChange}
-              />
-            </FormItem>
-            <FormItem top="Район">
-              <Input
-                disabled={isSubmitting}
-                required
-                placeholder="Василеостровский"
-                name="district"
-                type="text"
-                value={values.district}
-                onChange={handleChange}
-              />
-            </FormItem>
-            <FormItem top="Улица">
-              <Input
-                disabled={isSubmitting}
-                required
-                placeholder="Железноводская"
-                name="street"
-                type="text"
-                value={values.street}
-                onChange={handleChange}
-              />
-            </FormItem>
-            <FormItem top="Дом">
-              <Input
-                disabled={isSubmitting}
-                required
-                placeholder="26"
-                name="house"
-                type="text"
-                value={values.house}
-                onChange={handleChange}
-              />
-            </FormItem>
-            <FormItem top="Корпус">
-              <Input
-                disabled={isSubmitting}
-                placeholder="2"
-                name="korpus"
-                type="text"
-                value={values.korpus}
-                onChange={handleChange}
-              />
-            </FormItem>
-            <FormItem top="Литера">
-              <Input
-                disabled={isSubmitting}
-                placeholder="A"
-                name="liter"
-                type="text"
-                value={values.liter}
-                onChange={handleChange}
-              />
-            </FormItem>
+            <TextSFProTextRegular>
+              <FormItem top="Город">
+                <Input
+                  disabled={isSubmitting}
+                  required
+                  placeholder="Санкт-Петербург"
+                  name="city"
+                  type="text"
+                  value={values.city}
+                  onChange={handleChange}
+                />
+              </FormItem>
+              <FormItem top="Район">
+                <Input
+                  disabled={isSubmitting}
+                  required
+                  placeholder="Василеостровский"
+                  name="district"
+                  type="text"
+                  value={values.district}
+                  onChange={handleChange}
+                />
+              </FormItem>
+              <FormItem top="Улица">
+                <Input
+                  disabled={isSubmitting}
+                  required
+                  placeholder="Железноводская"
+                  name="street"
+                  type="text"
+                  value={values.street}
+                  onChange={handleChange}
+                />
+              </FormItem>
+              <FormItem top="Дом">
+                <Input
+                  disabled={isSubmitting}
+                  required
+                  placeholder="26"
+                  name="house"
+                  type="text"
+                  value={values.house}
+                  onChange={handleChange}
+                />
+              </FormItem>
+              <FormItem top="Корпус">
+                <Input
+                  disabled={isSubmitting}
+                  placeholder="2"
+                  name="korpus"
+                  type="text"
+                  value={values.korpus}
+                  onChange={handleChange}
+                />
+              </FormItem>
+              <FormItem top="Литера">
+                <Input
+                  disabled={isSubmitting}
+                  placeholder="A"
+                  name="liter"
+                  type="text"
+                  value={values.liter}
+                  onChange={handleChange}
+                />
+              </FormItem>
+            </TextSFProTextRegular>
             <div
               style={{ paddingLeft: 16, paddingBottom: 12 }}
               className="d-flex"

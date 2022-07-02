@@ -10,7 +10,7 @@ import {
   RadioWawesAroundOutlineIcon,
   WarningTriangleOutlineIcon,
 } from "../icons";
-import { getEndingNumber, ThemeContext } from "../utils";
+import { getEndingNumber, roundMetr, ThemeContext } from "../utils";
 import { RoundedCard } from "./RoundedCard";
 import { ThemedButton } from "./ThemedButton";
 
@@ -37,7 +37,7 @@ export const FreeWiFiDetailedItem = memo<Props>(
       <div style={{ marginTop: 12 }}>
         <RoundedCard id={String(id)}>
           <Header style={{ color: theme.heading }} id={`${id}-address`}>
-            <span style={{ fontSize: 18, fontWeight: 500 }}>{address}</span>
+            <span style={{ fontSize: 18 }}>{address}</span>
           </Header>
           <Group style={{ marginTop: 6 }}>
             <GrayCell
@@ -66,13 +66,16 @@ export const FreeWiFiDetailedItem = memo<Props>(
             >
               Зона покрытия: {coverage} метр{getEndingNumber(coverage)}
             </GrayCell>
-            {(distance) && (distance>10000 ? (
-              <GrayCell id={`${id}-distance`} before={<PlaceOutlineIcon />}>
-                Расстояние до Вас: {(distance/1000).toFixed(1)} километр{getEndingNumber(distance)}
-              </GrayCell>
-            ) : <GrayCell id={`${id}-distance`} before={<PlaceOutlineIcon />}>
-            Расстояние до Вас: {distance} метр{getEndingNumber(distance)}
-          </GrayCell>)}
+            {distance &&
+              (distance > 1000 ? (
+                <GrayCell id={`${id}-distance`} before={<PlaceOutlineIcon />}>
+                  Расстояние до Вас: {roundMetr(distance)} километров
+                </GrayCell>
+              ) : (
+                <GrayCell id={`${id}-distance`} before={<PlaceOutlineIcon />}>
+                  Расстояние до Вас: {distance} метр{getEndingNumber(distance)}
+                </GrayCell>
+              ))}
             <Div style={{ marginTop: -6 }}>
               <ThemedButton onClick={handleClick} id={`${id}-btn`}>
                 Показать на карте
@@ -96,7 +99,6 @@ const GrayCell = memo<GrayCellProps>(({ id, before, children }) => {
     <Cell disabled style={{ marginTop: -20 }} id={id} before={before}>
       <span
         style={{
-          fontWeight: 500,
           color: theme.text,
           fontSize: 14,
           marginLeft: 4,
