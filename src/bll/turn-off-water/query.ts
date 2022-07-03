@@ -9,7 +9,7 @@ export const turnOffWaterApi = createApi({
   }),
   endpoints: (build) => ({
     getPlannedWaterOff: build.query<
-      { items: PlannedWaterOff[]; today_off: number },
+      { items: PlannedWaterOff[]; today_off: number; max_page: number },
       { page: number }
     >({
       query: ({ page }) => ({
@@ -17,7 +17,13 @@ export const turnOffWaterApi = createApi({
         method: "get",
       }),
       transformResponse: (
-        data: { response: { items: PlannedWaterOff[]; today_off: number } },
+        data: {
+          response: {
+            items: PlannedWaterOff[];
+            today_off: number;
+            max_page: number;
+          };
+        },
         meta,
         arg
       ) => data.response,

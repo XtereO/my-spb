@@ -1,7 +1,10 @@
 import { Group } from "@vkontakte/vkui";
 import { memo, useContext, useEffect, useMemo } from "react";
-import { useDispatch } from "react-redux";
-import { turnOffWaterActions } from "../../../../bll/turn-off-water";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getPlannedWaterOffs,
+  turnOffWaterActions,
+} from "../../../../bll/turn-off-water";
 import {
   RoundedCard,
   TextSFProRoundedRegular,
@@ -20,8 +23,9 @@ type Props = {
 export const TurnOffWater = memo<Props>(({ data, onClick }) => {
   const theme = useContext(ThemeContext);
   const dispatch = useDispatch();
+  const plannedWaterOffs = useSelector(getPlannedWaterOffs);
   useEffect(() => {
-    if (data) {
+    if (data && plannedWaterOffs.length === 0) {
       dispatch(turnOffWaterActions.setPlannedWaterOffs(data.items));
     }
   }, [data]);
