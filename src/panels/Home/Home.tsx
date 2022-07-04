@@ -8,7 +8,7 @@ import { useGetBridgeConstructionsQuery } from "../../bll/bridge-construction";
 import { useGetFactQuery } from "../../bll/fact";
 import { useGetFreeWifiQuery } from "../../bll/free-wifi";
 import { mainActions } from "../../bll/main";
-import { useGetPlannedWaterOffQuery } from "../../bll/turn-off-water";
+import { useGetPlannedWaterOffCountQuery } from "../../bll/turn-off-water";
 import { MainHeader } from "../../bricks";
 import { PANEL_ROUTES } from "../../consts";
 import { BridgeConstruction, Fact } from "./Banners";
@@ -26,7 +26,7 @@ export const Home = memo(() => {
     []
   );
   const date = new Date();
-  const plannedWaterOff = useGetPlannedWaterOffQuery({ page: 1 });
+  const plannedWaterOffCount = useGetPlannedWaterOffCountQuery({});
   const freeWifi = useGetFreeWifiQuery({ page: 1 });
   const fact = useGetFactQuery({
     day: date.getDate(),
@@ -34,9 +34,9 @@ export const Home = memo(() => {
   });
   const bridges = useGetBridgeConstructionsQuery({});
   const places = useGetBeautifulPlacesQuery({});
-  
+
   const isPanelLoading =
-    plannedWaterOff.isLoading ||
+    plannedWaterOffCount.isLoading ||
     freeWifi.isLoading ||
     fact.isLoading ||
     bridges.isLoading ||
@@ -58,11 +58,11 @@ export const Home = memo(() => {
                 data={bridges.data}
                 onClick={handleClick(PANEL_ROUTES.BRIDGE_CONSTRUCTION)}
               />
-              <div style={{marginLeft: 21}}>
-              <TurnOffWater
-                data={plannedWaterOff.data}
-                onClick={handleClick(PANEL_ROUTES.TURN_OFF_WATER)}
-              />
+              <div style={{ marginLeft: 21 }}>
+                <TurnOffWater
+                  data={plannedWaterOffCount.data}
+                  onClick={handleClick(PANEL_ROUTES.TURN_OFF_WATER)}
+                />
               </div>
             </Div>
             <Div>

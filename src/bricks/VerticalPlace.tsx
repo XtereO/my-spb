@@ -1,5 +1,5 @@
-import { Div, ScreenSpinner, Spinner } from "@vkontakte/vkui";
-import { useCallback, useEffect, useState } from "react";
+import { Div } from "@vkontakte/vkui";
+import { useCallback } from "react";
 import { memo } from "react";
 import { useDispatch } from "react-redux";
 import { mapActions } from "../bll/map";
@@ -7,9 +7,9 @@ import { CardHeader } from "./CardHeader";
 import { DistanceCell } from "./DistanceCell";
 import { RoundedCard } from "./RoundedCard";
 import { ThemedButton } from "./ThemedButton";
-import { useInView } from "react-intersection-observer";
-import { getPhotoUrl } from "../dal/api";
+import parse from "html-react-parser";
 import { ImageFallback } from "./ImageFallback";
+import { removeHrefs } from "../utils";
 
 type Props = {
   id: number;
@@ -27,13 +27,13 @@ export const VerticalPlace = memo<Props>(
         dispatch(mapActions.setCenter(coordinates));
       }
     }, [coordinates]);
-
+    
     return (
       <div style={{ marginTop: 12 }}>
         <RoundedCard id={String(id)}>
           <div className="center-x" style={{ textAlign: "center" }}>
             <CardHeader id={`${id}-header`} before={<></>}>
-              {title}
+              {parse(removeHrefs(title))}
             </CardHeader>
           </div>
           {distance && (

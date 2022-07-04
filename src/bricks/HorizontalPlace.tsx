@@ -1,12 +1,12 @@
-import { Div, HorizontalCell } from "@vkontakte/vkui";
-import { useCallback, useContext, useEffect, useState } from "react";
+import { Div } from "@vkontakte/vkui";
+import { useCallback, useContext } from "react";
 import { memo } from "react";
 import { useDispatch } from "react-redux";
 import { mapActions } from "../bll/map";
-import { getPhotoUrl } from "../dal/api";
-import { ThemeContext } from "../utils";
+import { removeHrefs, ThemeContext } from "../utils";
 import { TextSFProRoundedSemibold } from "./Fonts";
 import { ImageFallback } from "./ImageFallback";
+import parse from "html-react-parser";
 
 type Props = {
   title: string;
@@ -49,7 +49,9 @@ export const HorizontalPlace = memo<Props>(
           }}
           className="center-x"
         >
-          <TextSFProRoundedSemibold>{title}</TextSFProRoundedSemibold>
+          <TextSFProRoundedSemibold>
+            {parse(removeHrefs(title))}
+          </TextSFProRoundedSemibold>
         </div>
       </div>
     );

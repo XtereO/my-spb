@@ -14,8 +14,8 @@ export const removeHrefs = (text: string) => {
   }
   reducedText = reducedText
     .replaceAll('target="_blank"', "")
-    .replaceAll("\r", "")
-    .replaceAll("\n", "");
+    .replace(/\\r/g, "")
+    .replace(/\\n/g, "");
 
   return reducedText;
 };

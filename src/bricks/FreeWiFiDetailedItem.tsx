@@ -37,7 +37,9 @@ export const FreeWiFiDetailedItem = memo<Props>(
       <div style={{ marginTop: 12 }}>
         <RoundedCard id={String(id)}>
           <Header style={{ color: theme.heading }} id={`${id}-address`}>
-            <span style={{ fontSize: 18 }}>{address}</span>
+            <span style={{ fontSize: 18, whiteSpace: "normal" }}>
+              {address}
+            </span>
           </Header>
           <Group style={{ marginTop: 6 }}>
             <GrayCell

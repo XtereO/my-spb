@@ -12,7 +12,7 @@ import {
 } from "../../bricks";
 import { PANEL_ROUTES } from "../../consts";
 import { Filter } from "../../types";
-import { getDistance, sortByKey } from "../../utils";
+import { getDistance, removeHrefs, sortByKey } from "../../utils";
 
 export const BeautifulPlace = memo(() => {
   const [filter, setFilter] = useState<Filter>("default");

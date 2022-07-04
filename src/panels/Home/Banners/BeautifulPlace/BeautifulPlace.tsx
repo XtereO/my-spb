@@ -1,19 +1,14 @@
 import { Group } from "@vkontakte/vkui";
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import { memo } from "react";
 import { useDispatch } from "react-redux";
-import {
-  beautifulPlaceActions,
-  useGetBeautifulPlacesQuery,
-} from "../../../../bll/beautiful-place";
-import { mainActions } from "../../../../bll/main";
+import { beautifulPlaceActions } from "../../../../bll/beautiful-place";
 import {
   CardHeader,
   HorizontalPlace,
   RoundedCard,
   ThemedButton,
 } from "../../../../bricks";
-import { PANEL_ROUTES } from "../../../../consts";
 import { LocationMapOutlineIcon } from "../../../../icons";
 import { BeautifulPlace as BeautifulPlaceType } from "../../../../types";
 

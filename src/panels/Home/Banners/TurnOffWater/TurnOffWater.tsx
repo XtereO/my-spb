@@ -16,19 +16,12 @@ import { getEndingNumber, ThemeContext } from "../../../../utils";
 import "./TurnOffWater.css";
 
 type Props = {
-  data?: { items: PlannedWaterOff[]; today_off: number };
+  data?: number;
   onClick: () => void;
 };
 
 export const TurnOffWater = memo<Props>(({ data, onClick }) => {
   const theme = useContext(ThemeContext);
-  const dispatch = useDispatch();
-  const plannedWaterOffs = useSelector(getPlannedWaterOffs);
-  useEffect(() => {
-    if (data && plannedWaterOffs.length === 0) {
-      dispatch(turnOffWaterActions.setPlannedWaterOffs(data.items));
-    }
-  }, [data]);
   return (
     <RoundedCard id="turn-off-water">
       <Group
@@ -56,10 +49,8 @@ export const TurnOffWater = memo<Props>(({ data, onClick }) => {
           style={{ color: theme.text, marginTop: 4 }}
         >
           <TextSFProRoundedRegular>
-            {data?.today_off && data.today_off > 0
-              ? `Сегодня без воды ${data?.today_off} адрес${getEndingNumber(
-                  data.today_off
-                )}`
+            {!!data
+              ? `Сегодня без воды ${data} адрес${getEndingNumber(data)}`
               : "Сегодня воду отключать не будут"}
           </TextSFProRoundedRegular>
         </div>

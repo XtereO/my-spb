@@ -68,7 +68,7 @@ export const BridgeConstruction = memo<Props>(({ data, onClick }) => {
         >
           <div
             id="bridge-construction-item"
-            style={{ color: theme.text, marginLeft:8 }}
+            style={{ color: theme.text, marginLeft:4 }}
             className="text"
           >
             <TextSFProRoundedRegular>{time}</TextSFProRoundedRegular>
