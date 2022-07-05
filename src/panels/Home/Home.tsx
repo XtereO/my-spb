@@ -53,12 +53,14 @@ export const Home = memo(() => {
             <Div>
               <Fact data={fact.data} onClick={handleClick(PANEL_ROUTES.FACT)} />
             </Div>
-            <Div className="divided-block" style={{ overflowX: "scroll" }}>
+            <Div className="divided-block">
+              <div style={{ flex: "0 1 50%" }}>
               <BridgeConstruction
                 data={bridges.data}
                 onClick={handleClick(PANEL_ROUTES.BRIDGE_CONSTRUCTION)}
               />
-              <div style={{ marginLeft: 21 }}>
+              </div>
+              <div style={{ flex: "1 1 50%", marginLeft:21 }}>
                 <TurnOffWater
                   data={plannedWaterOffCount.data}
                   onClick={handleClick(PANEL_ROUTES.TURN_OFF_WATER)}

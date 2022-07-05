@@ -14,7 +14,7 @@ export const RoundedCard = memo<Props>(({ children, background, id }) => {
   return (
     <Card
       id={id}
-      style={{ background: background ?? theme.cardBg, borderRadius: 21 }}
+      style={{ background: background ?? theme.cardBg, borderRadius: 21, height:"100%" }}
     >
       {children}
     </Card>
