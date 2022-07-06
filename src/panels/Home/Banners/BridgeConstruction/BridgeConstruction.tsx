@@ -63,7 +63,7 @@ export const BridgeConstruction = memo<Props>(({ data, onClick }) => {
             {bridges[0] ? bridges[0].name : ""}
           </TextSFProTextRegular>
         </div>
-        <div style={{  flexDirection:"row", marginTop:2 }} className="d-flex">
+        <div style={{ flexDirection: "row", marginTop: 2 }} className="d-flex">
           <div className="center-y">
             <ClockOutlineIcon />
           </div>

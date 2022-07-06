@@ -1,4 +1,5 @@
-import { memo, useContext } from "react";
+import React from "react";
+import { memo, useContext, useEffect, useRef, useState } from "react";
 import {
   RoundedCard,
   TextSFProRoundedRegular,
@@ -15,48 +16,60 @@ type Props = {
 
 export const TurnOffWater = memo<Props>(({ data, onClick }) => {
   const theme = useContext(ThemeContext);
+  const ref = useRef<HTMLDivElement>();
   return (
-    <RoundedCard id="turn-off-water">
+    <RoundedCard ref={ref} id="turn-off-water">
       <div
         style={{
+          height: ref.current?.clientHeight ?? "100%",
           paddingRight: 16,
           paddingLeft: 16,
-          paddingBottom: 9,
-          paddingTop: 9,
+          position: "relative",
         }}
       >
-        <div>
-          <div id="turn-off-water-icon">
-            <WasherOutlineIcon />
-          </div>
-          <div
-            id="turn-off-water-title"
-            className="heading"
-            style={{ color: theme.heading }}
-          >
-            Без воды
-          </div>
-          <div
-            id="turn-off-water-description"
-            className="text"
-            style={{ color: theme.text, marginTop: 4 }}
-          >
-            <TextSFProRoundedRegular>
-              {!!data
-                ? `Сегодня без воды ${data} адрес${getEndingNumber(data)}`
-                : "Сегодня воду отключать не будут"}
-            </TextSFProRoundedRegular>
-          </div>
-          <div style={{ marginTop: "4%" }}>
-            <ThemedButton
-              fontSize={12}
-              size="m"
-              onClick={onClick}
-              id="turn-off-water-btn"
+        <div
+          style={{
+            paddingTop: 9,
+          }}
+        >
+          <div>
+            <div id="turn-off-water-icon">
+              <WasherOutlineIcon />
+            </div>
+            <div
+              id="turn-off-water-title"
+              className="heading"
+              style={{ color: theme.heading }}
             >
-              Полный список
-            </ThemedButton>
+              Без воды
+            </div>
+            <div
+              id="turn-off-water-description"
+              className="text"
+              style={{ color: theme.text, marginTop: 4 }}
+            >
+              <TextSFProRoundedRegular>
+                {!!data
+                  ? `Сегодня без воды ${data} адрес${getEndingNumber(data)}`
+                  : "Сегодня воду отключать не будут"}
+              </TextSFProRoundedRegular>
+            </div>
           </div>
+        </div>
+        <div
+          style={{
+            position: "absolute",
+            bottom: 9,
+          }}
+        >
+          <ThemedButton
+            fontSize={12}
+            size="m"
+            onClick={onClick}
+            id="turn-off-water-btn"
+          >
+            Полный список
+          </ThemedButton>
         </div>
       </div>
     </RoundedCard>
