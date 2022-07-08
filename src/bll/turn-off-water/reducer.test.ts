@@ -23,4 +23,9 @@ describe("Test turnOffWater reducer", () => {
       )
     ).toHaveProperty("plannedWaterOffs", plannedWaterOffs);
   });
+  test("should handle a page and equal to 2", () => {
+    expect(
+      turnOffWaterReducer(undefined, turnOffWaterActions.setPage(2))
+    ).toHaveProperty("page", 2);
+  });
 });

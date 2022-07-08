@@ -1,26 +1,40 @@
-import { shallow } from "enzyme";
+import { mount, shallow } from "enzyme";
+import { Provider } from "react-redux";
+import { store } from "../bll/store";
 import { BridgeListItem } from "./BridgeListItem";
 
 describe("Test BridgeListItem component", () => {
-  let wrapper = shallow(
-    <BridgeListItem
-      id={"bl"}
-      distance={1230}
-      timeIntervals={[{ timeOpen: "12:00", timeClose: "12:00" }]}
-    >
-      First
-    </BridgeListItem>
-  );
-  beforeEach(() => {
-    wrapper = shallow(
+  let wrapper = mount(
+    <Provider store={store}>
       <BridgeListItem
-        distance={1230}
         id={"bl"}
-        timeIntervals={[{ timeOpen: "12:00", timeClose: "12:00" }]}
+        distance={1230}
+        time_first_wiring={"2.00"}
+        the_first_arch={"3.00"}
+        the_second_wiring={"4.15"}
+        the_second_arch={"5.30"}
+        coordinates={[55, 30]}
       >
         First
       </BridgeListItem>
-    );
+    </Provider>
+  )
+  beforeEach(() => {
+    wrapper = mount(
+      <Provider store={store}>
+        <BridgeListItem
+          id={"bl"}
+          distance={1230}
+          time_first_wiring={"2.00"}
+          the_first_arch={"3.00"}
+          the_second_wiring={"4.15"}
+          the_second_arch={"5.30"}
+          coordinates={[55, 30]}
+        >
+          First
+        </BridgeListItem>
+      </Provider>
+    )
   });
   test("should render BridgeListItem", () => {
     expect(!!wrapper.find("#bridge-list-item-bl")).toBe(true);
@@ -29,7 +43,7 @@ describe("Test BridgeListItem component", () => {
     expect(!!wrapper.find("#bl-header")).toBe(true);
   });
   test("should header's text equal to 'First'", () => {
-    expect(wrapper.find("#bl-header").text()).toBe("First");
+    expect(wrapper.find("#bl-header").first().text()).toContain("First");
   });
   test("should render time-intervals", () => {
     expect(!!wrapper.find("#bl-time-intervals")).toBe(true);

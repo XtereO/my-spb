@@ -22,6 +22,6 @@ describe("Test bridge-construction reducer", () => {
         undefined,
         bridgeConstructionActions.setBridges(bridges)
       )
-    ).toEqual(bridges);
+    ).toHaveProperty("bridges", bridges);
   });
 });

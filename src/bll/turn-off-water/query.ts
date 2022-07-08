@@ -24,24 +24,27 @@ export const turnOffWaterApi = createApi({
       ) => data.response.today_off,
     }),
     getPlannedWaterOff: build.query<
-      PlannedWaterOff[],
-      { street: string; house: number | null }
+      {items: PlannedWaterOff[], total_items: number},
+      { street: string; house: number | null; page: number }
     >({
-      query: ({ street, house }) => ({
+      query: ({ street, house, page }) => ({
         url: `water.find${
           window.location.search
-        }&limit=10&street=${street.replaceAll(" ", "")}&house=${house ?? ""}`,
+        }&limit=10&street=${street.replaceAll(" ", "")}&house=${
+          house ?? ""
+        }&offset=${(page - 1) * 10}`,
         method: "get",
       }),
       transformResponse: (
         data: {
           response: {
-            items: PlannedWaterOff[];
+            items: PlannedWaterOff[],
+            total_items: number
           };
         },
         meta,
         arg
-      ) => data.response.items,
+      ) => data.response,
     }),
   }),
 });

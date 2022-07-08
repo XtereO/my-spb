@@ -6,7 +6,7 @@ describe("Test map reducer", () => {
   });
   test("should handle a zoom and set 5", () => {
     expect(mapReducer(undefined, mapActions.setZoom(5))).toHaveProperty(
-      "mapZoom",
+      "zoom",
       5
     );
   });

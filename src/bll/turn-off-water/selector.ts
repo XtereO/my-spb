@@ -6,3 +6,7 @@ export const getPlannedWaterOffs = createSelector(
   turnOffWaterState,
   (s) => s.plannedWaterOffs
 );
+export const getPlannedWaterOffPage = createSelector(
+  turnOffWaterState,
+  (s) => s.page
+);

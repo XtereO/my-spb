@@ -7,9 +7,11 @@ import React, {
   useState,
   useContext,
 } from "react";
+import { useInView } from "react-intersection-observer";
 import { useDispatch, useSelector } from "react-redux";
 import { Subject, debounceTime, throttle, of } from "rxjs";
 import {
+  getPlannedWaterOffPage,
   getPlannedWaterOffs,
   turnOffWaterActions,
   useGetPlannedWaterOffQuery,
@@ -26,6 +28,7 @@ import { NotificationBanner } from "./NotificationBanner";
 
 export const TurnOffWater = memo(() => {
   const theme = useContext(ThemeContext);
+  const page = useSelector(getPlannedWaterOffPage);
   const plannedWaterOffs = useSelector(getPlannedWaterOffs);
   const dispatch = useDispatch();
   const [searchText, setSearchText] = useState("");
@@ -34,31 +37,53 @@ export const TurnOffWater = memo(() => {
     house: searchText.replace(/[A-zА-я,.]+/g, "").replaceAll(" ", "")
       ? parseInt(searchText.replace(/[A-zА-я,.]+/g, ""))
       : null,
+    page,
   });
-  console.log(data);
 
   useEffect(() => {
-    if (data) {
-      dispatch(turnOffWaterActions.setPlannedWaterOffs(data));
+    return () => {
+      dispatch(turnOffWaterActions.setPage(1));
+    };
+  }, []);
+  useEffect(() => {
+    if (data && page === 1) {
+      dispatch(turnOffWaterActions.setPlannedWaterOffs(data.items));
+    } else if (data && page > 1) {
+      dispatch(
+        turnOffWaterActions.setPlannedWaterOffs([
+          ...plannedWaterOffs,
+          ...data.items,
+        ])
+      );
     }
   }, [data]);
-  const search = useCallback(() => {
-    refetch();
+  const search = useCallback((text: string) => {
+    setSearchText(text);
+    dispatch(turnOffWaterActions.setPage(1));
   }, []);
   const searchSubj = useMemo(() => {
-    const sub = new Subject();
+    const sub = new Subject<string>();
     sub
       .pipe(
         debounceTime(400),
-        throttle(() => of(search()), { leading: true, trailing: true })
+        throttle((sm) => of(search(sm)), { leading: true, trailing: true })
       )
       .subscribe();
     return sub;
   }, []);
   const handleSearch = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchText(e.currentTarget.value);
-    searchSubj.next("");
+    searchSubj.next(e.currentTarget.value);
   }, []);
+
+  const { inView, ref } = useInView();
+  useEffect(() => {
+    if (data?.total_items && data.total_items > page * 10 && inView) {
+      dispatch(turnOffWaterActions.setPage(page + 1));
+    }
+  }, [inView]);
+  useEffect(() => {
+    refetch();
+  }, [page, searchText]);
   return (
     <Panel id={PANEL_ROUTES.TURN_OFF_WATER}>
       <PanelHeaderBack id={`${PANEL_ROUTES.TURN_OFF_WATER}-back`} />
@@ -75,11 +100,7 @@ export const TurnOffWater = memo(() => {
       >
         <NotificationBanner />
       </div>
-      <Search
-        width={window.innerWidth - 20}
-        onChange={handleSearch}
-        value={searchText}
-      />
+      <Search width={window.innerWidth - 20} onChange={handleSearch} />
       <Group
         style={{ paddingRight: 16, paddingLeft: 16, paddingBottom: 12 }}
         id={`${PANEL_ROUTES.TURN_OFF_WATER}-list`}
@@ -89,15 +110,18 @@ export const TurnOffWater = memo(() => {
             <Spinner size="large" />
           </Div>
         ) : plannedWaterOffs.length > 0 ? (
-          plannedWaterOffs.map((p: PlannedWaterOff) => (
-            <TurnOffWaterListItem
-              key={p.address}
-              id={p.address}
-              timeIntervals={p.dates}
-            >
-              {p.address}
-            </TurnOffWaterListItem>
-          ))
+          <div>
+            {plannedWaterOffs.map((p: PlannedWaterOff) => (
+              <TurnOffWaterListItem
+                key={p.address}
+                id={p.address}
+                timeIntervals={p.dates}
+              >
+                {p.address}
+              </TurnOffWaterListItem>
+            ))}
+            <div ref={ref} />
+          </div>
         ) : (
           <Div
             style={{ color: theme.text, wordSpacing: "normal" }}

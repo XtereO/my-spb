@@ -2,7 +2,6 @@ import { Cell, Div, Group, Header } from "@vkontakte/vkui";
 import { useCallback, useContext } from "react";
 import { memo } from "react";
 import { useDispatch } from "react-redux";
-import { mainActions } from "../bll/main";
 import { mapActions } from "../bll/map";
 import { LockOpenOutlineIcon, LockOutlineIcon } from "../icons";
 import { ThemeContext, toFullTime } from "../utils";
