@@ -19,26 +19,26 @@ describe("Test CardHeader component", () => {
     );
   });
   test("should render beautiful-place-header", () => {
-    expect(!!wrapper.find("#beautiful-place-header")).toBe(true);
+    expect(wrapper.find("#beautiful-place-header").isEmptyRender()).toBeFalsy();
   });
   test("should beautiful-place-title's text equal to Красивые места", () => {
-    expect(wrapper.find(`#beautiful-place-header-title`).text()).toContain(
-      "Факт"
-    );
+    expect(
+      wrapper.find("#beautiful-place-header-title").dive().text()
+    ).toContain("Красивые места");
   });
-  test("should render beautiful-place-title", () => {
-    expect(!!wrapper.find("#beautiful-place-title")).toBe(true);
+  test("should render beautiful-place-header-title", () => {
+    expect(
+      wrapper.find("#beautiful-place-header-title").isEmptyRender()
+    ).toBeFalsy();
   });
-  test("should beautiful-place-title's className equal to heading-large", () => {
-    expect(wrapper.find("#beautiful-place-title").props()).toHaveProperty(
-      "className",
-      "heading-large"
-    );
+  test("should beautiful-place-header-title's className equal to heading-large", () => {
+    expect(
+      wrapper.find("#beautiful-place-header-title").props()
+    ).toHaveProperty("className", "heading-large");
   });
-  test("should beautiful-place-title's color equal to #000", () => {
-    expect(wrapper.find("#beautiful-place-title").props().style).toHaveProperty(
-      "color",
-      "#000"
-    );
+  test("should beautiful-place-header-title's color equal to #000", () => {
+    expect(
+      wrapper.find("#beautiful-place-header-title").props().style
+    ).toHaveProperty("color", "#000");
   });
 });

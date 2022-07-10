@@ -33,7 +33,7 @@ export const DistanceFilter = memo<Props>(
         top={<TextSFProRoundedBold>Сортировка</TextSFProRoundedBold>}
       >
         <SegmentedControl
-          id="distance-filter-control"
+          id={`${id}-control`}
           size="l"
           value={value}
           //@ts-ignore

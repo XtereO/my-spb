@@ -1,54 +1,59 @@
-import { shallow } from "enzyme";
+import { mount, shallow } from "enzyme";
+import { Provider } from "react-redux";
+import { store } from "../bll/store";
 import { DistanceFilter } from "./DistanceFilter";
+import { TextSFProTextMedium } from "./Fonts";
 
 describe("Test DistanceFilter", () => {
-  let wrapper = shallow(<DistanceFilter id="distance-filter" value={"distance"} />);
+  let wrapper = mount(
+    <Provider store={store}>
+      <DistanceFilter id="distance-filter" value={"distance"} />
+    </Provider>
+  );
   beforeEach(() => {
-    wrapper = shallow(<DistanceFilter id="distance-filter" value={"distance"} />);
+    wrapper = mount(
+      <Provider store={store}>
+        <DistanceFilter id="distance-filter" value={"distance"} />
+      </Provider>
+    );
   });
   test("should render DistanceFilter", () => {
-    expect(!!wrapper.find("#distance-filter")).toBe(true);
-  });
-  test("should distance-filter's top equal to Сортировка", () => {
-    expect(wrapper.find("#distance-filter").props()).toHaveProperty(
-      "top",
-      "Сортировка"
-    );
+    expect(
+      wrapper.find("#distance-filter").first().isEmptyRender()
+    ).toBeFalsy();
   });
   test("should render distance-filter", () => {
-    expect(!!wrapper.find("#distance-filter-control")).toBe(true);
+    expect(
+      wrapper.find("#distance-filter-control").first().isEmptyRender()
+    ).toBeFalsy();
   });
   test("should distance-filter-control's size equal to l", () => {
-    expect(wrapper.find("#distance-filter-control").props()).toHaveProperty(
-      "size",
-      "l"
-    );
+    expect(
+      wrapper.find("#distance-filter-control").first().props()
+    ).toHaveProperty("size", "l");
   });
   test("should distance-filter-control's value equal to 'distance'", () => {
-    expect(wrapper.find("#distance-filter-control").props()).toHaveProperty(
-      "value",
-      "distance"
-    );
+    expect(
+      wrapper.find("#distance-filter-control").first().props()
+    ).toHaveProperty("value", "distance");
   });
   test("should distance-filter-control's size equal to l", () => {
-    expect(wrapper.find("#distance-filter-control").props()).toHaveProperty(
-      "size",
-      "l"
-    );
+    expect(
+      wrapper.find("#distance-filter-control").first().props()
+    ).toHaveProperty("size", "l");
   });
   test("should distance-filter-control's options be defautl", () => {
-    expect(wrapper.find("#distance-filter-control").props()).toHaveProperty(
-      "options",
-      [
-        {
-          label: "По умолчанию",
-          value: "default",
-        },
-        {
-          label: "По расстоянию",
-          value: "distance",
-        },
-      ]
-    );
+    expect(
+      wrapper.find("#distance-filter-control").first().props()
+    ).toHaveProperty("options", [
+      {
+        label: <TextSFProTextMedium>По умолчанию</TextSFProTextMedium>,
+        value: "default",
+      },
+      {
+        label: <TextSFProTextMedium>По расстоянию</TextSFProTextMedium>,
+        value: "distance",
+      },
+    ]);
   });
 });

@@ -15,18 +15,12 @@ describe("Test DistanceCell component", () => {
     );
   });
   test("should render DistanceCell", () => {
-    expect(!!wrapper.find("#distance-cell")).toBe(true);
+    expect(wrapper.find("#distance-cell").isEmptyRender()).toBeFalsy();
   });
   test("should disatnce's fontSize equal to 14", () => {
     expect(wrapper.find("#distance-cell").props().style).toHaveProperty(
       "fontSize",
       14
-    );
-  });
-  test("should distance's fontWeight equal to 500", () => {
-    expect(wrapper.find("#distance-cell").props().style).toHaveProperty(
-      "fontWeight",
-      500
     );
   });
   test("should distance's color equal to #A4A6AA", () => {
@@ -36,6 +30,11 @@ describe("Test DistanceCell component", () => {
     );
   });
   test("should render children", () => {
-    expect(wrapper.find("#distance-cell").text()).toContain("Distance");
+    expect(wrapper.find("#distance-cell-title").isEmptyRender()).toBeFalsy();
+  });
+  test("should distance-cell-title's text equal to Distance 1.2 километров", () => {
+    expect(wrapper.find("#distance-cell-title").text()).toEqual(
+      "Distance 1.2 километров"
+    );
   });
 });

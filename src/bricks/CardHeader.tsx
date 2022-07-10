@@ -13,7 +13,7 @@ export const CardHeader = memo<Props>(({ id, before, children }) => {
   return (
     <Cell disabled before={before} id={id}>
       <Div
-        id={id.replace("header", "title")}
+        id={`${id}-title`}
         className="heading-large"
         style={{ color: theme.heading, whiteSpace: "normal" }}
       >

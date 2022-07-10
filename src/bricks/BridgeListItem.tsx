@@ -50,7 +50,7 @@ export const BridgeListItem = memo<Props>(
           >
             <Cell
               disabled
-              id={`${id}-item-${index}-close`}
+              id={`${id}-item-${index}-wiring`}
               before={<LockOutlineIcon />}
               style={{
                 width: "50%",
@@ -62,7 +62,7 @@ export const BridgeListItem = memo<Props>(
             </Cell>
             <Cell
               disabled
-              id={`${id}-item-${index}-open`}
+              id={`${id}-item-${index}-arch`}
               before={<LockOpenOutlineIcon />}
               style={{ fontSize: 14, color: theme.text }}
             >
@@ -81,7 +81,7 @@ export const BridgeListItem = memo<Props>(
           <Group
             id={`${id}-time-intervals`}
             style={
-              !!timeIntervalElements[0] 
+              !!timeIntervalElements[0]
                 ? { paddingTop: 10 }
                 : { paddingTop: -10 }
             }
