@@ -27,30 +27,34 @@ export const VerticalPlace = memo<Props>(
         dispatch(mapActions.setCenter(coordinates));
       }
     }, [coordinates]);
-    
+
     return (
       <div style={{ marginTop: 12 }}>
-        <RoundedCard id={String(id)}>
+        <RoundedCard id={`vp-${id}`}>
           <div className="center-x" style={{ textAlign: "center" }}>
-            <CardHeader id={`${id}-header`} before={<></>}>
+            <CardHeader id={`vp-${id}-header`} before={<></>}>
               {parse(removeHrefs(title))}
             </CardHeader>
           </div>
           {distance && (
             <div style={{ width: "100%", marginTop: -28 }} className="center-x">
-              <DistanceCell id={`${id}-distance`} distance={distance} />
+              <DistanceCell id={`vp-${id}-distance`} distance={distance} />
             </div>
           )}
-          <Div style={{ marginTop: -12 }} className="center-x">
+          <Div
+            style={{ marginTop: -12 }}
+            id={`vp-${id}-img`}
+            className="center-x"
+          >
             <ImageFallback
-              id={`${id}-img`}
+              id={`vp-{id}-img`}
               imageUrl={pathToPhoto}
               style={{ borderRadius: 21, width: "100%", height: 186 }}
             />
           </Div>
           {coordinates && (
             <Div className="center-x">
-              <ThemedButton onClick={handleClick} id={`${id}-btn`}>
+              <ThemedButton onClick={handleClick} id={`vp-${id}-btn`}>
                 Показать на карте
               </ThemedButton>
             </Div>

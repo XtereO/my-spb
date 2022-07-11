@@ -25,10 +25,10 @@ export const TurnOffWaterListItem = memo<Props>(
           style={{
             marginTop: 4,
             color: theme.text,
-            fontWeight: 500,
             fontSize: 18,
           }}
-          key={`${id}-item-${index}`}
+          key={`towl-${id}-item-${index}`}
+          id={`towl-${id}-item-${index}`}
           className="d-flex"
         >
           {dayOff}.{monthOff}, {timeOff} - {dayOn}.{monthOn}, {timeOn}
@@ -38,13 +38,20 @@ export const TurnOffWaterListItem = memo<Props>(
     return (
       <div style={{ marginTop: 12 }}>
         <RoundedCard id={`turn-off-water-list-item-${id}`}>
-          <Header
-            id={`${id}-header`}
-          >
-            <span style={{ fontSize: 18, color: theme.heading, whiteSpace: "normal" }}>{children}</span>
+          <Header id={`towl-${id}-header`}>
+            <span
+              id={`towl-${id}-header-title`}
+              style={{
+                fontSize: 18,
+                color: theme.heading,
+                whiteSpace: "normal",
+              }}
+            >
+              {children}
+            </span>
           </Header>
           <Group
-            id={`${id}-time-intervals`}
+            id={`towl-${id}-time-intervals`}
             style={{
               marginTop: -10,
               paddingRight: 16,

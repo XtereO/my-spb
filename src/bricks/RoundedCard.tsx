@@ -1,7 +1,5 @@
-import { Card } from "@vkontakte/vkui";
 import React from "react";
 import { useContext } from "react";
-import { memo } from "react";
 import { ThemeContext } from "../utils";
 
 type Props = {
@@ -16,11 +14,12 @@ export const RoundedCard = React.forwardRef(
     return (
       //@ts-ignore
       <div ref={ref}
-        style={{ 
+        style={{
           background: background ?? theme.cardBg,
           borderRadius: 21,
           height: "100%",
         }}
+        id={id}
       >
         {children}
       </div>

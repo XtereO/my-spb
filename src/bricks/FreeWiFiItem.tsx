@@ -14,7 +14,7 @@ export const FreeWiFiItem = memo<Props>(({ id, address, status }) => {
     status === "Работает" ? theme.wifiTurnedOnBg : theme.wifiTurnedOffBg;
   return (
     <div
-      id={`free-wifi-item${id}`}
+      id={`free-wifi-item-${id}`}
       style={{ display: "flex", flexDirection: "row" }}
     >
       <div className="center-y">
@@ -28,7 +28,7 @@ export const FreeWiFiItem = memo<Props>(({ id, address, status }) => {
             background,
             color: theme.wifiIndicatorText,
           }}
-          id={`free-wifi-item${id}-indicator`}
+          id={`free-wifi-item-${id}-indicator`}
         >
           <div>{id}</div>
         </div>
@@ -39,7 +39,7 @@ export const FreeWiFiItem = memo<Props>(({ id, address, status }) => {
           fontSize: 14,
           marginLeft: 4,
         }}
-        id={`free-wifi-item${id}-title`}
+        id={`free-wifi-item-${id}-title`}
       >
         {address}
       </div>

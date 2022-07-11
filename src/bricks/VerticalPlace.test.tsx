@@ -1,59 +1,55 @@
-import { shallow } from "enzyme";
+import { mount } from "enzyme";
+import { Provider } from "react-redux";
+import { store } from "../bll/store";
 import { VerticalPlace } from "./VerticalPlace";
 
 describe("Test VerticalPlace component", () => {
-  let wrapper = shallow(
-    <VerticalPlace
-      id="vertical-place"
-      distance={135}
-      title="glacier"
-      imgSrc="https://www.journeygazer.com/wp-content/uploads/2019/03/torres-del-paine-Glaciers5.jpg"
-    />
-  );
-  beforeEach(() => {
-    wrapper = shallow(
+  const intersectionObserverMock = () => ({
+    observe: () => null,
+  });
+  window.IntersectionObserver = jest
+    .fn()
+    .mockImplementation(intersectionObserverMock);
+  let wrapper = mount(
+    <Provider store={store}>
       <VerticalPlace
-        id="vertical-place"
+        id={1}
+        coordinates={[60, 30]}
         distance={135}
         title="glacier"
-        imgSrc="https://www.journeygazer.com/wp-content/uploads/2019/03/torres-del-paine-Glaciers5.jpg"
+        pathToPhoto="https://www.journeygazer.com/wp-content/uploads/2019/03/torres-del-paine-Glaciers5.jpg"
       />
+    </Provider>
+  );
+  beforeEach(() => {
+    wrapper = mount(
+      <Provider store={store}>
+        <VerticalPlace
+          id={1}
+          coordinates={[60, 30]}
+          distance={135}
+          title="glacier"
+          pathToPhoto="https://www.journeygazer.com/wp-content/uploads/2019/03/torres-del-paine-Glaciers5.jpg"
+        />
+      </Provider>
     );
   });
-  test("should render vertical-place", () => {
-    expect(!!wrapper.find("#vertical-place")).toBe(true);
+  test("should render vp-1", () => {
+    expect(wrapper.find("#vp-1").first().isEmptyRender()).toBeFalsy();
   });
   test("should render header", () => {
-    expect(!!wrapper.find("#vertical-place-header")).toBe(true);
+    expect(wrapper.find("#vp-1-header").first().isEmptyRender()).toBeFalsy();
   });
   test("should header's text equal to gacier", () => {
-    expect(wrapper.find("#vertical-place-header").text()).toBe("glacier");
+    expect(wrapper.find("#vp-1-header").first().text()).toBe("glacier");
   });
   test("should render image", () => {
-    expect(!!wrapper.find("#vertical-place-img")).toBe(true);
+    expect(wrapper.find("#vp-1-img").first().isEmptyRender()).toBeFalsy();
   });
   test("should render distance", () => {
-    expect(!!wrapper.find("#vertical-place-distance")).toBe(true);
-  });
-  test("should img's borderRadius equal to 21", () => {
-    expect(wrapper.find("#vertical-place-img").props().style).toHaveProperty(
-      "borderRadius",
-      21
-    );
-  });
-  test("should img's width equal to 100%", () => {
-    expect(wrapper.find("#vertical-place-img").props().style).toHaveProperty(
-      "width",
-      "100%"
-    );
-  });
-  test("should img's src equal to https://www.journeygazer.com/wp-content/uploads/2019/03/torres-del-paine-Glaciers5.jpg", () => {
-    expect(wrapper.find("#vertical-place-img").props().style).toHaveProperty(
-      "src",
-      "https://www.journeygazer.com/wp-content/uploads/2019/03/torres-del-paine-Glaciers5.jpg"
-    );
+    expect(wrapper.find("#vp-1-distance").first().isEmptyRender()).toBeFalsy();
   });
   test("should render btn", () => {
-    expect(!!wrapper.find("#vertical-place-btn")).toBe(true);
+    expect(wrapper.find("#vp-1-btn").first().isEmptyRender()).toBeFalsy();
   });
 });

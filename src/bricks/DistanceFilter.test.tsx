@@ -1,4 +1,4 @@
-import { mount, shallow } from "enzyme";
+import { mount } from "enzyme";
 import { Provider } from "react-redux";
 import { store } from "../bll/store";
 import { DistanceFilter } from "./DistanceFilter";

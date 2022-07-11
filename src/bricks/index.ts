@@ -1,5 +1,4 @@
 export * from "./Fonts";
-export * from "./MySnackbar";
 export * from "./CardHeader";
 export * from "./MainHeader";
 export * from "./RoundedCard";

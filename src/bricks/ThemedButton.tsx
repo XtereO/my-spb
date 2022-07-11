@@ -28,7 +28,7 @@ export const ThemedButton = memo<Props>(
         }}
       >
         <TextInterSemibold>
-          <span style={{ fontSize, letterSpacing: -0.41 }}>{children}</span>
+          <span id={`${id}-title`} style={{ fontSize, letterSpacing: -0.41 }}>{children}</span>
         </TextInterSemibold>
       </Button>
     );

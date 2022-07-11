@@ -35,15 +35,15 @@ export const FreeWiFiDetailedItem = memo<Props>(
     const theme = useContext(ThemeContext);
     return (
       <div style={{ marginTop: 12 }}>
-        <RoundedCard id={String(id)}>
-          <Header style={{ color: theme.heading }} id={`${id}-address`}>
+        <RoundedCard id={`wf-${id}`}>
+          <Header style={{ color: theme.heading }} id={`wf-${id}-address`}>
             <span style={{ fontSize: 18, whiteSpace: "normal" }}>
               {address}
             </span>
           </Header>
           <Group style={{ marginTop: 6 }}>
             <GrayCell
-              id={`${id}-status`}
+              id={`wf-${id}-status`}
               before={
                 status === "Работает" ? (
                   <LockOpenOutlineIcon />
@@ -55,7 +55,7 @@ export const FreeWiFiDetailedItem = memo<Props>(
               Статус: {status.toLocaleLowerCase()}
             </GrayCell>
             <GrayCell
-              id={`${id}-title`}
+              id={`wf-${id}-title`}
               before={
                 <ArticleOutlineIcon width={24} height={24} color={theme.text} />
               }
@@ -63,23 +63,23 @@ export const FreeWiFiDetailedItem = memo<Props>(
               Название: {name_wifi}
             </GrayCell>
             <GrayCell
-              id={`${id}-area-fill`}
+              id={`wf-${id}-area-fill`}
               before={<RadioWawesAroundOutlineIcon />}
             >
               Зона покрытия: {coverage} метр{getEndingNumber(coverage)}
             </GrayCell>
             {distance &&
               (distance > 1000 ? (
-                <GrayCell id={`${id}-distance`} before={<PlaceOutlineIcon />}>
+                <GrayCell id={`wf-${id}-distance`} before={<PlaceOutlineIcon />}>
                   Расстояние до Вас: {roundMetr(distance)} километров
                 </GrayCell>
               ) : (
-                <GrayCell id={`${id}-distance`} before={<PlaceOutlineIcon />}>
+                <GrayCell id={`wf-${id}-distance`} before={<PlaceOutlineIcon />}>
                   Расстояние до Вас: {distance} метр{getEndingNumber(distance)}
                 </GrayCell>
               ))}
             <Div style={{ marginTop: -6 }}>
-              <ThemedButton onClick={handleClick} id={`${id}-btn`}>
+              <ThemedButton onClick={handleClick} id={`wf-${id}-btn`}>
                 Показать на карте
               </ThemedButton>
             </Div>
