@@ -61,10 +61,11 @@ export const FreeWiFi = memo(() => {
       </MainHeader>
       <DistanceFilter
         onChange={setFilter}
-        id={`${PANEL_ROUTES.FREE_WIFI}`}
+        id={`${PANEL_ROUTES.FREE_WIFI}-filter`}
         value={filter}
       />
       <Group
+        id={`${PANEL_ROUTES.FREE_WIFI}-list`}
         style={{
           marginTop: -12,
           paddingBottom: 12,

@@ -1,16 +1,12 @@
 import { Group, Panel } from "@vkontakte/vkui";
-import { time } from "console";
-import { memo, useEffect, useMemo, useState } from "react";
+import { memo, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { getBridges } from "../../bll/bridge-construction";
 import { getUserCoordinates } from "../../bll/main";
 import { DistanceFilter, MainHeader, PanelHeaderBack } from "../../bricks";
 import { BridgeListItem } from "../../bricks";
 import { PANEL_ROUTES } from "../../consts";
-import {
-  BridgeConstruction as BridgeConstructionType,
-  Filter,
-} from "../../types";
+import { Filter } from "../../types";
 import { getDistance, sortByKey } from "../../utils";
 
 export const BridgeConstruction = memo(() => {

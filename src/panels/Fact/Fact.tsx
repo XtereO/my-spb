@@ -1,4 +1,4 @@
-import { Cell, Div, Group, Panel, PanelHeader } from "@vkontakte/vkui";
+import { Cell, Div, Group, Panel } from "@vkontakte/vkui";
 import { memo } from "react";
 import parse from "html-react-parser";
 import {

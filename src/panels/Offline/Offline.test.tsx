@@ -8,10 +8,14 @@ describe("Test Offline component", () => {
     wrapper = shallow(<Offline />);
   });
   test("should render Offline", () => {
-    expect(!!wrapper.find(`#${PANEL_ROUTES.OFFLINE}`)).toBe(true);
+    expect(
+      wrapper.find(`#${PANEL_ROUTES.OFFLINE}`).isEmptyRender()
+    ).toBeFalsy();
   });
   test("should render title", () => {
-    expect(!!wrapper.find(`#${PANEL_ROUTES.OFFLINE}-title`)).toBe(true);
+    expect(
+      wrapper.find(`#${PANEL_ROUTES.OFFLINE}-title`).isEmptyRender()
+    ).toBeFalsy();
   });
   test("should title's fontSize equal to 24", () => {
     expect(
@@ -24,7 +28,9 @@ describe("Test Offline component", () => {
     );
   });
   test("should render advice", () => {
-    expect(!!wrapper.find(`#${PANEL_ROUTES.OFFLINE}-advice`)).toBe(true);
+    expect(
+      wrapper.find(`#${PANEL_ROUTES.OFFLINE}-advice`).isEmptyRender()
+    ).toBeFalsy();
   });
   test("should advice's fontSize equal to 15", () => {
     expect(

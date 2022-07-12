@@ -1,9 +1,9 @@
-import { Div, Panel } from "@vkontakte/vkui";
+import { Panel } from "@vkontakte/vkui";
 import { memo, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { YMaps, Map as YMap, Placemark } from "react-yandex-maps";
 import { getCenter, getZoom, mapActions } from "../../bll/map";
-import { MainHeader, PanelHeaderBack } from "../../bricks";
+import { PanelHeaderBack } from "../../bricks";
 import { PANEL_ROUTES } from "../../consts";
 import placemark from "../../icons/placemark.png";
 

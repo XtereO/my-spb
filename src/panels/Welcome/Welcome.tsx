@@ -1,4 +1,4 @@
-import { Button, Div, Group, Header, Panel, Spacing } from "@vkontakte/vkui";
+import { Button, Div, Group, Header, Panel } from "@vkontakte/vkui";
 import { useContext } from "react";
 import { memo } from "react";
 import { PANEL_ROUTES, STORAGE_KEYS } from "../../consts";
