@@ -4,8 +4,7 @@ export const removeHrefs = (text: string) => {
 
   for (let i = 0; i < hrefCount; i++) {
     const startIndex = reducedText.indexOf(" href=");
-    const endIndex =
-      startIndex + reducedText.slice(startIndex).indexOf('">') + 1;
+    const endIndex = startIndex + reducedText.slice(startIndex).indexOf(">");
     reducedText = [
       reducedText.slice(0, startIndex),
       "",
