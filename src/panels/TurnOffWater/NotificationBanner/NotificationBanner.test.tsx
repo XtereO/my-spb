@@ -1,24 +1,24 @@
 import { mount } from "enzyme";
 import { Provider } from "react-redux";
 import { store } from "../../../bll/store";
-import { NotificationBanner } from "./NotificationBanner";
+import { NotificationBannerComponent } from "./NotificationBanner";
 
 describe("Test NotificationBanner component", () => {
   let wrapper = mount(
     <Provider store={store}>
-      <NotificationBanner />
+      <NotificationBannerComponent />
     </Provider>
   );
   beforeEach(() => {
     wrapper = mount(
       <Provider store={store}>
-        <NotificationBanner />
+        <NotificationBannerComponent />
       </Provider>
     );
   });
   test("should render NotificationBanner", () => {
     expect(
-      wrapper.find("#notification-banner").isEmptyRender()
+      wrapper.find("#notification-banner").first().isEmptyRender()
     ).toBeFalsy();
   });
   test("should render header", () => {
@@ -40,21 +40,6 @@ describe("Test NotificationBanner component", () => {
     expect(
       wrapper.find("#notification-banner-title").first().props()
     ).toHaveProperty("className", "heading");
-  });
-  test("should render description", () => {
-    expect(
-      wrapper.find("#notification-banner-description").first().isEmptyRender()
-    ).toBeFalsy();
-  });
-  test("should description's color equal to #A4A6AA", () => {
-    expect(
-      wrapper.find("#notification-banner-description").first().props().style
-    ).toHaveProperty("color", "#A4A6AA");
-  });
-  test("should description's className equal to text", () => {
-    expect(
-      wrapper.find("#notification-banner-description").first().props()
-    ).toHaveProperty("className", "text");
   });
   test("should render btn-change", () => {
     expect(

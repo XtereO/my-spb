@@ -7,7 +7,7 @@ import { LightbalbStarOutlineIcon } from "../../../../icons";
 import { removeHrefs, ThemeContext } from "../../../../utils";
 import "./Fact.css";
 import { useDispatch } from "react-redux";
-import { factActions, useGetFactQuery } from "../../../../bll/fact";
+import { factActions } from "../../../../bll/fact";
 import { Fact as FactType } from "../../../../types";
 
 type Props = {

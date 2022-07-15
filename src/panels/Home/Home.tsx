@@ -11,10 +11,13 @@ import { mainActions } from "../../bll/main";
 import { useGetPlannedWaterOffCountQuery } from "../../bll/turn-off-water";
 import { MainHeader } from "../../bricks";
 import { PANEL_ROUTES } from "../../consts";
-import { BridgeConstruction, Fact } from "./Banners";
-import { BeautifulPlace } from "./Banners/BeautifulPlace";
-import { FreeWiFi } from "./Banners/FreeWiFi";
-import { TurnOffWater } from "./Banners/TurnOffWater";
+import {
+  BridgeConstruction,
+  Fact,
+  BeautifulPlace,
+  FreeWiFi,
+  TurnOffWater,
+} from "./Banners";
 import "./Home.css";
 
 export const Home = memo(() => {
@@ -55,12 +58,12 @@ export const Home = memo(() => {
             </Div>
             <Div className="divided-block">
               <div style={{ flex: "0 1 50%" }}>
-              <BridgeConstruction
-                data={bridges.data}
-                onClick={handleClick(PANEL_ROUTES.BRIDGE_CONSTRUCTION)}
-              />
+                <BridgeConstruction
+                  data={bridges.data}
+                  onClick={handleClick(PANEL_ROUTES.BRIDGE_CONSTRUCTION)}
+                />
               </div>
-              <div style={{ flex: "1 1 50%", marginLeft:21 }}>
+              <div style={{ flex: "1 1 50%", marginLeft: 21 }}>
                 <TurnOffWater
                   data={plannedWaterOffCount.data}
                   onClick={handleClick(PANEL_ROUTES.TURN_OFF_WATER)}

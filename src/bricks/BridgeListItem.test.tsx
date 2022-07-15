@@ -37,19 +37,19 @@ describe("Test BridgeListItem component", () => {
     );
   });
   test("should render BridgeListItem", () => {
-    expect(wrapper.find("#bridge-list-item-bl").isEmptyRender()).toBeFalsy()
+    expect(wrapper.find("#bridge-list-item-bl").first().isEmptyRender()).toBeFalsy()
   });
   test("should render header", () => {
-    expect(wrapper.find("#bl-header").isEmptyRender()).toBeFalsy()
+    expect(wrapper.find("#bl-header").first().isEmptyRender()).toBeFalsy()
   });
   test("should header's text equal to 'First'", () => {
     expect(wrapper.find("#bl-header").first().text()).toContain("First");
   });
   test("should render time-intervals", () => {
-    expect(wrapper.find("#bl-time-intervals").isEmptyRender()).toBeFalsy()
+    expect(wrapper.find("#bl-time-intervals").first().isEmptyRender()).toBeFalsy()
   });
   test("should render item-wiring", () => {
-    expect(wrapper.find("#bl-item-0-wiring").isEmptyRender()).toBeFalsy()
+    expect(wrapper.find("#bl-item-0-wiring").first().isEmptyRender()).toBeFalsy()
   });
   test("should item-wiring's text equal to 02:00", () => {
     expect(wrapper.find("#bl-item-0-wiring").first().text()).toEqual("02:00");
@@ -65,10 +65,10 @@ describe("Test BridgeListItem component", () => {
     ).toHaveProperty("color", "#A4A6AA");
   });
   test("should render item-arch", () => {
-    expect(wrapper.find("#bl-item-0-arch").isEmptyRender()).toBeFalsy()
+    expect(wrapper.find("#bl-item-0-arch").first().isEmptyRender()).toBeFalsy()
   });
   test("should item-arch's text equal to 03:00", () => {
-    expect(wrapper.find("#bl-item-0-wiring").first().text()).toEqual("03:00");
+    expect(wrapper.find("#bl-item-0-arch").first().text()).toEqual("03:00");
   });
   test("should item-arch's fontSize equal to 14", () => {
     expect(
@@ -81,6 +81,6 @@ describe("Test BridgeListItem component", () => {
     ).toHaveProperty("color", "#A4A6AA");
   });
   test("should render distance", () => {
-    expect(wrapper.find("#bl-distance").isEmptyRender()).toBeFalsy();
+    expect(wrapper.find("#bl-distance").first().isEmptyRender()).toBeFalsy();
   });
 });

@@ -1,4 +1,4 @@
-import { Cell, Group } from "@vkontakte/vkui";
+import { Group } from "@vkontakte/vkui";
 import { useEffect, useMemo } from "react";
 import { useContext } from "react";
 import { memo } from "react";
@@ -68,7 +68,7 @@ export const BridgeConstruction = memo<Props>(({ data, onClick }) => {
             <ClockOutlineIcon />
           </div>
           <div
-            id="bridge-construction-item"
+            id="bridge-construction-time"
             style={{ color: theme.text, marginLeft: 4 }}
             className="text center-y"
           >

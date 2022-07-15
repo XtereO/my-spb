@@ -42,18 +42,4 @@ describe("Test DistanceFilter", () => {
       wrapper.find("#distance-filter-control").first().props()
     ).toHaveProperty("size", "l");
   });
-  test("should distance-filter-control's options be defautl", () => {
-    expect(
-      wrapper.find("#distance-filter-control").first().props()
-    ).toHaveProperty("options", [
-      {
-        label: <TextSFProTextMedium>По умолчанию</TextSFProTextMedium>,
-        value: "default",
-      },
-      {
-        label: <TextSFProTextMedium>По расстоянию</TextSFProTextMedium>,
-        value: "distance",
-      },
-    ]);
-  });
 });

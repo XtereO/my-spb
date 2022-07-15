@@ -1,5 +1,4 @@
-import React from "react";
-import { memo, useContext, useEffect, useRef, useState } from "react";
+import { memo, useContext, useRef } from "react";
 import {
   RoundedCard,
   TextSFProRoundedRegular,
