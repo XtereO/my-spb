@@ -20,7 +20,7 @@ export const Map = memo(() => {
   }, []);
   return (
     <Panel id={PANEL_ROUTES.MAP}>
-      <PanelHeaderBack onClick={handleClick} id={`${PANEL_ROUTES.MAP}-back`} />
+      <PanelHeaderBack id={`${PANEL_ROUTES.MAP}-back`} />
       <YMaps preload={true}>
         <YMap
           width={"100%"}

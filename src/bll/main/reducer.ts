@@ -28,7 +28,10 @@ const mainSlice = createSlice({
     setActivePanel: (state, action: PayloadAction<PANEL_ROUTES>) => {
       state.activePanel = action.payload;
     },
-    setUserCoordinates: (state, action: PayloadAction<[number, number]>) => {
+    setUserCoordinates: (
+      state,
+      action: PayloadAction<[number, number] | null>
+    ) => {
       state.userCoordinates = action.payload;
     },
   },

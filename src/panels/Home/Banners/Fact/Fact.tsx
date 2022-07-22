@@ -24,6 +24,7 @@ export const Fact = memo<Props>(({ onClick, data }) => {
       dispatch(factActions.setFact(data));
     }
   }, [data]);
+  const reducedText = removeHrefs(data?.text ?? "");
 
   return (
     <RoundedCard id="fact">
@@ -51,7 +52,11 @@ export const Fact = memo<Props>(({ onClick, data }) => {
           style={{ color: theme.text, marginTop: 4 }}
         >
           {data?.text &&
-            parse(removeHrefs(data?.text).slice(0, limitedSymbolText) + "...")}
+            parse(
+              `${reducedText.slice(0, limitedSymbolText)}${
+                reducedText.length > 163 ? "..." : ""
+              }`
+            )}
         </div>
         <div style={{ marginTop: 10 }}>
           <ThemedButton onClick={onClick} id="fact-btn">

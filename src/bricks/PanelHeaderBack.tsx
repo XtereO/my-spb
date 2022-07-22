@@ -1,24 +1,19 @@
 import { Div, PanelHeader } from "@vkontakte/vkui";
-import { memo } from "react";
-import { useDispatch } from "react-redux";
-import { mainActions } from "../bll/main";
-import { PANEL_ROUTES } from "../consts";
+import { memo, useCallback } from "react";
 import { ChevronLeftIcon } from "../icons";
 
 type Props = {
   id: string;
-  onClick?: () => void;
 };
 
-export const PanelHeaderBack = memo<Props>(({ id, onClick }) => {
-  const dispatch = useDispatch();
-  const handleClick = () => {
-    dispatch(mainActions.setActivePanel(PANEL_ROUTES.HOME));
-  };
+export const PanelHeaderBack = memo<Props>(({ id }) => {
+  const handleClick = useCallback(() => {
+    window.history.back();
+  }, []);
   return (
     <PanelHeader
       left={
-        <Div onClick={onClick ?? handleClick}>
+        <Div onClick={handleClick}>
           <ChevronLeftIcon />
         </Div>
       }

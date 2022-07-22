@@ -11,5 +11,6 @@ export * from "./DistanceFilter";
 export * from "./BridgeListItem";
 export * from "./PanelHeaderBack";
 export * from "./HorizontalPlace";
+export * from "./CustomizedSnackbar";
 export * from "./FreeWiFiDetailedItem";
 export * from "./TurnOffWaterListItem";
