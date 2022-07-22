@@ -10,3 +10,4 @@ export * from "./toFullTime";
 export * from "./sortByKey";
 export * from "./getCountDays";
 export * from "./roundMetr";
+export * from "./getRandomElements";

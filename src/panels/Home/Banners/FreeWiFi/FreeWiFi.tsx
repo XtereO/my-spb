@@ -11,6 +11,7 @@ import {
 } from "../../../../bricks";
 import { WiFiIcon } from "../../../../icons";
 import { FreeWifi } from "../../../../types";
+import { getRandomElements } from "../../../../utils";
 
 type Props = {
   data?: FreeWifi[];
@@ -32,9 +33,10 @@ export const FreeWiFi = memo<Props>(({ data, onClick }) => {
       </CardHeader>
       <Group style={{ paddingLeft: 16, paddingRight: 16, paddingBottom: 12 }}>
         <div id="free-wifi-items">
-          {data?.slice(0, 3).map((d) => (
-            <FreeWiFiItem key={d.number} {...d} id={d.number} />
-          ))}
+          {data &&
+            getRandomElements(data, 3).map((d, index) => (
+              <FreeWiFiItem key={d.number} {...d} id={index+1} />
+            ))}
         </div>
         <div style={{ marginTop: 10 }}>
           <ThemedButton onClick={onClick} id="free-wifi-btn">

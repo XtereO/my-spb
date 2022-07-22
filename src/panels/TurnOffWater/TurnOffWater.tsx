@@ -10,6 +10,7 @@ import React, {
 import { useInView } from "react-intersection-observer";
 import { useDispatch, useSelector } from "react-redux";
 import { Subject, debounceTime, throttle, of } from "rxjs";
+import { getNotifications } from "../../bll/notifications";
 import {
   getPlannedWaterOffPage,
   getPlannedWaterOffs,
@@ -84,6 +85,13 @@ export const TurnOffWater = memo(() => {
   useEffect(() => {
     refetch();
   }, [page, searchText]);
+
+  const { address } = useSelector(getNotifications);
+  useEffect(() => {
+    if (address.street) {
+      setSearchText(`${address.street} ${address.house}`);
+    }
+  }, [address.street, address.house]);
   return (
     <Panel id={PANEL_ROUTES.TURN_OFF_WATER}>
       <PanelHeaderBack id={`${PANEL_ROUTES.TURN_OFF_WATER}-back`} />
@@ -100,7 +108,11 @@ export const TurnOffWater = memo(() => {
       >
         <NotificationBanner />
       </div>
-      <Search width={window.innerWidth - 20} onChange={handleSearch} />
+      <Search
+        width={window.innerWidth - 20}
+        onChange={handleSearch}
+        defaultValue={searchText}
+      />
       <Group
         style={{ paddingRight: 16, paddingLeft: 16, paddingBottom: 12 }}
         id={`${PANEL_ROUTES.TURN_OFF_WATER}-list`}
