@@ -1,11 +1,16 @@
 {
   "files": {
-    "main.css": "./static/css/main.80e543f6.chunk.css",
-    "main.js": "./static/js/main.500440df.chunk.js",
+    "main.css": "./static/css/main.28a6ea25.chunk.css",
+    "main.js": "./static/js/main.1c3c87b7.chunk.js",
+    "main.js.map": "./static/js/main.1c3c87b7.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.756e66f1.js",
-    "static/css/2.1f545151.chunk.css": "./static/css/2.1f545151.chunk.css",
+    "runtime-main.js.map": "./static/js/runtime-main.756e66f1.js.map",
+    "static/css/2.170ca112.chunk.css": "./static/css/2.170ca112.chunk.css",
     "static/js/2.b7415cd8.chunk.js": "./static/js/2.b7415cd8.chunk.js",
+    "static/js/2.b7415cd8.chunk.js.map": "./static/js/2.b7415cd8.chunk.js.map",
     "index.html": "./index.html",
+    "static/css/2.170ca112.chunk.css.map": "./static/css/2.170ca112.chunk.css.map",
+    "static/css/main.28a6ea25.chunk.css.map": "./static/css/main.28a6ea25.chunk.css.map",
     "static/js/2.b7415cd8.chunk.js.LICENSE.txt": "./static/js/2.b7415cd8.chunk.js.LICENSE.txt",
     "static/media/App.css": "./static/media/SF-Pro-Text-Semibold.5a680193.ttf",
     "static/media/default-image.589a2a59.jpg": "./static/media/default-image.589a2a59.jpg",
@@ -13,9 +18,9 @@
   },
   "entrypoints": [
     "static/js/runtime-main.756e66f1.js",
-    "static/css/2.1f545151.chunk.css",
+    "static/css/2.170ca112.chunk.css",
     "static/js/2.b7415cd8.chunk.js",
-    "static/css/main.80e543f6.chunk.css",
-    "static/js/main.500440df.chunk.js"
+    "static/css/main.28a6ea25.chunk.css",
+    "static/js/main.1c3c87b7.chunk.js"
   ]
 }

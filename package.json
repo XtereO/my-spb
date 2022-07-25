@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "start": "cross-env PORT=10888 HTTPS=true react-scripts start",
-    "build": "cross-env GENERATE_SOURCEMAP=false react-scripts build",
+    "build": "cross-env GENERATE_SOURCEMAP=true react-scripts build",
     "test": "react-scripts test",
     "predeploy": "npm run build",
     "deploy": "vk-miniapps-deploy"

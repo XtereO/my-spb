@@ -43,12 +43,15 @@ export const DistanceFilter = memo<Props>(
             setError(errorMessage);
           }
         })
-        .catch((res) => setError(errorMessage))
+        .catch(() => setError(errorMessage))
         .finally(() => setLoading(false));
     }, []);
     useEffect(() => {
       if (value === "distance") {
         requestGeodata();
+      } else {
+        setLoading(false);
+        setError(null);
       }
       return () => {
         dispatch(mainActions.setUserCoordinates(null));

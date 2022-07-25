@@ -1,6 +1,6 @@
 import { Snackbar } from "@vkontakte/vkui";
 import { useContext } from "react";
-import { SuccessIcon, WarningTriangleOutlineIcon } from "../icons";
+import { SuccessIcon, WarningTriangleErrorOutlineIcon } from "../icons";
 import { ThemeContext } from "../utils";
 import { TextSFProRoundedRegular } from "./Fonts";
 
@@ -20,7 +20,7 @@ export const CustomizedSnackbar: React.FC<Props> = ({
     <Snackbar
       duration={3000}
       onClose={closeHandler ? closeHandler : () => {}}
-      before={isSuccess ? <SuccessIcon /> : <WarningTriangleOutlineIcon />}
+      before={isSuccess ? <SuccessIcon /> : <WarningTriangleErrorOutlineIcon />}
     >
       <TextSFProRoundedRegular>
         <div style={{ fontSize: 15, color: theme.heading }}>{text}</div>

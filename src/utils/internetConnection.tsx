@@ -8,5 +8,5 @@ export const toOffline = () => {
 };
 
 export const toOnline = () => {
-  dispatch(mainActions.setActivePanel(PANEL_ROUTES.HOME));
+  window.history.back();
 };
