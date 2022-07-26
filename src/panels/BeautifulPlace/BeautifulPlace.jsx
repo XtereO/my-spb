@@ -190,7 +190,9 @@ export const BeautifulPlace = memo(() => {
                   pathToPhoto={p.path_to_photo}
                 />
               ))}
-        <div ref={ref} />
+        {places.length !== places.slice(0, page * 5).length && (
+          <div ref={ref} />
+        )}
         <FixedLayout vertical="bottom">
           {snackbar && <CustomizedSnackbar {...snackbar} />}
         </FixedLayout>

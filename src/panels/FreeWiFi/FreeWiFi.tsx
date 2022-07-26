@@ -41,7 +41,7 @@ export const FreeWiFi = memo(() => {
   const page = useSelector(getWifiPage);
   const { data, refetch } = useGetFreeWifiQuery({ page });
   useEffect(() => {
-    if (inView) {
+    if (inView && data && data?.length !== 0) {
       dispatch(freeWifiActions.setPage(page + 1));
     }
   }, [inView]);
