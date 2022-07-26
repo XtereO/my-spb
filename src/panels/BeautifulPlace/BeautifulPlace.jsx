@@ -169,10 +169,14 @@ export const BeautifulPlace = memo(() => {
                   id={s.id}
                   pathToPhoto={s.path_to_photo}
                   distance={s.distance}
-                  coordinates={[
-                    Number(s.coordinates.split(", ")[0]),
-                    Number(s.coordinates.split(", ")[1]),
-                  ]}
+                  coordinates={
+                    p.coordinates
+                      ? [
+                          Number(s.coordinates.split(", ")[0]),
+                          Number(s.coordinates.split(", ")[1]),
+                        ]
+                      : null
+                  }
                 />
               ))
           : places
@@ -180,10 +184,14 @@ export const BeautifulPlace = memo(() => {
               .map((p) => (
                 <VerticalPlace
                   onClickShare={handleClickShare}
-                  coordinates={[
-                    Number(p.coordinates.split(", ")[0]),
-                    Number(p.coordinates.split(", ")[1]),
-                  ]}
+                  coordinates={
+                    p.coordinates
+                      ? [
+                          Number(p.coordinates.split(", ")[0]),
+                          Number(p.coordinates.split(", ")[1]),
+                        ]
+                      : null
+                  }
                   key={p.id}
                   title={p.name ?? p.description}
                   id={p.id}
