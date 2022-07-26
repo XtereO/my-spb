@@ -51,8 +51,9 @@ export const Welcome = memo(() => {
             style={{
               color: theme.text,
               textAlign: "center",
-              letterSpacing: 0.25,
+              letterSpacing: -0.24,
               lineHeight: "17.9px",
+              fontSize: 15,
             }}
           >
             <TextSFProRoundedLight>
@@ -70,6 +71,7 @@ export const Welcome = memo(() => {
                 background: theme.btnBgWelcome,
                 color: theme.btnTextWelcome,
                 width: 175,
+                borderRadius: 12,
                 letterSpacing: -0.41,
               }}
             >
