@@ -1,5 +1,5 @@
 import { Div } from "@vkontakte/vkui";
-import { useCallback } from "react";
+import { useCallback, useRef } from "react";
 import { memo } from "react";
 import { useDispatch } from "react-redux";
 import { mapActions } from "../bll/map";
@@ -17,17 +17,25 @@ type Props = {
   pathToPhoto: string;
   distance?: number;
   coordinates?: [number, number];
+  onClickShare: (title: string, imgSrc: string) => void;
 };
 
 export const VerticalPlace = memo<Props>(
-  ({ id, title, pathToPhoto, distance, coordinates }) => {
+  ({ id, title, pathToPhoto, distance, coordinates, onClickShare }) => {
     const dispatch = useDispatch();
     const handleClick = useCallback(() => {
       if (coordinates) {
         dispatch(mapActions.setCenter(coordinates));
       }
     }, [coordinates]);
-
+    const ref = useRef();
+    const handleClickShare = useCallback(() => {
+      //@ts-ignore
+      if (ref.current && ref.current.src) {
+        //@ts-ignore
+        onClickShare(title, ref.current.src);
+      }
+    }, [ref, ref.current]);
     return (
       <div style={{ marginTop: 12 }}>
         <RoundedCard id={`vp-${id}`}>
@@ -47,18 +55,29 @@ export const VerticalPlace = memo<Props>(
             className="center-x"
           >
             <ImageFallback
-              id={`vp-{id}-img`}
+              ref={ref}
+              id={`vp-${id}-img`}
               imageUrl={pathToPhoto}
               style={{ borderRadius: 21, width: "100%", height: 186 }}
             />
           </Div>
-          {coordinates && (
-            <Div className="center-x">
-              <ThemedButton onClick={handleClick} id={`vp-${id}-btn`}>
+          <Div className="center-x">
+            {coordinates && (
+              <ThemedButton onClick={handleClick} id={`vp-${id}-show-btn`}>
                 Показать на карте
               </ThemedButton>
-            </Div>
-          )}
+            )}
+            {pathToPhoto && (
+              <div style={coordinates ? { marginLeft: 6 } : {}}>
+                <ThemedButton
+                  onClick={handleClickShare}
+                  id={`vp-${id}-share-btn`}
+                >
+                  Поделиться
+                </ThemedButton>
+              </div>
+            )}
+          </Div>
         </RoundedCard>
       </div>
     );

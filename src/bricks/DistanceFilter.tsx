@@ -98,7 +98,7 @@ export const DistanceFilter = memo<Props>(
           </Footer>
         )}
         {error && (
-          <FixedLayout>
+          <FixedLayout vertical="bottom">
             <CustomizedSnackbar text={error} isSuccess={false} />
           </FixedLayout>
         )}

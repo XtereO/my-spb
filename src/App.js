@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, memo } from "react";
 import bridge from "@vkontakte/vk-bridge";
 import {
   View,
@@ -89,6 +89,7 @@ const App = () => {
       <ConfigProvider appearance={theme}>
         <AdaptivityProvider>
           <AppRoot>
+            <LoadFonts />
             <View activePanel={activePanel}>
               <Welcome id={PANEL_ROUTES.WELCOME} />
               <Home id={PANEL_ROUTES.HOME} />
@@ -108,3 +109,25 @@ const App = () => {
 };
 
 export default App;
+
+const LoadFonts = memo(() => {
+  return (
+    <div style={{ opacity: 0, width: 0, height: 0 }}>
+      <div className="text__NewYorkLarge-Bold">1</div>
+      <div className="text__NewYorkMedium-Medium">2</div>
+      <div className="text__Inter-Semibold">3</div>
+      <div className="text__Inter-Regular">4</div>
+      <div className="text__SF-Pro-Rounded-Medium">5</div>
+      <div className="text__SF-Pro-Rounded-Regular">6</div>
+      <div className="text__SF-Pro-Text-Medium">7</div>
+      <div className="text__SF-Pro-Rounded-Heavy">8</div>
+      <div className="text__SF-Pro-Rounded-Semibold">9</div>
+      <div className="text__SF-Pro-Rounded-Bold">10</div>
+      <div className="text__SF-Pro-Rounded-Light">11</div>
+      <div className="text__Inter-Bold">12</div>
+      <div className="text__SF-Pro-Text-Regular">13</div>
+      <div className="text__SF-Pro-Text-Semibold">14</div>
+      <div className="text__Inter-Medium">15</div>
+    </div>
+  );
+});

@@ -11,3 +11,4 @@ export * from "./sortByKey";
 export * from "./getCountDays";
 export * from "./roundMetr";
 export * from "./getRandomElements";
+export * from "./toStartUpperCase";

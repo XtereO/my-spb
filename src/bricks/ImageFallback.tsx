@@ -1,9 +1,8 @@
 import { Spinner } from "@vkontakte/vkui";
-import { memo, useEffect, useState } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { getPhotoUrl } from "../dal/api";
-
-import defaultImage from "../icons/default-image.jpg";
+import defaultImage from "../images/default-image.jpg";
 
 type Props = {
   id: string;
@@ -14,8 +13,8 @@ type Props = {
   className?: string;
 };
 
-export const ImageFallback = memo<Props>(
-  ({ id, onClick, style, imageUrl, spinnerSize, className }) => {
+export const ImageFallback = forwardRef(
+  ({ id, onClick, style, imageUrl, spinnerSize, className }: Props, imgRef) => {
     const { inView, ref } = useInView();
     const [photoSrc, setPhotoSrc] = useState("");
     useEffect(() => {
@@ -25,7 +24,7 @@ export const ImageFallback = memo<Props>(
       if (inView && !photoSrc) {
         getPhotoUrl(imageUrl)
           .then((res) => setPhotoSrc(res.preview ?? defaultImage))
-          .catch((err) => setPhotoSrc(defaultImage));
+          .catch(() => setPhotoSrc(defaultImage));
       }
     }, [inView, ref]);
     if (!photoSrc) {
@@ -37,6 +36,8 @@ export const ImageFallback = memo<Props>(
     }
     return (
       <img
+        //@ts-ignore
+        ref={imgRef}
         onClick={onClick}
         referrerPolicy="no-referrer"
         onError={() => setPhotoSrc(defaultImage)}

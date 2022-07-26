@@ -16,7 +16,7 @@ export const TextSFProRoundedSemibold = ComponentWithFontByFontTitleCreator(
 export const TextInterMedium =
   ComponentWithFontByFontTitleCreator("text__Inter-Medium");
 export const TextInterSemibold = ComponentWithFontByFontTitleCreator(
-  "text__Inter-SemiBold"
+  "text__Inter-Semibold"
 );
 export const TextInterRegular = ComponentWithFontByFontTitleCreator(
   "text__Inter-Regular"

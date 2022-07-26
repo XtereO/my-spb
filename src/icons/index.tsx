@@ -6,6 +6,7 @@ export * from "./CarOutlineIcon";
 export * from "./WiFiOutlineIcon";
 export * from "./ChevronLeftIcon";
 export * from "./LockOutlineIcon";
+export * from "./ShareOutlineIcon";
 export * from "./PlaceOutlineIcon";
 export * from "./ClockOutlineIcon";
 export * from "./WasherOutlineIcon";

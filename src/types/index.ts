@@ -1,6 +1,7 @@
 export * from "./fact";
 export * from "./theme";
 export * from "./filter";
+export * from "./snackbar";
 export * from "./platform";
 export * from "./free-wifi";
 export * from "./notifications";

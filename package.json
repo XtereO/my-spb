@@ -33,14 +33,17 @@
     "eruda-dom": "^2.0.0",
     "formik": "^2.2.9",
     "html-react-parser": "^1.4.14",
+    "konva": "8.3.0",
     "moment": "^2.29.3",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-intersection-observer": "8.33.1",
+    "react-konva": "17.0.2-5",
     "react-redux": "^8.0.2",
     "react-yandex-maps": "^4.6.0",
-    "rxjs": "^7.5.5"
+    "rxjs": "^7.5.5",
+    "use-image": "^1.0.12"
   },
   "devDependencies": {
     "@types/enzyme": "^3.10.12",

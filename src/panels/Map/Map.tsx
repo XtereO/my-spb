@@ -5,7 +5,7 @@ import { YMaps, Map as YMap, Placemark } from "react-yandex-maps";
 import { getCenter, getZoom, mapActions } from "../../bll/map";
 import { PanelHeaderBack } from "../../bricks";
 import { PANEL_ROUTES } from "../../consts";
-import placemark from "../../icons/placemark.png";
+import placemark from "../../images/placemark.png";
 
 export const Map = memo(() => {
   const center = useSelector(getCenter);

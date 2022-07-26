@@ -10,14 +10,16 @@ type Props = {
   fontSize?: number;
   size?: "l" | "m" | "s";
   onClick?: () => void;
+  before?: React.ReactNode;
   children: React.ReactNode;
 };
 
 export const ThemedButton = memo<Props>(
-  ({ id, children, size, fontSize, onClick, type }) => {
+  ({ id, children, before, size, fontSize, onClick, type }) => {
     const theme = useContext(ThemeContext);
     return (
       <Button
+        before={before}
         type={type}
         id={id}
         size={size ?? "l"}
@@ -28,7 +30,9 @@ export const ThemedButton = memo<Props>(
         }}
       >
         <TextInterSemibold>
-          <span id={`${id}-title`} style={{ fontSize, letterSpacing: -0.41 }}>{children}</span>
+          <span id={`${id}-title`} style={{ fontSize, letterSpacing: -0.41 }}>
+            {children}
+          </span>
         </TextInterSemibold>
       </Button>
     );

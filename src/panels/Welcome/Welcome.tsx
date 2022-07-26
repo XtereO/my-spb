@@ -48,7 +48,12 @@ export const Welcome = memo(() => {
           <Div
             id={`${PANEL_ROUTES.WELCOME}-description`}
             className="text center-x"
-            style={{ color: theme.text, textAlign: "center", letterSpacing: -0.24 }}
+            style={{
+              color: theme.text,
+              textAlign: "center",
+              letterSpacing: 0.25,
+              lineHeight: "17.9px",
+            }}
           >
             <TextSFProRoundedLight>
               Расскажем где бесплатный Wi-Fi, куда можно сходить прогуляться.
