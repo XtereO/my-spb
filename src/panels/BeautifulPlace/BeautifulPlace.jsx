@@ -170,7 +170,7 @@ export const BeautifulPlace = memo(() => {
                   pathToPhoto={s.path_to_photo}
                   distance={s.distance}
                   coordinates={
-                    p.coordinates
+                    s.coordinates
                       ? [
                           Number(s.coordinates.split(", ")[0]),
                           Number(s.coordinates.split(", ")[1]),
